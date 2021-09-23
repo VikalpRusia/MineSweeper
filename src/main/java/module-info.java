@@ -1,4 +1,5 @@
 module MineSweeper {
-    requires spring.context;
+    requires java.persistence;
     requires spring.web;
+    requires spring.context;
 }

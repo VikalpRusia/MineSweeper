@@ -12,6 +12,7 @@
         <maven.compiler.source>1.17</maven.compiler.source>
         <maven.compiler.target>1.17</maven.compiler.target>
         <hibernate-version>5.5.7.Final</hibernate-version>
+        <javax-persistence-api>2.2</javax-persistence-api>
         <spring-version>5.3.10</spring-version>
         <c3p0-version>0.9.5.5</c3p0-version>
         <mysql-connector-version>8.0.26</mysql-connector-version>
@@ -23,6 +24,13 @@
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate-version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>${javax-persistence-api}</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
         <dependency>
             <groupId>org.springframework</groupId>
