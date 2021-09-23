@@ -17,7 +17,14 @@
     </facet>
     <facet type="Spring" name="Spring">
       <configuration>
+        <fileset id="web DispatcherServlet servlet context" name="MVC DispatcherServlet servlet context" removed="true">
+          <dependency>web application context</dependency>
+          <file>file://$MODULE_DIR$/web/WEB-INF/DispatcherServlet-servlet.xml</file>
+        </fileset>
         <fileset id="fileset" name="Spring Config" removed="false">
+          <file>file://$MODULE_DIR$/web/WEB-INF/spring-config.xml</file>
+        </fileset>
+        <fileset id="web dispatcher servlet context" name="MVC dispatcher servlet context" removed="true">
           <file>file://$MODULE_DIR$/web/WEB-INF/spring-config.xml</file>
         </fileset>
       </configuration>
