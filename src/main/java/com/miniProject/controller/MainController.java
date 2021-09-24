@@ -1,40 +1,54 @@
 package com.miniProject.controller;
 
+import com.miniProject.DAO.PlayerDAO;
 import com.miniProject.entity.Level;
 import com.miniProject.entity.Player;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.PriorityQueue;
 
 @Controller
 public class MainController {
-    private ArrayList<Player> arrayList_easy;
-    private ArrayList<Player> arrayList_medium;
-    private ArrayList<Player> arrayList_hard;
+    private PriorityQueue<Player> arrayList_easy;
+    private PriorityQueue<Player> arrayList_medium;
+    private PriorityQueue<Player> arrayList_hard;
+    private PlayerDAO playerDAO;
+
+    @Autowired
+    public void setPlayerDAO(PlayerDAO playerDAO) {
+        this.playerDAO = playerDAO;
+    }
 
     public MainController() {
+        arrayList_easy = new PriorityQueue<>();
+        arrayList_medium = new PriorityQueue<>();
+        arrayList_hard = new PriorityQueue<>();
     }
 
     @RequestMapping("/")
     @ResponseBody
-    public String sample(){
-        return "hi";
+    public String sample() {
+        return playerDAO.getTop10Players(Level.Medium).toString();
     }
 
 
     @RequestMapping("/highScore/{level}")
-    public String getTop10(@PathVariable("level") Level level, Model model){
-        if (level==Level.Easy){
-            model.addAttribute("list", Collections.unmodifiableList(arrayList_easy));
-        }else if (level==Level.Medium){
-            model.addAttribute("list",Collections.unmodifiableList(arrayList_medium));
-        } else{
-            model.addAttribute("list",Collections.unmodifiableList(arrayList_hard));
+    public String getTop10(@PathVariable("level") Level level, Model model) {
+        if (level == Level.Easy) {
+            model.addAttribute("list",
+                    Collections.unmodifiableCollection(arrayList_easy));
+        } else if (level == Level.Medium) {
+            model.addAttribute("list",
+                    Collections.unmodifiableCollection(arrayList_medium));
+        } else {
+            model.addAttribute("list",
+                    Collections.unmodifiableCollection(arrayList_hard));
         }
         return "highScore";
     }

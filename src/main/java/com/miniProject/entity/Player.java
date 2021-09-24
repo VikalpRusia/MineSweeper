@@ -63,4 +63,13 @@ public class Player implements Comparable<Player>, Externalizable {
         time=in.readLong();
         level=(Level)in.readObject();
     }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", time=" + time +
+                ", level=" + level +
+                '}';
+    }
 }
