@@ -6,8 +6,8 @@ import com.miniProject.entity.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Collections;
@@ -25,31 +25,34 @@ public class MainController {
         this.playerDAO = playerDAO;
     }
 
-    public MainController() {
-        arrayList_easy = new PriorityQueue<>();
-        arrayList_medium = new PriorityQueue<>();
-        arrayList_hard = new PriorityQueue<>();
-    }
-
-    @RequestMapping("/")
+    @GetMapping("/")
     @ResponseBody
     public String sample() {
         return playerDAO.getTop10Players(Level.Medium).toString();
     }
 
-
-    @RequestMapping("/highScore/{level}")
+    @ResponseBody
+    @GetMapping("/highScore/{level}")
     public String getTop10(@PathVariable("level") Level level, Model model) {
         if (level == Level.Easy) {
+            if (arrayList_easy==null){
+                arrayList_easy = playerDAO.getTop10Players(level);
+            }
             model.addAttribute("list",
                     Collections.unmodifiableCollection(arrayList_easy));
         } else if (level == Level.Medium) {
+            if (arrayList_medium==null){
+                arrayList_medium = playerDAO.getTop10Players(level);
+            }
             model.addAttribute("list",
                     Collections.unmodifiableCollection(arrayList_medium));
         } else {
+            if (arrayList_hard==null){
+                arrayList_hard = playerDAO.getTop10Players(level);
+            }
             model.addAttribute("list",
                     Collections.unmodifiableCollection(arrayList_hard));
         }
-        return "highScore";
+        return level.toString();
     }
 }
