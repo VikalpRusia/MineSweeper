@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.*;
 
 @Entity
-@Table(name = "playerScores")
+@Table(name = "playerScores", indexes = @Index(name = "highScore", columnList = "level,time"))
 public class PlayerScore implements Comparable<PlayerScore>, Externalizable {
 
     @Serial

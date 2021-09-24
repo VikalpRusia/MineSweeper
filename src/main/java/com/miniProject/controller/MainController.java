@@ -46,7 +46,7 @@ public class MainController {
     @ResponseBody
     @PostMapping("/processForm")
     public String processRegistrationForm(@ModelAttribute("newPlayer") Player newPlayer) {
-
+        playerDAO.savePlayer(newPlayer);
         return newPlayer.getName();
     }
 
