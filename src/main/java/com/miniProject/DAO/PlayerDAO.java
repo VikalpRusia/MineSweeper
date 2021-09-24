@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface PlayerDAO {
     List<Player> getAllPlayer();
+
     boolean savePlayer(Player player);
 }

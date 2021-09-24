@@ -38,13 +38,14 @@ public class MainController {
     }
 
     @GetMapping("/register")
-    public String displayRegistrationForm(Model model){
-        model.addAttribute("newPlayer",new Player());
+    public String displayRegistrationForm(Model model) {
+        model.addAttribute("newPlayer", new Player());
         return "registration-form";
     }
+
     @ResponseBody
     @PostMapping("/processForm")
-    public String processRegistrationForm(@ModelAttribute("newPlayer") Player newPlayer){
+    public String processRegistrationForm(@ModelAttribute("newPlayer") Player newPlayer) {
 
         return newPlayer.getName();
     }
@@ -53,19 +54,19 @@ public class MainController {
     @GetMapping("/highScore/{level}")
     public String getTop10(@PathVariable("level") Level level, Model model) {
         if (level == Level.Easy) {
-            if (arrayList_easy==null){
+            if (arrayList_easy == null) {
                 arrayList_easy = playerScoreDAO.getTop10Players(level);
             }
             model.addAttribute("list",
                     Collections.unmodifiableCollection(arrayList_easy));
         } else if (level == Level.Medium) {
-            if (arrayList_medium==null){
+            if (arrayList_medium == null) {
                 arrayList_medium = playerScoreDAO.getTop10Players(level);
             }
             model.addAttribute("list",
                     Collections.unmodifiableCollection(arrayList_medium));
         } else {
-            if (arrayList_hard==null){
+            if (arrayList_hard == null) {
                 arrayList_hard = playerScoreDAO.getTop10Players(level);
             }
             model.addAttribute("list",
@@ -76,7 +77,7 @@ public class MainController {
 
     @ResponseBody
     @GetMapping("/highScore")
-    public String getPlayerHighScore(@RequestParam("userName") String userName){
+    public String getPlayerHighScore(@RequestParam("userName") String userName) {
         return playerDAO.toString();
     }
 

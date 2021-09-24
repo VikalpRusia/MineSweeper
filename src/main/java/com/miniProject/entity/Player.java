@@ -1,8 +1,10 @@
 package com.miniProject.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.*;
-import java.util.Objects;
 
 @Entity
 @Table(name = "players")
@@ -24,7 +26,6 @@ public class Player implements Externalizable {
     }
 
 
-
     @Override
     public void writeExternal(ObjectOutput out) throws IOException {
         out.writeObject(name);
@@ -32,12 +33,12 @@ public class Player implements Externalizable {
 
     @Override
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-        name=(String)in.readObject();
+        name = (String) in.readObject();
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof Player p1){
+        if (obj instanceof Player p1) {
             return this.name.equals(p1.name);
         }
         return false;

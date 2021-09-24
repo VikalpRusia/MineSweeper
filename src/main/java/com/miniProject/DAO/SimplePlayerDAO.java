@@ -23,7 +23,7 @@ public class SimplePlayerDAO implements PlayerDAO {
     @Override
     public List<Player> getAllPlayer() {
         Session currentSession = sessionFactory.getCurrentSession();
-        Query<Player> query=currentSession.createQuery("From Player",Player.class);
+        Query<Player> query = currentSession.createQuery("From Player", Player.class);
         return query.getResultList();
     }
 

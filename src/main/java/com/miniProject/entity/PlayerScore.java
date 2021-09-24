@@ -2,6 +2,7 @@ package com.miniProject.entity;
 
 import javax.persistence.*;
 import java.io.*;
+
 @Entity
 @Table(name = "playerScores")
 public class PlayerScore implements Comparable<PlayerScore>, Externalizable {
@@ -32,10 +33,10 @@ public class PlayerScore implements Comparable<PlayerScore>, Externalizable {
 
     @Override
     public int compareTo(PlayerScore o) {
-        if (this.getLevel() != o.getLevel()){
-            return Level.compare(o.getLevel(),this.getLevel());
+        if (this.getLevel() != o.getLevel()) {
+            return Level.compare(o.getLevel(), this.getLevel());
         }
-        return Long.compare(this.time,o.time);
+        return Long.compare(this.time, o.time);
     }
 
     @Override
@@ -47,11 +48,11 @@ public class PlayerScore implements Comparable<PlayerScore>, Externalizable {
     @Override
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
         playerScorePk = (PlayerScorePk) in.readObject();
-        time=in.readLong();
+        time = in.readLong();
     }
 
     @Embeddable
-    private static class PlayerScorePk implements Externalizable{
+    private static class PlayerScorePk implements Externalizable {
         @Serial
         private static final long serialVersionUID = 17654235627723478L;
         @ManyToOne
@@ -84,8 +85,8 @@ public class PlayerScore implements Comparable<PlayerScore>, Externalizable {
 
         @Override
         public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-            player= (Player) in.readObject();
-            level= (Level) in.readObject();
+            player = (Player) in.readObject();
+            level = (Level) in.readObject();
         }
     }
 }

@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.PriorityQueue;
 
 @Repository
-public class SimplePlayerScoreDAO implements PlayerScoreDAO{
+public class SimplePlayerScoreDAO implements PlayerScoreDAO {
     private final SessionFactory sessionFactory;
 
     @Autowired
@@ -26,7 +26,7 @@ public class SimplePlayerScoreDAO implements PlayerScoreDAO{
         Session currentSession = sessionFactory.getCurrentSession();
         Query<PlayerScore> query =
                 currentSession.createQuery("From PlayerScore p " +
-                        "where p.playerScorePk.level=:level order by time",PlayerScore.class);
+                        "where p.playerScorePk.level=:level order by time", PlayerScore.class);
         query.setMaxResults(10);
         return new PriorityQueue<>(query.getResultList());
     }
