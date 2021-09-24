@@ -28,6 +28,7 @@ public class SimplePlayerScoreDAO implements PlayerScoreDAO {
                 currentSession.createQuery("From PlayerScore p " +
                         "where p.playerScorePk.level=:level order by time", PlayerScore.class);
         query.setMaxResults(10);
+        query.setParameter("level", level);
         return new PriorityQueue<>(query.getResultList());
     }
 }
