@@ -1,11 +1,11 @@
 package com.miniProject.DAO;
 
 
-import com.miniProject.entity.Level;
 import com.miniProject.entity.Player;
 
-import java.util.PriorityQueue;
+import java.util.List;
 
 public interface PlayerDAO {
-    PriorityQueue<Player> getTop10Players(Level level);
+    List<Player> getAllPlayer();
+    boolean savePlayer(Player player);
 }

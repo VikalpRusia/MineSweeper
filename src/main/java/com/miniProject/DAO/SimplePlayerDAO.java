@@ -1,6 +1,5 @@
 package com.miniProject.DAO;
 
-import com.miniProject.entity.Level;
 import com.miniProject.entity.Player;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.PriorityQueue;
+import java.util.List;
 
 @Repository
 public class SimplePlayerDAO implements PlayerDAO {
@@ -22,13 +21,15 @@ public class SimplePlayerDAO implements PlayerDAO {
 
     @Transactional
     @Override
-    public PriorityQueue<Player> getTop10Players(Level level) {
+    public List<Player> getAllPlayer() {
         Session currentSession = sessionFactory.getCurrentSession();
-        Query<Player> query =
-                currentSession.createQuery("From Player p where p.level= :level", Player.class);
-        query.setMaxResults(10);
-        query.setParameter("level", level);
-        return new PriorityQueue<>(query.getResultList());
+        Query<Player> query=currentSession.createQuery("From Player",Player.class);
+        return query.getResultList();
+    }
 
+    @Transactional
+    @Override
+    public boolean savePlayer(Player player) {
+        return false;
     }
 }
