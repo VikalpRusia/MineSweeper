@@ -6,4 +6,5 @@ module MineSweeper {
     requires spring.beans;
     requires spring.tx;
     requires transitive java.naming;
+    requires java.validation;
 }
