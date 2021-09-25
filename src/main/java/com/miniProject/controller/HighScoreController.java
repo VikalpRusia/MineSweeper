@@ -1,9 +1,7 @@
 package com.miniProject.controller;
 
-import com.miniProject.DAO.PlayerDAO;
 import com.miniProject.DAO.PlayerScoreDAO;
 import com.miniProject.entity.Level;
-import com.miniProject.entity.Player;
 import com.miniProject.entity.PlayerScore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,44 +12,20 @@ import java.util.Collections;
 import java.util.PriorityQueue;
 
 @Controller
-public class MainController {
+@RequestMapping("/highScore")
+public class HighScoreController {
+    private PlayerScoreDAO playerScoreDAO;
     private PriorityQueue<PlayerScore> arrayList_easy;
     private PriorityQueue<PlayerScore> arrayList_medium;
     private PriorityQueue<PlayerScore> arrayList_hard;
-    private PlayerDAO playerDAO;
-    private PlayerScoreDAO playerScoreDAO;
-
-    @Autowired
-    public void setPlayerDAO(PlayerDAO playerDAO) {
-        this.playerDAO = playerDAO;
-    }
 
     @Autowired
     public void setPlayerScoreDAO(PlayerScoreDAO playerScoreDAO) {
         this.playerScoreDAO = playerScoreDAO;
     }
 
-    @GetMapping("/")
     @ResponseBody
-    public String sample() {
-        return playerDAO.getAllPlayer().toString();
-    }
-
-    @GetMapping("/register")
-    public String displayRegistrationForm(Model model) {
-        model.addAttribute("newPlayer", new Player());
-        return "registration-form";
-    }
-
-    @ResponseBody
-    @PostMapping("/processForm")
-    public String processRegistrationForm(@ModelAttribute("newPlayer") Player newPlayer) {
-        playerDAO.savePlayer(newPlayer);
-        return newPlayer.getFullName();
-    }
-
-    @ResponseBody
-    @GetMapping("/highScore/{level}")
+    @GetMapping("/{level}")
     public String getTop10(@PathVariable("level") Level level, Model model) {
         if (level == Level.EASY) {
             if (arrayList_easy == null) {
@@ -76,9 +50,8 @@ public class MainController {
     }
 
     @ResponseBody
-    @GetMapping("/highScore")
+    @GetMapping("/")
     public String getPlayerHighScore(@RequestParam("userName") String userName) {
-        return playerDAO.toString();
+        return userName;
     }
-
 }

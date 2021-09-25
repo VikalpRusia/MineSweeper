@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
+
 public class SimplePlayerDAO implements PlayerDAO {
     private final SessionFactory sessionFactory;
 
@@ -25,6 +26,11 @@ public class SimplePlayerDAO implements PlayerDAO {
         Session currentSession = sessionFactory.getCurrentSession();
         Query<Player> query = currentSession.createQuery("From Player", Player.class);
         return query.getResultList();
+    }
+
+    @Override
+    public Player isPlayerRegistered(String userName, String password) {
+        return null;
     }
 
     @Transactional
