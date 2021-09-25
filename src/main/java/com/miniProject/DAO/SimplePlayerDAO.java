@@ -34,4 +34,12 @@ public class SimplePlayerDAO implements PlayerDAO {
         currentSession.save(player);
         return true;
     }
+
+    @Transactional
+    @Override
+    public boolean deletePlayer(Player player) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        currentSession.delete(player);
+        return true;
+    }
 }

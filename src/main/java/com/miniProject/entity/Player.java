@@ -14,32 +14,57 @@ public class Player implements Externalizable {
 
     @Id
     @Column
-    private String name;
+    private String userName;
+
+    @Column
+    private String fullName;
+
+    @Column
+    private String password;
 
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     @Override
     public void writeExternal(ObjectOutput out) throws IOException {
-        out.writeObject(name);
+        out.writeObject(userName);
+        out.writeObject(fullName);
+        out.writeObject(password);
     }
 
     @Override
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-        name = (String) in.readObject();
+        userName = (String) in.readObject();
+        fullName = (String) in.readObject();
+        password = (String) in.readObject();
     }
 
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Player p1) {
-            return this.name.equals(p1.name);
+            return this.userName.equals(p1.userName);
         }
         return false;
     }
@@ -47,7 +72,9 @@ public class Player implements Externalizable {
     @Override
     public String toString() {
         return "Player{" +
-                "name='" + name + '\'' +
+                "userName='" + userName + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

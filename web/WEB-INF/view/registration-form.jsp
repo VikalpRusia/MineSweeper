@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: vikal
+  User: vikalp
   Date: 24-09-2021
   Time: 20:05
   To change this template use File | Settings | File Templates.
@@ -13,8 +13,11 @@
 </head>
 <body>
 <form:form modelAttribute="newPlayer" action="processForm" method="post">
-    Name: <form:input path="name"/>
+    User Name: <form:input path="userName"/>
     <br><br>
+    Name: <form:input path="fullName"/>
+    <br><br>
+    Password: <form:password path="password"/>
     <input type="submit" value="Submit">
 </form:form>
 </body>

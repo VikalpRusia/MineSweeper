@@ -47,19 +47,19 @@ public class MainController {
     @PostMapping("/processForm")
     public String processRegistrationForm(@ModelAttribute("newPlayer") Player newPlayer) {
         playerDAO.savePlayer(newPlayer);
-        return newPlayer.getName();
+        return newPlayer.getFullName();
     }
 
     @ResponseBody
     @GetMapping("/highScore/{level}")
     public String getTop10(@PathVariable("level") Level level, Model model) {
-        if (level == Level.Easy) {
+        if (level == Level.EASY) {
             if (arrayList_easy == null) {
                 arrayList_easy = playerScoreDAO.getTop10Players(level);
             }
             model.addAttribute("list",
                     Collections.unmodifiableCollection(arrayList_easy));
-        } else if (level == Level.Medium) {
+        } else if (level == Level.MEDIUM) {
             if (arrayList_medium == null) {
                 arrayList_medium = playerScoreDAO.getTop10Players(level);
             }

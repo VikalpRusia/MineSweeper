@@ -31,4 +31,17 @@ public class SimplePlayerScoreDAO implements PlayerScoreDAO {
         query.setParameter("level", level);
         return new PriorityQueue<>(query.getResultList());
     }
+
+    @Transactional
+    @Override
+    public PriorityQueue<PlayerScore> getLeaderBoard(Level level, int page, int page_data) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query<PlayerScore> query =
+                currentSession.createQuery("From PlayerScore p " +
+                        "where p.playerScorePk.level=:level order by time", PlayerScore.class);
+        query.setFirstResult((page - 1) * page_data);
+        query.setMaxResults(page_data);
+        query.setParameter("level", level);
+        return new PriorityQueue<>(query.getResultList());
+    }
 }

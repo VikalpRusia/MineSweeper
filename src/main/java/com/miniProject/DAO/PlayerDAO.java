@@ -9,4 +9,6 @@ public interface PlayerDAO {
     List<Player> getAllPlayer();
 
     boolean savePlayer(Player player);
+
+    boolean deletePlayer(Player player);
 }
