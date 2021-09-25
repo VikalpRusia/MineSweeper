@@ -14,10 +14,13 @@
 <body>
 <form:form modelAttribute="newPlayer" action="processForm" method="post">
     User Name: <form:input path="userName"/>
+    <form:errors path="userName"/>
     <br><br>
     Name: <form:input path="fullName"/>
+    <form:errors path="fullName"/>
     <br><br>
     Password: <form:password path="password"/>
+    <form:errors path="password"/>
     <input type="submit" value="Submit">
 </form:form>
 </body>

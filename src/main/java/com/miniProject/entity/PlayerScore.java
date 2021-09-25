@@ -91,8 +91,11 @@ public class PlayerScore implements Comparable<PlayerScore>, Externalizable {
     private static class PlayerScorePk implements Externalizable {
         @Serial
         private static final long serialVersionUID = 17654235627723478L;
+
         @ManyToOne
+        @JoinColumn(foreignKey = @ForeignKey(name = "Fk_player_username"))
         private Player player;
+
         @Enumerated(EnumType.ORDINAL)
         @Column(name = "level")
         private Level level;
@@ -131,6 +134,19 @@ public class PlayerScore implements Comparable<PlayerScore>, Externalizable {
                     "player=" + player +
                     ", level=" + level +
                     '}';
+        }
+
+        @Override
+        public int hashCode() {
+            return super.hashCode();
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj instanceof PlayerScorePk pk) {
+                return pk.player.equals(this.player) && pk.level.equals(this.level);
+            }
+            return false;
         }
     }
 }
