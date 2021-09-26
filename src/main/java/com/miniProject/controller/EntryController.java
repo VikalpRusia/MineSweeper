@@ -14,6 +14,7 @@ import javax.validation.Valid;
 @Controller
 public class EntryController {
     private PlayerDAO playerDAO;
+    private Player player;
 
 
     @Autowired
@@ -46,7 +47,11 @@ public class EntryController {
 
     @GetMapping("/log-in")
     public String logIn() {
-        return "log-in";
+        if (player == null) {
+            return "log-in";
+        } else {
+            return "home";
+        }
     }
 
     @PostMapping("/verify-log-in")

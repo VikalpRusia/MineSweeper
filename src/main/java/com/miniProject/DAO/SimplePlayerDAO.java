@@ -30,6 +30,7 @@ public class SimplePlayerDAO implements PlayerDAO {
 
     @Override
     public Player isPlayerRegistered(String userName, String password) {
+        Session currentSession = sessionFactory.getCurrentSession();
         return null;
     }
 
