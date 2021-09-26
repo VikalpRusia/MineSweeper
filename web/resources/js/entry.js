@@ -13,7 +13,7 @@ sign_in_btn.addEventListener("click", () => {
 
 function validateSignUpForm() {
   console.log("Starting validate sign up");
-  var form = document.getElementById("signUpForm");
+  const form = document.getElementById("signUpForm");
   if (form.userName.value == null || form.userName.value.trim() === "") {
     alert("Cannot leave User Name empty");
     form.userName.focus();
