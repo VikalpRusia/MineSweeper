@@ -47,11 +47,11 @@
             <form:form modelAttribute="newPlayer" action="sign-up-form" method="post" class="sign-up-form">
                 <h2 class="title">Sign up</h2>
                 <div class="input-field">
-                    <i class="fas fa-user"></i>
+                    <i class="fas fa-user-circle"></i>
                     <form:input path="userName" placeholder="Username"/>
                 </div>
                 <div class="input-field">
-                    <i class="fas fa-envelope"></i>
+                    <i class="fas fa-user"></i>
                     <form:input path="fullName" placeholder="Name"/>
                 </div>
                 <div class="input-field">
