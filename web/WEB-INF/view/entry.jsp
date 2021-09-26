@@ -100,7 +100,7 @@
     </div>
 </div>
 
-<script src="${pageContext.request.contextPath}/resources/js/app.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/entry.js"></script>
 </body>
 </html>
 
