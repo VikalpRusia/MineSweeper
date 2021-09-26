@@ -4,6 +4,7 @@ import com.miniProject.DAO.PlayerDAO;
 import com.miniProject.entity.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,18 +25,19 @@ public class EntryController {
     }
 
     @GetMapping("/")
-    public String entry() {
+    public String entry(Model model) {
+        model.addAttribute("newPlayer", new Player());
         return "entry";
     }
 
-    @PostMapping("/process-form")
+    @PostMapping("/sign-up-form")
     public String processRegistrationForm(@Valid @ModelAttribute("newPlayer") Player newPlayer,
                                           BindingResult result) {
         if (result.hasErrors()) {
             return "entry";
         } else {
             playerDAO.savePlayer(newPlayer);
-            return "home";
+            return "entry";
         }
     }
 

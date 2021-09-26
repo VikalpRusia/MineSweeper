@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: vikal
@@ -43,19 +44,19 @@
                     </a>
                 </div>
             </form>
-            <form action="#" class="sign-up-form">
+            <form:form modelAttribute="newPlayer" action="sign-up-form" method="post" class="sign-up-form">
                 <h2 class="title">Sign up</h2>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Username"/>
+                    <form:input path="userName" placeholder="Username"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" placeholder="Email"/>
+                    <form:input path="fullName" placeholder="Name"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password"/>
+                    <form:password path="password" placeholder="Password"/>
                 </div>
                 <input type="submit" class="btn" value="Sign up"/>
                 <p class="social-text">Or Sign up with social platforms</p>
@@ -67,7 +68,7 @@
                         <i class="fab fa-google"></i>
                     </a>
                 </div>
-            </form>
+            </form:form>
         </div>
     </div>
 
