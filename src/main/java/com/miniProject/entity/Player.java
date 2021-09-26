@@ -1,7 +1,5 @@
 package com.miniProject.entity;
 
-import org.springframework.context.annotation.Scope;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,7 +9,6 @@ import javax.validation.constraints.NotEmpty;
 import java.io.*;
 
 @Entity
-@Scope("session")
 @Table(name = "players")
 public class Player implements Externalizable {
     @Serial

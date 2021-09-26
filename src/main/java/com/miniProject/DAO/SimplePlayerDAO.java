@@ -28,10 +28,15 @@ public class SimplePlayerDAO implements PlayerDAO {
         return query.getResultList();
     }
 
+    @Transactional
     @Override
     public Player isPlayerRegistered(String userName, String password) {
         Session currentSession = sessionFactory.getCurrentSession();
-        return null;
+        Query<Player> query = currentSession.createQuery(
+                "FROM Player p WHERE p.userName=:userName AND p.password=:password", Player.class);
+        query.setParameter("userName", userName);
+        query.setParameter("password", password);
+        return query.getSingleResult();
     }
 
     @Transactional

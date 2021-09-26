@@ -8,14 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 //creating session is a better option here
 @Controller
 public class EntryController {
     private PlayerDAO playerDAO;
-    private Player player;
-
 
     @Autowired
     public void setPlayerDAO(PlayerDAO playerDAO) {
@@ -41,13 +40,13 @@ public class EntryController {
             return "registration-form";
         } else {
             playerDAO.savePlayer(newPlayer);
-            return "home";
+            return "redirect:log-in";
         }
     }
 
     @GetMapping("/log-in")
-    public String logIn() {
-        if (player == null) {
+    public String logIn(HttpSession session) {
+        if (session.getAttribute("player") == null) {
             return "log-in";
         } else {
             return "home";
@@ -55,11 +54,13 @@ public class EntryController {
     }
 
     @PostMapping("/verify-log-in")
-    public String verifyLogIn(@RequestParam String userName, @RequestParam String password) {
+    public String verifyLogIn(@RequestParam String userName,
+                              @RequestParam String password, HttpSession session) {
         Player player = playerDAO.isPlayerRegistered(userName, password);
         if (player == null) {
             throw new RuntimeException("Player not registered");
         } else {
+            session.setAttribute("player", player);
             return "home";
         }
     }
