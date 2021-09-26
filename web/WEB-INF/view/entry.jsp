@@ -22,15 +22,15 @@
 <div class="container">
     <div class="forms-container">
         <div class="signin-signup">
-            <form action="#" class="sign-in-form">
+            <form action="verify-log-in" method="post" class="sign-in-form">
                 <h2 class="title">Sign in</h2>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Username">
+                    <input type="text" placeholder="Username" name="userName">
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password">
+                    <input type="password" placeholder="Password" name="password">
                 </div>
                 <input type="submit" value="Login" class="btn solid"/>
                 <p class="social-text">Or Sign in with social platforms</p>
