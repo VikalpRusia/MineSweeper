@@ -33,7 +33,7 @@ public class EntryController {
         return "registration-form";
     }
 
-    @PostMapping("/processForm")
+    @PostMapping("/process-form")
     public String processRegistrationForm(@Valid @ModelAttribute("newPlayer") Player newPlayer,
                                           BindingResult result) {
         if (result.hasErrors()) {
@@ -44,12 +44,12 @@ public class EntryController {
         }
     }
 
-    @GetMapping("/logIn")
+    @GetMapping("/log-in")
     public String logIn() {
-        return "logIn";
+        return "log-in";
     }
 
-    @PostMapping("/verifyLogIn")
+    @PostMapping("/verify-log-in")
     public String verifyLogIn(@RequestParam String userName, @RequestParam String password) {
         Player player = playerDAO.isPlayerRegistered(userName, password);
         if (player == null) {

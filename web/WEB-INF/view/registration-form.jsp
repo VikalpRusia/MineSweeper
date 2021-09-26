@@ -12,7 +12,7 @@
     <title>Registration-Form</title>
 </head>
 <body>
-<form:form modelAttribute="newPlayer" action="processForm" method="post">
+<form:form modelAttribute="newPlayer" action="process-form" method="post">
     User Name: <form:input path="userName"/>
     <form:errors path="userName"/>
     <br><br>
