@@ -4,8 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import java.io.*;
 
 @Entity
@@ -14,16 +12,13 @@ public class Player implements Externalizable {
     @Serial
     private static final long serialVersionUID = 4638201649372946388L;
 
-    @NotBlank
     @Id
     @Column
     private String userName;
 
-    @NotBlank
     @Column
     private String fullName;
 
-    @NotEmpty
     @Column(nullable = false)
     private String password;
 
