@@ -2,3 +2,4 @@
 /target/
 /.idea/
 MineSweeper.iml
+/web/WEB-INF/data.properties
