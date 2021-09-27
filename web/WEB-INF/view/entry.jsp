@@ -12,6 +12,9 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon"
+          href="${pageContext.request.contextPath}/resources/img/favicon.ico"
+          type="image/x-icon"/>
     <script
             src="https://kit.fontawesome.com/64d58efce2.js"
             crossorigin="anonymous"
@@ -23,7 +26,7 @@
 <div class="container">
     <div class="forms-container">
         <div class="signin-signup">
-            <form action="verify-log-in" method="post" class="sign-in-form"
+            <form class="sign-in-form"
                   onsubmit="return validateSignInForm()" id="signInForm">
                 <h2 class="title">Sign in</h2>
                 <div class="input-field">

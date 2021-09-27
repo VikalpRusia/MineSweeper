@@ -10,7 +10,6 @@ sign_in_btn.addEventListener("click", () => {
     container.classList.remove("sign-up-mode");
 });
 
-
 function validateSignUpForm() {
     console.log("Starting validate sign up");
     const form = document.getElementById("signUpForm");
@@ -64,5 +63,28 @@ function validateSignInForm() {
     } else {
         form.password.setCustomValidity('');
     }
-    return form.reportValidity();
+    if (form.reportValidity()) {
+        postMan(form.userName.value, form.password.value).then(resp => {
+            console.log(resp);
+            if (resp.validUser === "true") {
+                window.location = "home";
+            }
+        }).catch(error => console.log(error));
+    }
+    return false;
+}
+
+async function postMan(userName, password) {
+    return await fetch("verify-log-in", {
+        method: "POST",
+        headers: {
+            "charset": "UTF-8",
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+            userName: userName,
+            password: password
+        })
+    })
+        .then(data => data.json());
 }

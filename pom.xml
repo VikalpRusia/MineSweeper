@@ -17,6 +17,7 @@
         <spring-version>5.3.10</spring-version>
         <c3p0-version>0.9.5.5</c3p0-version>
         <mysql-connector-version>8.0.26</mysql-connector-version>
+        <json-parser-version>20210307</json-parser-version>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
@@ -68,6 +69,13 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql-connector-version}</version>
         </dependency>
-    </dependencies>
 
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json-parser-version}</version>
+        </dependency>
+
+    </dependencies>
 </project>

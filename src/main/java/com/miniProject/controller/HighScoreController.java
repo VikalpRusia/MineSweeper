@@ -50,7 +50,7 @@ public class HighScoreController {
     }
 
     @ResponseBody
-    @GetMapping("/")
+    @GetMapping("")
     public String getPlayerHighScore(@RequestParam("userName") String userName) {
         return userName;
     }
