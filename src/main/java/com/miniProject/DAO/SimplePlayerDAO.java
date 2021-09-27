@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-
 public class SimplePlayerDAO implements PlayerDAO {
     private final SessionFactory sessionFactory;
 
@@ -36,7 +35,7 @@ public class SimplePlayerDAO implements PlayerDAO {
                 "FROM Player p WHERE p.userName=:userName AND p.password=:password", Player.class);
         query.setParameter("userName", userName);
         query.setParameter("password", password);
-        return query.getSingleResult();
+        return query.uniqueResult();
     }
 
     @Transactional

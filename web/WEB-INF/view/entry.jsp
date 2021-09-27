@@ -28,11 +28,11 @@
                 <h2 class="title">Sign in</h2>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Username" name="userName" required>
+                    <input type="text" placeholder="Username" name="userName" oninput="this.setCustomValidity('')">
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" name="password" required>
+                    <input type="password" placeholder="Password" name="password" oninput="this.setCustomValidity('')">
                 </div>
                 <input type="submit" value="Login" class="btn solid"/>
                 <p class="social-text">Or Sign in with social platforms</p>

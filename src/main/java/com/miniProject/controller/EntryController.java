@@ -39,7 +39,7 @@ public class EntryController {
                               @RequestParam String password, HttpSession session) {
         Player player = playerDAO.isPlayerRegistered(userName, password);
         if (player == null) {
-            throw new RuntimeException("Player not registered");
+            return "redirect:/";
         } else {
             session.setAttribute("player", player);
             return "home";
