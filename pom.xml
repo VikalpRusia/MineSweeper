@@ -12,7 +12,6 @@
         <maven.compiler.source>1.17</maven.compiler.source>
         <maven.compiler.target>1.17</maven.compiler.target>
         <hibernate-version>5.5.7.Final</hibernate-version>
-        <hibernate-validator-version>6.2.0.Final</hibernate-validator-version>
         <javax-persistence-api-version>2.2</javax-persistence-api-version>
         <javax-servlet-api-version>4.0.1</javax-servlet-api-version>
         <spring-version>5.3.10</spring-version>
@@ -25,13 +24,6 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate-version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
-        <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator-version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->

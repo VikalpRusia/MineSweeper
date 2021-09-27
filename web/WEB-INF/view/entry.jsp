@@ -44,7 +44,8 @@
                     </a>
                 </div>
             </form>
-            <form:form modelAttribute="newPlayer" action="sign-up-form" method="post" class="sign-up-form">
+            <form:form modelAttribute="newPlayer" action="sign-up-form" method="post"
+                       class="sign-up-form" onsubmit="return validateSignUpForm()" id="signUpForm">
                 <h2 class="title">Sign up</h2>
                 <div class="input-field">
                     <i class="fas fa-user-circle"></i>
@@ -100,7 +101,7 @@
     </div>
 </div>
 
-<script src="${pageContext.request.contextPath}/resources/js/app.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/entry.js"></script>
 </body>
 </html>
 
