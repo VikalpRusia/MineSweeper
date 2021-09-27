@@ -31,3 +31,18 @@ function validateSignUpForm() {
   }
   return true;
 }
+
+function validateSignInForm() {
+  console.log("Starting validate ");
+  const form = document.getElementById("signInForm");
+  if (form.userName.value == null || form.userName.value.trim() === "") {
+    alert("Cannot leave User Name empty");
+    form.userName.focus();
+    return false;
+  }
+  if (form.password.value == null || form.password.value === "") {
+    alert("Cannot leave Password empty");
+    form.password.focus();
+    return false;
+  }
+}

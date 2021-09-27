@@ -23,15 +23,16 @@
 <div class="container">
     <div class="forms-container">
         <div class="signin-signup">
-            <form action="verify-log-in" method="post" class="sign-in-form">
+            <form action="verify-log-in" method="post" class="sign-in-form"
+                  onsubmit="return validateSignInForm()" id="signInForm">
                 <h2 class="title">Sign in</h2>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Username" name="userName">
+                    <input type="text" placeholder="Username" name="userName" required>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" name="password">
+                    <input type="password" placeholder="Password" name="password" required>
                 </div>
                 <input type="submit" value="Login" class="btn solid"/>
                 <p class="social-text">Or Sign in with social platforms</p>
@@ -49,15 +50,15 @@
                 <h2 class="title">Sign up</h2>
                 <div class="input-field">
                     <i class="fas fa-user-circle"></i>
-                    <form:input path="userName" placeholder="Username"/>
+                    <form:input path="userName" placeholder="Username" required="required"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <form:input path="fullName" placeholder="Name"/>
+                    <form:input path="fullName" placeholder="Name" required="required"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <form:password path="password" placeholder="Password"/>
+                    <form:password path="password" placeholder="Password" required="required"/>
                 </div>
                 <input type="submit" class="btn" value="Sign up"/>
                 <p class="social-text">Or Sign up with social platforms</p>
