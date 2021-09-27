@@ -50,15 +50,15 @@
                 <h2 class="title">Sign up</h2>
                 <div class="input-field">
                     <i class="fas fa-user-circle"></i>
-                    <form:input path="userName" placeholder="Username" required="required"/>
+                    <form:input path="userName" placeholder="Username" oninput="this.setCustomValidity('')"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <form:input path="fullName" placeholder="Name" required="required"/>
+                    <form:input path="fullName" placeholder="Name" oninput="this.setCustomValidity('')"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <form:password path="password" placeholder="Password" required="required"/>
+                    <form:password path="password" placeholder="Password" oninput="this.setCustomValidity('')"/>
                 </div>
                 <input type="submit" class="btn" value="Sign up"/>
                 <p class="social-text">Or Sign up with social platforms</p>
