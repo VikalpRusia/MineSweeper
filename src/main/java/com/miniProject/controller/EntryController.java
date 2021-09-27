@@ -21,9 +21,12 @@ public class EntryController {
     }
 
     @GetMapping("/")
-    public String entry(Model model) {
-        model.addAttribute("newPlayer", new Player());
-        return "entry";
+    public String entry(Model model, HttpSession session) {
+        if (session.isNew()) {
+            model.addAttribute("newPlayer", new Player());
+            return "entry";
+        }
+        return "redirect:home";
     }
 
     @PostMapping("/sign-up-form")
@@ -45,5 +48,12 @@ public class EntryController {
             session.setAttribute("player", player);
             return "{\"validUser\": \"true\"}";
         }
+    }
+
+    @ResponseBody
+    @GetMapping("/log-out")
+    public String logOut(HttpSession session) {
+        session.invalidate();
+        return "logged-out";
     }
 }

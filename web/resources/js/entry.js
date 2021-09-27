@@ -68,6 +68,8 @@ function validateSignInForm() {
             console.log(resp);
             if (resp.validUser === "true") {
                 window.location = "home";
+            } else {
+                alert("Invalid Username or password")
             }
         }).catch(error => console.log(error));
     }
