@@ -19,7 +19,7 @@
             src="https://kit.fontawesome.com/64d58efce2.js"
             crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/entry.css"/>
     <title>Sign in & Sign up Form</title>
 </head>
 <body>

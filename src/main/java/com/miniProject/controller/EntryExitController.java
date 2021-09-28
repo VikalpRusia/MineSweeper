@@ -22,11 +22,8 @@ public class EntryExitController {
 
     @GetMapping("/")
     public String entry(Model model, HttpSession session) {
-        if (session.isNew()) {
-            model.addAttribute("newPlayer", new Player());
-            return "entry";
-        }
-        return "redirect:home";
+        model.addAttribute("newPlayer", new Player());
+        return "entry";
     }
 
     @PostMapping("/sign-up-form")
@@ -50,10 +47,15 @@ public class EntryExitController {
         }
     }
 
-    @ResponseBody
     @GetMapping("/log-out")
-    public String logOut(HttpSession session) {
-        session.invalidate();
-        return "logged-out";
+    public String logOut() {
+        return "feedback";
+    }
+
+    @PostMapping("/feedback")
+    public void feedback(@RequestBody String jsonString) {
+        JSONObject jsonObject = new JSONObject(jsonString);
+        String feedback = jsonObject.getString("feedback");
+
     }
 }
