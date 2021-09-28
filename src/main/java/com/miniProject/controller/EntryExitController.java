@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 //creating session is a better option here
 @Controller
-public class EntryController {
+public class EntryExitController {
     private PlayerDAO playerDAO;
 
     @Autowired
