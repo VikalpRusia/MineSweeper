@@ -10,7 +10,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CodePen - Feedback Reactions (Dark version)</title>
+    <title>Feedback Reactions (Dark version)</title>
     <link rel="shortcut icon"
           href="${pageContext.request.contextPath}/resources/img/favicon.ico"
           type="image/x-icon"/>
@@ -22,7 +22,7 @@
 <!-- partial:index.partial.html -->
 <div class="feedback">
     <label class="angry">
-        <input type="radio" value="1" name="feedback"/>
+        <input type="radio" value="ANGRY" name="feedback"/>
         <div>
             <svg class="eye left">
                 <use xlink:href="#eye">
@@ -36,7 +36,7 @@
         </div>
     </label>
     <label class="sad">
-        <input type="radio" value="2" name="feedback"/>
+        <input type="radio" value="SAD" name="feedback"/>
         <div>
             <svg class="eye left">
                 <use xlink:href="#eye">
@@ -50,11 +50,11 @@
         </div>
     </label>
     <label class="ok">
-        <input type="radio" value="3" name="feedback"/>
+        <input type="radio" value="OK" name="feedback"/>
         <div></div>
     </label>
     <label class="good">
-        <input type="radio" value="4" name="feedback" checked/>
+        <input type="radio" value="GOOD" name="feedback"/>
         <div>
             <svg class="eye left">
                 <use xlink:href="#eye">
@@ -68,7 +68,7 @@
         </div>
     </label>
     <label class="happy">
-        <input type="radio" value="5" name="feedback"/>
+        <input type="radio" value="HAPPY" name="feedback"/>
         <div>
             <svg class="eye left">
                 <use xlink:href="#eye">
@@ -90,5 +90,8 @@
 </svg>
 <!-- partial -->
 <script src="${pageContext.request.contextPath}/resources/js/feedback.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+        crossorigin="anonymous"></script>
 </body>
 </html>

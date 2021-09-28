@@ -10,7 +10,9 @@ public interface PlayerDAO {
 
     Player isPlayerRegistered(String userName, String password);
 
-    boolean savePlayer(Player player);
+    void savePlayer(Player player);
 
-    boolean deletePlayer(Player player);
+    void deletePlayer(Player player);
+
+    void updatePlayer(Player player);
 }

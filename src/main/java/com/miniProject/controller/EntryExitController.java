@@ -1,6 +1,7 @@
 package com.miniProject.controller;
 
 import com.miniProject.DAO.PlayerDAO;
+import com.miniProject.entity.Feedback;
 import com.miniProject.entity.Player;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,10 +53,27 @@ public class EntryExitController {
         return "feedback";
     }
 
-    @PostMapping("/feedback")
-    public void feedback(@RequestBody String jsonString) {
+    @PostMapping("/set-feedback")
+    public void feedback(@RequestBody String jsonString, HttpSession session) {
         JSONObject jsonObject = new JSONObject(jsonString);
-        String feedback = jsonObject.getString("feedback");
-        System.out.println(feedback);
+        Feedback feedback = Feedback.valueOf(jsonObject.getString("feedback"));
+        System.out.println("Working");
+        if (session.getAttribute("player") instanceof Player p) {
+            System.out.println("Working");
+            p.setFeedback(feedback);
+            playerDAO.updatePlayer(p);
+        }
+    }
+
+    @ResponseBody
+    @GetMapping(value = "/get-feedback", produces = "application/json; charset=utf-8")
+    public String getFeedback(HttpSession session) {
+        JSONObject jsonObject = new JSONObject();
+        if (session.getAttribute("player") instanceof Player p && p.getFeedback() != null) {
+            jsonObject.put("feedback", p.getFeedback());
+        } else {
+            jsonObject.put("feedback", Feedback.GOOD);
+        }
+        return jsonObject.toString();
     }
 }

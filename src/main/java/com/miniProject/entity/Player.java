@@ -1,9 +1,6 @@
 package com.miniProject.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.*;
 
 @Entity
@@ -16,12 +13,23 @@ public class Player implements Externalizable {
     @Column
     private String userName;
 
-    @Column
+    @Column(nullable = false)
     private String fullName;
 
     @Column(nullable = false)
     private String password;
 
+    @Enumerated(EnumType.ORDINAL)
+    @Column
+    private Feedback feedback;
+
+    public Feedback getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(Feedback feedback) {
+        this.feedback = feedback;
+    }
 
     public String getFullName() {
         return fullName;
@@ -52,6 +60,7 @@ public class Player implements Externalizable {
         out.writeObject(userName);
         out.writeObject(fullName);
         out.writeObject(password);
+        out.writeObject(feedback);
     }
 
     @Override
@@ -59,6 +68,7 @@ public class Player implements Externalizable {
         userName = (String) in.readObject();
         fullName = (String) in.readObject();
         password = (String) in.readObject();
+        feedback = (Feedback) in.readObject();
     }
 
     @Override
