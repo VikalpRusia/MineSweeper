@@ -11,6 +11,9 @@
 <head>
     <meta charset="UTF-8">
     <title>CodePen - Feedback Reactions (Dark version)</title>
+    <link rel="shortcut icon"
+          href="${pageContext.request.contextPath}/resources/img/favicon.ico"
+          type="image/x-icon"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/feedback.css">
 

@@ -9,6 +9,9 @@
 <html>
 <head>
     <title>Home</title>
+    <link rel="shortcut icon"
+          href="${pageContext.request.contextPath}/resources/img/favicon.ico"
+          type="image/x-icon"/>
 </head>
 <body>
 

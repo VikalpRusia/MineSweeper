@@ -56,6 +56,6 @@ public class EntryExitController {
     public void feedback(@RequestBody String jsonString) {
         JSONObject jsonObject = new JSONObject(jsonString);
         String feedback = jsonObject.getString("feedback");
-
+        System.out.println(feedback);
     }
 }
