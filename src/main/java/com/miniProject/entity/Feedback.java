@@ -1,5 +1,5 @@
 package com.miniProject.entity;
 
 public enum Feedback {
-    AMAZING, GOOD, OK, BAD, FRUSTRATED
+    HAPPY, GOOD, OK, SAD, ANGRY
 }

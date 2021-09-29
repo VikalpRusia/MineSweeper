@@ -5,6 +5,7 @@ import com.miniProject.entity.Feedback;
 import com.miniProject.entity.Player;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -53,13 +54,12 @@ public class EntryExitController {
         return "feedback";
     }
 
+    @ResponseStatus(HttpStatus.ACCEPTED)
     @PostMapping("/set-feedback")
     public void feedback(@RequestBody String jsonString, HttpSession session) {
         JSONObject jsonObject = new JSONObject(jsonString);
         Feedback feedback = Feedback.valueOf(jsonObject.getString("feedback"));
-        System.out.println("Working");
         if (session.getAttribute("player") instanceof Player p) {
-            System.out.println("Working");
             p.setFeedback(feedback);
             playerDAO.updatePlayer(p);
         }

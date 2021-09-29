@@ -1,11 +1,16 @@
-window.addEventListener("unload", function () {
-    const feedback_response = document.querySelector(
-        'input[name="feedback"]:checked').value;
-    console.log(feedback_response);
-    navigator.sendBeacon("set-feedback", JSON.stringify({
+window.addEventListener('unload', function () {
+    if (document.visibilityState === 'hidden') {
+        const feedback_response = document.querySelector(
+            'input[name="feedback"]:checked').value;
+        console.log(feedback_response);
+        console.log(JSON.stringify({
             feedback: feedback_response
-        })
-    );
+        }));
+        navigator.sendBeacon("set-feedback", JSON.stringify({
+                feedback: feedback_response
+            })
+        );
+    }
 });
 window.addEventListener("load", async function () {
     fetch("get-feedback")
