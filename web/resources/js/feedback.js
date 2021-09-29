@@ -6,14 +6,14 @@ window.addEventListener('unload', function () {
         console.log(JSON.stringify({
             feedback: feedback_response
         }));
-        navigator.sendBeacon("set-feedback", JSON.stringify({
+        navigator.sendBeacon("feedback", JSON.stringify({
                 feedback: feedback_response
             })
         );
     }
 });
 window.addEventListener("load", async function () {
-    fetch("get-feedback")
+    fetch("feedback")
         .then(response => response.json())
         .then(result => {
             $("input[name=feedback][value=" + result.feedback + "]").prop('checked', true)
