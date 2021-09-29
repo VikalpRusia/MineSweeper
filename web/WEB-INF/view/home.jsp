@@ -14,6 +14,6 @@
           type="image/x-icon"/>
 </head>
 <body>
-
+<script src="${pageContext.request.contextPath}/resources/js/home.js"></script>
 </body>
 </html>

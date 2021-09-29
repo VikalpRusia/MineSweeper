@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
-//creating session is a better option here
+//creating Authentication token is a better option here
 @Controller
 public class EntryExitController {
     private PlayerDAO playerDAO;
