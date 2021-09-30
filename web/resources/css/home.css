@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&display=swap');
+
+body {
+    font-family: 'Merienda', cursive;
+}
+
+#Main-logo {
+    line-height: 120%;
+    text-shadow: .3vh .3vh 0vh black, -.3vh -.3vh 0vh black, -.3vh .3vh 0vh black, .3vh -.3vh 0vh black, .3vh 0vh 0vh black, 0vh .3vh 0vh black, -.3vh 0vh 0vh black, 0vh -.3vh 0vh black, 0vh .5vh 0vh black;
+    text-align: center;
+    font-size: 9.5vh;
+    font-weight: 700;
+    color: #ffaac7;
+    background-color: #1da1f2;
+    margin: auto;
+    height: 10vh;
+    width: 65vh;
+    top: 0;
+    left: 0;
+    bottom: 85vh;
+    right: 3vh;
+    position: absolute;
+}
