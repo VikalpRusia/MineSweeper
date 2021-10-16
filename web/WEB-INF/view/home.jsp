@@ -19,7 +19,16 @@
 </head>
 <body>
 <div id="Main-logo">Mine<span>Sweeper</span></div>
-Hello
+<div id="dataBody">
+    <input type="radio" id="Easy" name="level" value="Easy">
+    <label for="Easy">EASY</label><br>
+    <input type="radio" id="Medium" name="level" value="Medium">
+    <label for="Medium">MEDIUM</label><br>
+    <input type="radio" id="Hard" name="level" value="Hard">
+    <label for="Hard">HARD</label>
+    <br>
+    <button type="button" onclick="createGame()">Start Button</button>
+</div>
 <script src="${pageContext.request.contextPath}/resources/js/home.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
         integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="

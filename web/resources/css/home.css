@@ -1,15 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap');
 
 body {
-    font-family: 'Merienda', cursive;
+    font-family: 'Montserrat Alternates', sans-serif;
 }
 
 #Main-logo {
+    font-family: 'Merienda', cursive;
     line-height: 120%;
     text-shadow: .3vh .3vh 0vh black, -.3vh -.3vh 0vh black, -.3vh .3vh 0vh black, .3vh -.3vh 0vh black, .3vh 0vh 0vh black, 0vh .3vh 0vh black, -.3vh 0vh 0vh black, 0vh -.3vh 0vh black, 0vh .5vh 0vh black;
     text-align: center;
     font-size: 9.5vh;
-    font-weight: 700;
+    font-weight: 400;
     color: #ffaac7;
     background-color: #1da1f2;
     margin: auto;
@@ -20,4 +22,14 @@ body {
     bottom: 85vh;
     right: 3vh;
     position: absolute;
+}
+
+#Main-logo span {
+    font-weight: 700;
+    text-shadow: .5vh .5vh 0vh black, -.5vh -.5vh 0vh black, -.5vh .5vh 0vh black, .5vh -.5vh 0vh black, .5vh 0vh 0vh black, 0vh .5vh 0vh black, -.5vh 0vh 0vh black, 0vh -.5vh 0vh black, 0vh .7vh 0vh black;
+}
+
+#dataBody {
+    position: relative;
+    top: 20vh;
 }

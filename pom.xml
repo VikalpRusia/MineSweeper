@@ -76,6 +76,5 @@
             <artifactId>json</artifactId>
             <version>${json-parser-version}</version>
         </dependency>
-
     </dependencies>
 </project>
