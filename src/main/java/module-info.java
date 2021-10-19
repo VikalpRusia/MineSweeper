@@ -8,4 +8,5 @@ module MineSweeper {
     requires transitive java.naming;
     requires javax.servlet.api;
     requires org.json;
+    requires org.apache.logging.log4j;
 }
