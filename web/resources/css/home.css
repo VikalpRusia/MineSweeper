@@ -6,7 +6,7 @@ body {
 }
 
 #Main-logo {
-    font-family: 'Merienda', cursive;
+  font-family: 'Merienda', cursive;
     line-height: 120%;
     text-shadow: .3vh .3vh 0vh black, -.3vh -.3vh 0vh black, -.3vh .3vh 0vh black, .3vh -.3vh 0vh black, .3vh 0vh 0vh black, 0vh .3vh 0vh black, -.3vh 0vh 0vh black, 0vh -.3vh 0vh black, 0vh .5vh 0vh black;
     text-align: center;
