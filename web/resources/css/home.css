@@ -1,0 +1,2244 @@
+@font-face {
+    font-family: 'sniglet';
+    src: url('sniglet-extrabold-webfont.eot');
+    src: url('sniglet-extrabold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('sniglet-extrabold-webfont.woff2') format('woff2'),
+    url('sniglet-extrabold-webfont.woff') format('woff'),
+    url('sniglet-extrabold-webfont.ttf') format('truetype'),
+    url('sniglet-extrabold-webfont.svg#snigletextrabold') format('svg');
+    font-weight: 800;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'sniglet';
+    src: url('sniglet-regular-webfont.eot');
+    src: url('sniglet-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('sniglet-regular-webfont.woff2') format('woff2'),
+    url('sniglet-regular-webfont.woff') format('woff'),
+    url('sniglet-regular-webfont.ttf') format('truetype'),
+    url('sniglet-regular-webfont.svg#snigletregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body {
+    font-family: sniglet;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #70B870;
+    overflow: hidden;
+}
+
+#loadingMessage {
+    display: none;
+    z-index: 10;
+    width: 100vw;
+    height: 10vh;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    color: white;
+    text-align: center;
+    font-size: 10vh;
+    font-weight: 800;
+    text-shadow: .25vh .25vh black;
+}
+
+#clickBlocker {
+    display: none;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: black;
+    z-index: 10;
+}
+
+#rotatedBG {
+    z-index: -10;
+    position: absolute;
+    left: -90%;
+    top: -75%;
+    height: 300vh;
+    width: 300vw;
+    background: radial-gradient(circle at 100% 50%, transparent 20%, rgba(255, 255, 255, 0.3) 21%, rgba(255, 255, 255, 0.3) 34%, transparent 35%, transparent), radial-gradient(circle at 0% 50%, transparent 20%, rgba(255, 255, 255, 0.3) 21%, rgba(255, 255, 255, 0.3) 34%, transparent 35%, transparent) 0 -15vh;
+    background-color: #70B870;
+    -webkit-background-size: 22.5vh 30vh;
+    -moz-background-size: 22.5vh 30vh;
+    -ms-background-size: 22.5vh 30vh;
+    -o-background-size: 22.5vh 30vh;
+    background-size: 22.5vh 30vh;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/*HIGHSCORE NAME ENTRY*/
+.arrow {
+    position: absolute;
+    margin: auto;
+    width: 5vh;
+    height: 5vh;
+    color: white;
+    text-align: center;
+    font-size: 12vh;
+    text-align: center;
+    text-decoration: none;
+    z-index: 4;
+}
+
+.pigNumber {
+    text-align: center;
+    bottom: 36vh;
+}
+
+.gridNumber {
+    bottom: 22.5vh;
+}
+
+.plus {
+    line-height: 90%;
+    left: 53vh;
+}
+
+.minus {
+    line-height: 90%;
+    left: 20vh;
+}
+
+#highScoreName:before {
+    position: absolute;
+    content: '';
+    bottom: -28vh;
+    left: -50vw;
+    width: 150vw;
+    height: 150vh;
+    z-index: 0;
+}
+
+#highScoreName {
+    top: 15vh;
+    z-index: 15;
+    opacity: 0;
+    display: none;
+}
+
+#highScoreMessage {
+    top: -5vh;
+    font-size: 9vh;
+}
+
+#clearName {
+    box-shadow: .5vh .5vh #851722, .5vh .5vh #851722 inset;
+    border: 1vh solid #bf1e2e;
+    background-color: #ef4136;
+    font-size: 120%;
+    bottom: -4%;
+    position: relative;
+    color: white;
+    width: 35%;
+    height: 12%;
+    float: right;
+    left: -10%;
+}
+
+#submitName {
+    position: relative;
+    background-color: #74C76D;
+    box-shadow: .5vh .5vh #016738, .5vh .5vh #016738 inset;
+    border: 1vh solid #009933;
+    font-size: 120%;
+    bottom: -4%;
+    position: relative;
+    color: white;
+    width: 35%;
+    height: 12%;
+    float: left;
+    right: -10%;
+}
+
+.enterName {
+    line-height: 220%;
+    font-size: 120%;
+}
+
+#entryBoxes {
+    position: relative;
+    width: 100%;
+    height: 50%;
+}
+
+.nameBox {
+    color: white;
+    width: 12.5%;
+    height: 100%;
+    float: left;
+    text-decoration: none;
+}
+
+.minusBox {
+    line-height: 95%;
+    visibility: hidden;
+    font-size: 155%;
+    width: 12.5%;
+    height: 100%;
+    float: left;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+.plusBox {
+    line-height: 95%;
+    visibility: hidden;
+    font-size: 155%;
+    color: white;
+    text-decoration: none;
+    width: 12.5%;
+    height: 100%;
+    float: left;
+    text-align: center;
+}
+
+#plusBox {
+    position: relative;
+    float: left;
+    width: 80%;
+    height: 25%;
+}
+
+#minusBox {
+    position: relative;
+    float: left;
+    width: 80%;
+    height: 25%;
+}
+
+#nameBox {
+    position: relative;
+    float: left;
+    line-height: 160%;
+    font-size: 170%;
+    box-shadow: .5vh .5vh #1f607d inset;
+    width: 80%;
+    height: 50%;
+    border-radius: 3vw;
+    background-color: #7FCCEE;
+}
+
+#previous {
+    line-height: 110%;
+    color: white;
+    font-size: 170%;
+    position: relative;
+    float: left;
+    height: 100%;
+    width: 10%;
+    text-decoration: none;
+}
+
+#next {
+    line-height: 110%;
+    color: white;
+    font-size: 170%;
+    position: relative;
+    float: right;
+    height: 100%;
+    width: 10%;
+    text-decoration: none;
+}
+
+.left {
+    transform: scaleX(-1);
+    text-shadow: -.25vh .25vh black;
+}
+
+.down {
+    vertical-align: middle;
+    transform: rotate(90deg);
+    text-shadow: .25vh -.25vh black;
+}
+
+.up {
+    transform: rotate(-90deg);
+    text-shadow: -.25vh .25vh black;
+}
+
+/*START MENU*/
+#startMenu {
+    overflow: visible;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    display: inline;
+}
+
+#gameLogo {
+    line-height: 120%;
+    text-shadow: .3vh .3vh 0vh black, -.3vh -.3vh 0vh black, -.3vh .3vh 0vh black, .3vh -.3vh 0vh black, .3vh 0vh 0vh black, 0vh .3vh 0vh black, -.3vh 0vh 0vh black, 0vh -.3vh 0vh black, 0vh .5vh 0vh black;
+    text-align: center;
+    font-size: 9.5vh;
+    font-weight: 700;
+    color: #ffaac7;
+    margin: auto;
+    height: 10vh;
+    width: 65vh;
+    top: 0;
+    left: 0;
+    bottom: 85vh;
+    right: 3vh;
+    position: absolute;
+}
+
+#gameLogo span {
+    font-weight: 400;
+    font-style: italic;
+    color: white;
+}
+
+.startButton {
+    transform: skewX(-12deg);
+    font-family: sniglet;
+    color: white;
+    text-align: center;
+    line-height: 115%;
+    font-size: 9vh;
+    text-decoration: none;
+    border-radius: 1vh;
+    border: 1vh #01a79d solid;
+    text-shadow: .25vh .25vh black;
+    z-index: 4;
+    position: absolute;
+    margin: auto;
+    width: 50vh;
+    height: 10vh;
+}
+
+.circleButton {
+    outline: 3vh solid transparent;
+    position: absolute;
+    margin: auto;
+    width: 10vh;
+    height: 10vh;
+    background-color: #67CAC4;
+    color: white;
+    text-align: center;
+    line-height: 115%;
+    font-size: 8.5vh;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10vh;
+    border: 1vh #01a79d solid;
+    box-shadow: .5vh .5vh #005e58, .375vh .375vh #005e58 inset;
+    text-shadow: .25vh .25vh black;
+    z-index: 4;
+}
+
+#easy {
+    background-color: #74C76D;
+    box-shadow: .5vh .5vh #016738, .375vh .375vh #016738 inset;
+    border: 1vh solid #009933;
+    top: 0;
+    left: 0;
+    bottom: 55vh;
+    right: 2vh;
+}
+
+#medium {
+    box-shadow: .5vh .5vh #b54124, .375vh .375vh #b54124 inset;
+    border: 1vh solid #f8931f;
+    background-color: #fcb042;
+    top: 0;
+    left: 0;
+    bottom: 25vh;
+    right: 2vh;
+}
+
+#hard {
+    box-shadow: .5vh .5vh #851722, .375vh .375vh #851722 inset;
+    border: 1vh solid #bf1e2e;
+    background-color: #ef4136;
+    top: 5vh;
+    left: 0;
+    bottom: 0vh;
+    right: 2vh;
+}
+
+#custom {
+    box-shadow: .5vh .5vh #1f607d, .375vh .375vh #1f607d inset;
+    border: 1vh solid #1694cb;
+    background-color: #29aae3;
+    top: 35vh;
+    left: 0;
+    bottom: 0;
+    right: 2vh;
+}
+
+.instructionsButton {
+    box-shadow: .5vh .5vh #005e58, .375vh .375vh #005e58 inset;
+    color: white;
+    line-height: 130%;
+    top: 66vh;
+    left: 0;
+    bottom: 0;
+    right: 44vh;
+}
+
+#highScores {
+    box-shadow: .5vh .5vh #005e58, .375vh .375vh #005e58 inset;
+    color: yellow;
+    line-height: 130%;
+    top: 66vh;
+    left: 0;
+    bottom: 0;
+    right: 16vh;
+    margin: auto;
+}
+
+.soundButton {
+    top: 66vh;
+    left: 40vh;
+    bottom: 0;
+    right: 0;
+}
+
+.musicButton {
+    top: 66vh;
+    left: 12vh;
+    bottom: 0;
+    right: 0;
+}
+
+#musicSVG {
+    position: relative;
+    height: 7vh;
+    width: 7vh;
+    top: 0.75vh;
+}
+
+.speakerIcon {
+    position: relative;
+    float: left;
+    display: inline;
+    z-index: 10;
+    border-right: 3vh solid white;
+    border-bottom: 1.5vh solid transparent;
+    border-top: 1.5vh solid transparent;
+    height: 3vh;
+    width: 0vh;
+    left: 4vh;
+    top: 2.25vh;
+}
+
+.speakerIcon:before {
+    position: absolute;
+    left: -1.25vh;
+    content: ' ';
+    background-color: white;
+    height: 3vh;
+    width: 0.75vh;
+}
+
+.speakerIcon.mute:after {
+    position: absolute;
+    content: '\\';
+    color: red;
+    top: -3vh;
+    left: -1.25vh;
+    font-size: 10vh;
+    transform: rotate(80deg);
+}
+
+.musicIcon.mute:after {
+    position: absolute;
+    content: '\\';
+    color: red;
+    top: 0.5vh;
+    left: 2.75vh;
+    font-size: 10vh;
+    transform: rotate(80deg);
+}
+
+/*TABBED WINDOWS - HIGHSCORE/INSTRUCTIONS/ABOUT BOARDS*/
+#highScoreContainer {
+    z-index: 11;
+    position: absolute;
+    width: 60vh;
+    height: 60vh;
+    top: 0;
+    bottom: 8vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: none;
+}
+
+.boardExit {
+    left: -50vw;
+    bottom: -50vh;
+    height: 170vh;
+    width: 150vw;
+    z-index: -6;
+    background-color: black;
+    opacity: .5;
+    position: absolute;
+}
+
+.easyContainer {
+    position: absolute;
+}
+
+.mediumContainer {
+    position: absolute;
+    z-index: -3;
+}
+
+.hardContainer {
+    position: absolute;
+    z-index: -4;
+    border-radius: 2vh;
+    box-shadow: .5vh 1vh .5vh #3c2417;
+}
+
+.easyDummyTab {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 6vh;
+    width: 20vh;
+}
+
+.mediumDummyTab {
+    position: absolute;
+    top: 0;
+    left: 20vh;
+    height: 6vh;
+    width: 20vh;
+}
+
+.hardDummyTab {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 6vh;
+    width: 20vh;
+}
+
+table {
+    color: white;
+    font-size: 3vh;
+    border-spacing: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 2vh;
+}
+
+tr:nth-child(1) {
+    color: yellow;
+}
+
+td:nth-child(2) {
+    text-align: right;
+    font-weight: 200;
+}
+
+.easy tr:nth-child(odd) {
+    background-color: #9ED899;
+}
+
+.medium tr:nth-child(odd) {
+    background-color: #FDC068;
+}
+
+.hard tr:nth-child(odd) {
+    background-color: #F2675E;
+}
+
+.easy {
+    border: 1vh solid #009933;
+    background-color: #74C76D;
+}
+
+.medium {
+    border: 1vh solid #f8931f;
+    background-color: #fcb042;
+}
+
+.hard {
+    border: 1vh solid #bf1e2e;
+    background-color: #ef4136;
+}
+
+.board {
+    margin-top: -1vh;
+    height: 52vh;
+    width: 58vh;
+    overflow: hidden;
+    border-bottom-left-radius: 2vh;
+    border-bottom-right-radius: 2vh;
+    overflow: hidden;
+}
+
+.tab {
+    line-height: 130%;
+    font-family: sniglet;
+    text-align: center;
+    font-size: 4vh;
+    text-shadow: .25vh .25vh black;
+    color: white;
+    border-top-left-radius: 2vh;
+    border-top-right-radius: 2vh;
+}
+
+#easyTab {
+    position: relative;
+    height: 6vh;
+    width: 18vh;
+    margin-right: auto;
+    border: none;
+    border-left: 1vh solid #009933;
+    border-right: 1vh solid #009933;
+    border-top: 1vh solid #009933;
+    border-top-left-radius: 2vh;
+    border-top-right-radius: 2vh;
+}
+
+#mediumTab {
+    position: relative;
+    height: 6vh;
+    width: 18vh;
+    margin-right: auto;
+    margin-left: auto;
+    border: none;
+    border-left: 1vh solid #f8931f;
+    border-right: 1vh solid #f8931f;
+    border-top: 1vh solid #f8931f;
+    border-top-left-radius: 2vh;
+    border-top-right-radius: 2vh;
+}
+
+#hardTab {
+    position: relative;
+    height: 6vh;
+    width: 18vh;
+    margin-left: auto;
+    border: none;
+    border-left: 1vh solid #bf1e2e;
+    border-right: 1vh solid #bf1e2e;
+    border-top: 1vh solid #bf1e2e;
+    border-top-left-radius: 2vh;
+    border-top-right-radius: 2vh;
+}
+
+span div:before {
+    border-radius: 2vh;
+    content: " ";
+    position: absolute;
+    top: -1vh;
+    bottom: -0.5vh;
+    right: -0.5vh;
+    left: -0.5vh;
+    box-shadow: 1vh 1vh .5vh #3c2417;
+    z-index: -1;
+}
+
+span div.hard:before {
+    box-shadow: 0 0 0 transparent;
+}
+
+#highScoreForeground {
+    z-index: initial;
+}
+
+.board > h1 {
+    line-height: 20%;
+    text-align: center;
+    font-size: 5vh;
+    text-shadow: -.25vh .25vh black;
+}
+
+.instructions {
+    border: 1vh solid #01a79d;
+    background-color: #67CAC4;
+}
+
+.board p {
+    text-align: center;
+    font-size: 2.65vh;
+    line-height: 120%;
+    margin-left: 1vh;
+    margin-right: 1vh;
+}
+
+.board.about p {
+    font-size: 3.4vh;
+}
+
+.board.about > h1 {
+    font-size: 3.4vh;
+}
+
+#questionBoardContainer {
+    color: white;
+    z-index: 5;
+    position: absolute;
+    width: 60vh;
+    height: 60vh;
+    top: 0;
+    bottom: 8vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: none;
+}
+
+#questionBoardForeground {
+    z-index: initial;
+}
+
+.aboutContainer {
+    z-index: -3;
+    position: absolute;
+    box-shadow: .5vh 1vh .5vh #3c2417;
+    border-radius: 2vh;
+}
+
+.instructionsContainer {
+    position: absolute;
+}
+
+.aboutDummyTab {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 6vh;
+    width: 20vh;
+}
+
+.instructionsDummyTab {
+    position: absolute;
+    top: 0;
+    height: 6vh;
+    width: 40vh;
+}
+
+#aboutTab {
+    position: relative;
+    height: 6vh;
+    width: 18vh;
+    margin-left: auto;
+    border: none;
+    border-left: 1vh solid #1694cb;
+    border-right: 1vh solid #1694cb;
+    border-top: 1vh solid #1694cb;
+    border-top-left-radius: 2vh;
+    border-top-right-radius: 2vh;
+}
+
+#instructionsTab {
+    position: relative;
+    height: 6vh;
+    width: 38vh;
+    margin-right: auto;
+    border: none;
+    border-left: 1vh solid #01a79d;
+    border-right: 1vh solid #01a79d;
+    border-top: 1vh solid #01a79d;
+    border-top-left-radius: 2vh;
+    border-top-right-radius: 2vh;
+}
+
+.about {
+    border: 1vh solid #1694cb;
+    background-color: #29aae3;
+}
+
+span div.about:before {
+    box-shadow: 0 0 0 transparent;
+}
+
+/* CUSTOM GAME SETUP SCREEN */
+.blueWindow {
+    opacity: 0;
+    box-shadow: .5vh 1vh .5vh #3c2417, .5vh .5vh .5vh .25vh #1f607d inset;
+    z-index: 5;
+    border: 1vh solid #1694cb;
+    background-color: #29aae3;
+    border-radius: 1vh;
+    height: 50vh;
+    width: 65vh;
+    display: none;
+    position: absolute;
+    color: white;
+    font-size: 4.6vh;
+    text-shadow: .25vh .25vh black;
+    text-align: center;
+    top: 0;
+    bottom: 7.5vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.counterPigBody.custom {
+    top: 5vh;
+}
+
+.counterPigEar.custom {
+    top: 4.25vh;
+}
+
+.gameSquare.custom {
+    box-shadow: .5vh .5vh 1vh black, -.5vh -.5vh .75vh -.75vh black inset;
+    height: 9vh;
+    width: 9vh;
+    top: 17vh;
+    left: -18vh;
+}
+
+#customNumPigs {
+    font-size: 11vh;
+    left: 14vh;
+    bottom: 29.5vh;
+    height: 13vh;
+    width: 50vh;
+    position: absolute;
+}
+
+#customGridSize {
+    font-size: 11vh;
+    left: 14vh;
+    top: 21vh;
+    height: 13vh;
+    width: 50vh;
+    position: absolute;
+}
+
+.circleButton.check {
+    bottom: 3vh;
+    left: 15vh;
+    background-color: #74C76D;
+    box-shadow: .5vh .5vh #016738, .375vh .375vh #016738 inset;
+    border: 1vh solid #009933;
+}
+
+.circleButton.x {
+    left: 38vh;
+    bottom: 3vh;
+    box-shadow: .5vh .5vh #851722, .375vh .375vh #851722 inset;
+    border: 1vh solid #bf1e2e;
+    background-color: #ef4136;
+}
+
+/*PLAY AREA ITEMS*/
+#playArea {
+    overflow: visible;
+    display: none;
+    border: 1vh solid #614129;
+    border-radius: 3vh;
+    background-color: #8b5d3b;
+    background-image: radial-gradient(#996600, rgba(255, 255, 255, 0.2) .5vh, transparent 0vh), radial-gradient(#996, rgba(255, 255, 255, 0.15) .25vh, transparent .25vh), radial-gradient(#3D2914, rgba(255, 255, 255, 0.1) .5vh, transparent .25vh), radial-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1) .5vh, transparent .25vh);
+    -webkit-background-size: 20vh 20vh, 15vh 15vh, 22.5vh 22.5vh, 25vh 25vh;
+    background-size: 20vh 20vh, 15vh 15vh, 22.5vh 22.5vh, 25vh 25vh;
+    background-position: 0 0, 10vh 15vh, 7.5vh 10vh, 17.5vh 25vh;
+    margin: auto;
+    height: 70vh;
+    width: 70vh;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+}
+
+.gameSquare.flag {
+    display: inline;
+    background-color: #F778A1;
+}
+
+.flag:hover {
+    background-color: #FFAAD3;
+}
+
+.row {
+    position: relative;
+    float: left;
+    height: 70vh;
+    width: 10vh;
+}
+
+.unclicked:hover {
+    box-shadow: .5vh .5vh 1vh black, -.5vh -.5vh 6vh -2vh lightgray inset;
+}
+
+.gameSquare {
+    position: relative;
+    float: left;
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    border-radius: 1vh;
+    font-size: 0vh;
+    text-align: center;
+    background-color: #6ab364;
+    height: 8vh;
+    width: 8vh;
+    margin: .25vh;
+    box-shadow: .25vh .5vh #3c2417;
+    color: transparent;
+}
+
+.clicked {
+}
+
+.pig {
+}
+
+.pigFound {
+    transform: translateX(-100vh);
+    border-radius: 1.5vh;
+    font-weight: bold;
+    line-height: 75%;
+    background-color: transparent;
+    box-shadow: 0 0 0 black;
+}
+
+.pigContainer {
+    transform-origin: top left;
+    margin: auto;
+    display: none;
+    position: relative;
+    float: left;
+    opacity: 0;
+    height: 8vh;
+    width: 8vh;
+}
+
+.pigBody.pigLookUp {
+    line-height: 70%;
+}
+
+.pigBody {
+    line-height: 85%;
+    font-size: 2vh;
+    top: 12.5%;
+    height: 75%;
+    width: 100%;
+    border-radius: 45%;
+    transition: line-height 0.5s;
+    color: black;
+    box-shadow: 0.125vh 0.125vh black;
+    z-index: 1;
+    text-align: center;
+    position: relative;
+    background-color: #F9CDAD;
+}
+
+.pigBody:hover {
+    line-height: 65%;
+}
+
+.pigEar {
+    margin: 2%;
+    bottom: 70%;
+    height: 33%;
+    width: 33%;
+    border-radius: 25%;
+    line-height: 85%;
+    box-shadow: 0.125vh 0.125vh black;
+    z-index: 0;
+    float: left;
+    position: relative;
+    background-color: pink;
+    transform: rotate(45deg);
+}
+
+.pigSpacer {
+    width: 25%;
+    height: 8%;
+    box-shadow: 0 0 0 black;
+    position: relative;
+    float: left;
+}
+
+.pigFeet {
+    margin: 2%;
+    bottom: 50%;
+    height: 33%;
+    width: 33%;
+    border-radius: 25%;
+    box-shadow: 0.125vh 0.125vh black;
+    z-index: 0;
+    float: left;
+    position: relative;
+    background-color: #F9CDAD;
+}
+
+#gameOver.noClick {
+    z-index: 5;
+}
+
+#gameOver {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    display: none;
+    z-index: 3;
+    background-color: translucent;
+    height: 100vh;
+    width: 100vw;
+}
+
+.sleepZ {
+    position: absolute;
+    font-size: 1.5vh;
+    opacity: 1;
+    color: black;
+    display: none;
+    line-height: 110%;
+    right: 0;
+}
+
+.boardExit.gameOver {
+    opacity: 0.5;
+}
+
+.endMessage span {
+    text-shadow: .5vh .5vh black;
+    line-height: 80%;
+    color: white;
+    font-size: 20vh;
+    position: relative;
+}
+
+#pigQuote strong {
+    line-height: 115%;
+}
+
+#pigQuote {
+    line-height: 105%;
+    font-size: 5vh;
+    opacity: 1;
+    position: relative;
+    top: 5%;
+}
+
+.endMessage {
+    top: 14vh;
+    margin: auto;
+    height: 70vh;
+    width: 70vh;
+    text-align: center;
+    display: none;
+    z-index: 10;
+    position: relative;
+    opacity: 0;
+}
+
+/*GAME INFORMATION AND CONTROLS */
+#playInfoControls {
+    display: none;
+}
+
+.counterPigBody {
+    position: relative;
+    float: left;
+    text-shadow: none;
+    color: black;
+    box-shadow: .5vh .5vh 1vh black, -.5vh -.5vh 6vh -2vh black inset;
+    z-index: 3;
+    line-height: 65%;
+    font-size: 2.5vh;
+    font-weight: 200;
+    text-align: center;
+    position: relative;
+    top: 2vh;
+    height: 7.5vh;
+    width: 10vh;
+    background-color: #F9CDAD;
+    border-radius: 3.5vh;
+    left: 2vh;
+}
+
+.counterPigBody:hover {
+    line-height: 85%;
+}
+
+.counterPigEar {
+    right: 8vh;
+    top: 1vh;
+    box-shadow: .5vh .5vh 1vh black, .5vh .5vh 0vh 0vh #F9CDAD inset;
+    margin: .25vh;
+    z-index: 2;
+    float: left;
+    position: relative;
+    bottom: 6.75vh;
+    height: 3.3vh;
+    width: 3.3vh;
+    background-color: pink;
+    border-radius: 1vh;
+    transform: rotate(45deg);
+}
+
+.counterPigSpacer {
+    position: relative;
+    float: left;
+    width: 2.75vh;
+    height: 1vh;
+}
+
+#counterNumber {
+    position: absolute;
+    text-align: center;
+    line-height: 115%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 10vh;
+    width: 20vh;
+}
+
+#flagCounter {
+    color: white;
+    text-align: right;
+    line-height: 125%;
+    font-size: 9.5vh;
+    font-weight: 800;
+    border-radius: 1vh;
+    border: 1vh #F778A1 solid;
+    text-shadow: .25vh .25vh black;
+    z-index: 4;
+    position: absolute;
+    margin: auto;
+    width: 32vh;
+    height: 10vh;
+    overflow: visible;
+    background-color: pink;
+    box-shadow: .25vh .25vh .5vh #3c2417, .25vh .25vh .25vh .25vh #A06B7D inset;
+    top: 0;
+    left: 0;
+    bottom: 87.5vh;
+    right: 38vh;
+}
+
+#timeCounter {
+    letter-spacing: .5vh;
+    color: white;
+    text-align: center;
+    line-height: 115%;
+    font-size: 9.5vh;
+    font-weight: 800;
+    border-radius: 1vh;
+    border: 1vh #01a79d solid;
+    text-shadow: .25vh .25vh black;
+    z-index: 4;
+    position: absolute;
+    margin: auto;
+    width: 32vh;
+    height: 10vh;
+    overflow: hidden;
+    background-color: #74C76D;
+    box-shadow: .25vh .25vh .5vh #3c2417, .25vh .25vh .25vh .25vh #016738 inset;
+    border: 1vh solid #009933;
+    top: 0;
+    left: 35.8vh;
+    bottom: 87.5vh;
+    right: 0;
+}
+
+#refresh {
+    overflow: visible;
+    font-weight: 800;
+    top: 85vh;
+    left: 0vh;
+    bottom: 0;
+    right: 30vh;
+    font-size: 8vh;
+    line-height: 125%;
+    font-size: 8.5vh;
+}
+
+#refresh span {
+    position: relative;
+    right: 2.5%;
+    display: block;
+    transform: rotate(85deg);
+    text-shadow: .25vh -.25vh black;
+}
+
+#back span {
+    position: relative;
+    right: 2%;
+    display: block;
+    transform: scale(-1, 1);
+    text-shadow: -.25vh .25vh black;
+}
+
+#back {
+    top: 85vh;
+    left: 0;
+    bottom: 0;
+    right: 60vh;
+    font-weight: 800;
+    font-size: 9.5vh;
+    line-height: 115%;
+}
+
+.musicButton.gameScreen {
+    top: 85vh;
+    left: 30vh;
+}
+
+.soundButton.gameScreen {
+    top: 85vh;
+    left: 60vh;
+}
+
+.instructionsButton.gameScreen {
+    line-height: 130%;
+    top: 85vh;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    font-size: 8.5vh;
+}
+
+@media screen and (max-aspect-ratio: 35/48) {
+    /*HIGH SCORE NAME ENTRY*/
+    #loadingMessage {
+        font-size: 15vw;
+    }
+
+    #highScoreMessage {
+        top: -6.875vw;
+        font-size: 12.375vw;
+    }
+
+    #highScoreName {
+        top: 20.625vw;
+    }
+
+    #clearName {
+        border: 1.375vw solid #bf1e2e;
+    }
+
+    #submitName {
+        border: 1.375vw solid #009933;
+    }
+
+    /*CUSTOM GAME SETUP SCREEN*/
+    .blueWindow {
+        border: 1.375vw solid #1694cb;
+        border-radius: 1.375vw;
+        height: 68.75vw;
+        width: 89.375vw;
+        font-size: 6.325vw;
+        bottom: 6.875vw;
+    }
+
+    #customNumPigs {
+        bottom: 0;
+        top: 10.085vw;
+    }
+
+    #customGridSize {
+        line-height: 107%;
+    }
+
+    .gridNumber {
+        bottom: 30.95vw;
+    }
+
+    .pigNumber {
+        bottom: 49.5vw;
+    }
+
+    .arrow.pigNumber,
+    .arrow.gridNumber {
+        width: 6.875vw;
+        height: 6.875vw;
+        font-size: 16.5vw;
+    }
+
+    .arrow.pigNumber.left,
+    .arrow.gridNumber.left {
+        left: 27.5vw;
+
+    }
+
+    .arrow.pigNumber.plus,
+    .arrow.gridNumber.plus {
+        left: 72.875vw;
+    }
+
+    .counterPigBody.custom {
+        font-size: 3.45vw;
+        height: 10.3vw;
+        width: 13.75vw;
+        border-radius: 4.8vw;
+        left: 2.75vw;
+        top: 6.875vw;
+    }
+
+    .counterPigEar.custom {
+        right: 11vw;
+        margin: .345vw;
+        top: 5.5vw;
+        height: 4.55vw;
+        width: 4.55vw;
+        border-radius: 1.375vw;
+    }
+
+    .counterPigSpacer.custom {
+        width: 3.8vw;
+        height: .46vw;
+    }
+
+    .gameSquare.custom {
+        height: 12.375vw;
+        width: 12.375vw;
+        top: 23.375vw;
+        left: -24.75vw;
+    }
+
+    #customNumPigs {
+        font-size: 15.8vw;
+        left: 19.25vw;
+        bottom: 40.55vw;
+        height: 17.875vw;
+        width: 68.75vw;
+    }
+
+    #customGridSize {
+        font-size: 15.8vw;
+        left: 19.25vw;
+        top: 29.5vw;
+        height: 17.875vw;
+        width: 68.75vw;
+    }
+
+    .circleButton.check {
+        bottom: 2.75vw;
+        left: 20.625vw;
+        border: 1.375vw solid #009933;
+    }
+
+    .circleButton.x {
+        border: 1.375vw solid #bf1e2e;
+        left: 52.25vw;
+        bottom: 2.75vw;
+    }
+
+    /*TABBED WINDOWS - HIGHSCORE/INSTRUCTIONS/ABOUT BOARDS*/
+    table {
+        font-size: 4.5vw;
+        border-radius: 3vw;
+    }
+
+    #questionBoardContainer,
+    #highScoreContainer {
+        width: 90vw;
+        height: 90vw;
+        bottom: 6vw;
+    }
+
+    .aboutContainer,
+    .hardContainer {
+        border-radius: 3vw;
+    }
+
+    #instructionsBoard {
+        border: 1.5vw solid #01a79d;
+    }
+
+    .board > h1 {
+        font-size: 7.75vw;
+    }
+
+    .board p {
+        font-size: 4vw;
+        margin-left: 1.375vw;
+        margin-right: 1.375vw;
+    }
+
+    .board.about p {
+        font-size: 5vw;
+    }
+
+    .board.about > h1 {
+        font-size: 5vw;
+        line-height: 10%;
+    }
+
+    #aboutBoard {
+        border: 1.5vw solid #1694cb;
+    }
+
+    #easyBoard {
+        border: 1.5vw solid #009933;
+    }
+
+    #mediumBoard {
+        border: 1.5vw solid #f8931f;
+    }
+
+    #hardBoard {
+        border: 1.5vw solid #bf1e2e;
+    }
+
+    #instructionsBoard,
+    #aboutBoard,
+    #easyBoard,
+    #mediumBoard,
+    #hardBoard {
+        height: 78vw;
+        width: 87vw;
+        border-bottom-left-radius: 3vw;
+        border-bottom-right-radius: 3vw;
+    }
+
+    .board {
+        margin-top: -1.5vw;
+    }
+
+    .tab {
+        font-size: 6vw;
+        border-top-left-radius: 3vw;
+        border-top-right-radius: 3vw;
+    }
+
+    #easyTab,
+    #mediumTab,
+    #hardTab {
+        height: 9vw;
+        width: 27vw;
+    }
+
+    .easyDummyTab,
+    .mediumDummyTab,
+    .hardDummyTab {
+        height: 9vw;
+        width: 30vw;
+    }
+
+    .mediumDummyTab {
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+
+    .aboutDummyTab {
+        height: 9vw;
+        width: 30vw;
+    }
+
+    .instructionsDummyTab {
+        height: 9vw;
+        width: 60vw;
+    }
+
+    #easyTab {
+        border-top-left-radius: 3vw;
+        border-top-right-radius: 3vw;
+        border-left: 1.5vw solid #009933;
+        border-right: 1.5vw solid #009933;
+        border-top: 1.5vw solid #009933;
+    }
+
+    #mediumTab {
+        border-top-left-radius: 3vw;
+        border-top-right-radius: 3vw;
+        border-left: 1.5vw solid #f8931f;
+        border-right: 1.5vw solid #f8931f;
+        border-top: 1.5vw solid #f8931f;
+    }
+
+    #hardTab {
+        border-top-left-radius: 3vw;
+        border-top-right-radius: 3vw;
+        border-left: 1.5vw solid #bf1e2e;
+        border-right: 1.5vw solid #bf1e2e;
+        border-top: 1.5vw solid #bf1e2e;
+    }
+
+    #aboutTab {
+        height: 9vw;
+        width: 27vw;
+        border-top-left-radius: 3vw;
+        border-top-right-radius: 3vw;
+        border-left: 1.5vw solid #1694cb;
+        border-right: 1.5vw solid #1694cb;
+        border-top: 1.5vw solid #1694cb;
+    }
+
+    #instructionsTab {
+        height: 9vw;
+        width: 57vw;
+        border-top-left-radius: 3vw;
+        border-top-right-radius: 3vw;
+        border-left: 1.5vw solid #01a79d;
+        border-right: 1.5vw solid #01a79d;
+        border-top: 1.5vw solid #01a79d;
+    }
+
+    span div:before {
+        border-radius: 3vw;
+        top: -1.5vw;
+        bottom: -0.75vw;
+        right: -0.75vw;
+        left: -0.75vw;
+        box-shadow: 1.5vw 1.5vw .75vw #3c2417;
+    }
+
+    /*START MENU*/
+    #gameLogo {
+        line-height: 120%;
+        font-size: 13.25vw;
+        height: 15vw;
+        width: 98vw;
+        bottom: 126.875vw;
+        left: -1.25vw;
+    }
+
+    .startButton {
+        font-size: 14vw;
+        width: 72vw;
+        height: 15.375vw;
+        line-height: 115%;
+    }
+
+    #easy {
+        border: 1.37vw #009933 solid;
+        bottom: 85vw;
+    }
+
+    #medium {
+        border: 1.37vw #f8931f solid;
+        bottom: 35vw;
+    }
+
+    #hard {
+        border: 1.37vw #bf1e2e solid;
+        top: 15vw;
+    }
+
+    #custom {
+        border: 1.37vw #1694cb solid;
+        top: 65vw;
+    }
+
+    .instructionsButton {
+        top: 110vw;
+        right: 62vw;
+    }
+
+    #highScores {
+        top: 110vw;
+        right: 22vw;
+    }
+
+    .musicButton {
+        top: 110vw;
+        left: 18vw;
+    }
+
+    .soundButton {
+        top: 110vw;
+        left: 58vw;
+    }
+
+    #musicSVG {
+        width: 10vw;
+        height: 10vw;
+        top: 1vw;
+    }
+
+    .speakerIcon {
+        border-right: 4.5vw solid white;
+        border-bottom: 2.25vw solid transparent;
+        border-top: 2.25vw solid transparent;
+        height: 4.5vw;
+        left: 5.5vw;
+        top: 2.75vw;
+    }
+
+    .speakerIcon:before {
+        left: -1.875vw;
+        height: 4.5vw;
+        width: 1.125vw;
+    }
+
+    .speakerIcon.mute:after {
+        top: -4.5vw;
+        left: -1.875vw;
+        font-size: 15vw;
+    }
+
+    .musicIcon.mute:after {
+        top: 0.75vw;
+        left: 3.5vw;
+        font-size: 15vw;
+    }
+
+    .musicIcon:after {
+        top: 0.75vw;
+        left: 4.125vw;
+        font-size: 14vw;
+    }
+
+    /*PLAYAREA AND PLAY INFO ITEMS*/
+    #playArea {
+        border: 1vw solid #614129;
+        border-radius: 3vw;
+        height: 96vw;
+        width: 96vw;
+    }
+
+    .pigContainer {
+        height: 11vw;
+        width: 11vw;
+    }
+
+    .pigBody {
+        font-size: 2.75vw
+    }
+
+    #timeCounter {
+        width: 44vw;
+        height: 14vw;
+        font-size: 13vw;
+        border-radius: 1vw;
+        border: 1vw #009933 solid;
+        bottom: 120vw;
+        left: 49vw;
+    }
+
+    #flagCounter {
+        width: 44vw;
+        height: 14vw;
+        font-size: 13vw;
+        border-radius: 1vw;
+        border: 1vw #F778A1 solid;
+        bottom: 120vw;
+        right: 52vw;
+    }
+
+    .circleButton {
+        width: 14vw;
+        height: 14vw;
+        font-size: 12vw;
+        border-radius: 14vw;
+        border: 1.37vw #01a79d solid;
+    }
+
+    #refresh {
+        top: 116.5vw;
+        font-size: 11.75vw;
+        right: 40vw;
+    }
+
+    #back {
+        line-height: 135%;
+        top: 116.5vw;
+        font-size: 11.75vw;
+        right: 80vw;
+    }
+
+    .musicButton.gameScreen {
+        top: 116.5vw;
+        left: 40vw;
+    }
+
+    .soundButton.gameScreen {
+        top: 116.5vw;
+        left: 80vw;
+    }
+
+    .instructionsButton.gameScreen {
+        top: 116.5vw;
+        font-size: 11.75vw;
+        left: 0;
+        width: 14vw;
+        height: 14vw;
+    }
+
+    .counterPigBody {
+        font-size: 3.4vw;
+        top: 2.75vw;
+        height: 10.3vw;
+        width: 13.7vw;
+        border-radius: 4.8vw;
+        left: 2.75vw;
+    }
+
+    .counterPigEar {
+        right: 11vw;
+        top: 1.37vw;
+        margin: .34vw;
+        bottom: 9.25vw;
+        height: 4.5vw;
+        width: 4.5vw;
+        border-radius: 1.37vw;
+    }
+
+    .counterPigSpacer {
+        width: 3.77vw;
+        height: 1.37vw;
+    }
+
+    #counterNumber {
+        height: 14vw;
+        width: 27.5vw;
+    }
+
+    .endMessage {
+        position: absolute;
+        bottom: 14vh;
+        width: 96vw;
+        height: 96vw;
+    }
+
+    .endMessage #pigQuote {
+        font-size: 6.85vw;
+        line-height: 7vw;
+    }
+
+    .endMessage span {
+        font-size: 27.4vw;
+    }
+}
+
+@media screen and (min-aspect-ratio: 48/35) {
+    /* CUSTOM GAME SETUP SCREEN */
+    .blueWindow {
+        border: 1.5vh solid #1694cb;
+        background-color: #29aae3;
+        border-radius: 1.5vh;
+        height: 75vh;
+        width: 97.5vh;
+        font-size: 6.9vh;
+        bottom: 0;
+    }
+
+    #customNumPigs {
+        bottom: 0;
+        top: 11vh;
+    }
+
+    #customGridSize {
+        line-height: 107%;
+    }
+
+    .gridNumber {
+        bottom: 33.75vh;
+    }
+
+    .pigNumber {
+        bottom: 54vh;
+    }
+
+    .arrow.pigNumber,
+    .arrow.gridNumber {
+        width: 7.5vh;
+        height: 7.5vh;
+        font-size: 18vh;
+    }
+
+    .arrow.pigNumber.left,
+    .arrow.gridNumber.left {
+        left: 30vh;
+
+    }
+
+    .arrow.pigNumber.plus,
+    .arrow.gridNumber.plus {
+        left: 79.5vh;
+    }
+
+    .counterPigBody.custom {
+        font-size: 3.75vh;
+        height: 11.25vh;
+        width: 15vh;
+        border-radius: 5.25vh;
+        left: 3vh;
+        top: 7.5vh;
+    }
+
+    .counterPigEar.custom {
+        right: 12vh;
+        margin: .375vh;
+        top: 6vh;
+        height: 4.95vh;
+        width: 4.95vh;
+        border-radius: 1.5vh;
+    }
+
+    .counterPigSpacer.custom {
+        width: 4.125vh;
+        height: .5vh;
+    }
+
+    .gameSquare.custom {
+        height: 13.5vh;
+        width: 13.5vh;
+        top: 25.5vh;
+        left: -27vh;
+    }
+
+    #customNumPigs {
+        font-size: 17.25vh;
+        left: 21vh;
+        bottom: 44.25vh;
+        height: 19.5vh;
+        width: 75vh;
+    }
+
+    #customGridSize {
+        font-size: 17.25vh;
+        left: 21vh;
+        top: 32.25vh;
+        height: 19.5vh;
+        width: 75vh;
+    }
+
+    .circleButton.check {
+        bottom: 3vh;
+        left: 22.5vh;
+        border: 1.5vh solid #009933;
+    }
+
+    .circleButton.x {
+        border: 1.5vh solid #bf1e2e;
+        left: 57vh;
+        bottom: 3vh;
+    }
+
+    /*TABBED WINDOWS - HIGHSCORE/INSTRUCTIONS/ABOUT BOARDS*/
+    table {
+        font-size: 4.5vh;
+        border-radius: 3vh;
+    }
+
+    #questionBoardContainer,
+    #highScoreContainer {
+        width: 90vh;
+        height: 90vh;
+        bottom: 0;
+    }
+
+    .aboutContainer,
+    .hardContainer {
+        border-radius: 3vh;
+    }
+
+    #instructionsBoard {
+        border: 1.5vh solid #01a79d;
+    }
+
+    .board > h1 {
+        font-size: 7.75vh;
+    }
+
+    .board p {
+        font-size: 4vh;
+        margin-left: 1.5vh;
+        margin-right: 1.5vh;
+    }
+
+    .board.about p {
+        font-size: 5.1vh;
+    }
+
+    .board.about > h1 {
+        font-size: 5.1vh;
+    }
+
+    #aboutBoard {
+        border: 1.5vh solid #1694cb;
+    }
+
+    #easyBoard {
+        border: 1.5vh solid #009933;
+    }
+
+    #mediumBoard {
+        border: 1.5vh solid #f8931f;
+    }
+
+    #hardBoard {
+        border: 1.5vh solid #bf1e2e;
+    }
+
+    #instructionsBoard,
+    #aboutBoard,
+    #easyBoard,
+    #mediumBoard,
+    #hardBoard {
+        height: 78vh;
+        width: 87vh;
+        border-bottom-left-radius: 3vh;
+        border-bottom-right-radius: 3vh;
+    }
+
+    .board {
+        margin-top: -1.5vh;
+    }
+
+    .tab {
+        font-size: 6vh;
+        border-top-left-radius: 3vh;
+        border-top-right-radius: 3vh;
+    }
+
+    #easyTab,
+    #mediumTab,
+    #hardTab {
+        height: 9vh;
+        width: 27vh;
+    }
+
+    .easyDummyTab,
+    .mediumDummyTab,
+    .hardDummyTab {
+        height: 9vh;
+        width: 30vh;
+    }
+
+    .mediumDummyTab {
+        margin: auto;
+        left: 0;
+        right: 0;
+    }
+
+    .aboutDummyTab {
+        height: 9vh;
+        width: 30vh;
+    }
+
+    .instructionsDummyTab {
+        height: 9vh;
+        width: 60vh;
+    }
+
+    #easyTab {
+        border-top-left-radius: 3vh;
+        border-top-right-radius: 3vh;
+        border-left: 1.5vh solid #009933;
+        border-right: 1.5vh solid #009933;
+        border-top: 1.5vh solid #009933;
+    }
+
+    #mediumTab {
+        border-top-left-radius: 3vh;
+        border-top-right-radius: 3vh;
+        border-left: 1.5vh solid #f8931f;
+        border-right: 1.5vh solid #f8931f;
+        border-top: 1.5vh solid #f8931f;
+    }
+
+    #hardTab {
+        border-top-left-radius: 3vh;
+        border-top-right-radius: 3vh;
+        border-left: 1.5vh solid #bf1e2e;
+        border-right: 1.5vh solid #bf1e2e;
+        border-top: 1.5vh solid #bf1e2e;
+    }
+
+    #aboutTab {
+        height: 9vh;
+        width: 27vh;
+        border-top-left-radius: 3vh;
+        border-top-right-radius: 3vh;
+        border-left: 1.5vh solid #1694cb;
+        border-right: 1.5vh solid #1694cb;
+        border-top: 1.5vh solid #1694cb;
+    }
+
+    #instructionsTab {
+        height: 9vh;
+        width: 57vh;
+        border-top-left-radius: 3vh;
+        border-top-right-radius: 3vh;
+        border-left: 1.5vh solid #01a79d;
+        border-right: 1.5vh solid #01a79d;
+        border-top: 1.5vh solid #01a79d;
+    }
+
+    span div:before {
+        border-radius: 3vh;
+        top: -1.5vh;
+        bottom: -0.75vh;
+        right: -0.75vh;
+        left: -0.75vh;
+        box-shadow: 1.5vh 1.5vh .75vh #3c2417;
+    }
+
+    /*START MENU*/
+    .startButton {
+        transform: skewX(-8deg);
+        border-radius: 4vh;
+        width: 55vh;
+        height: 16vh;
+        font-size: 13vh;
+        line-height: 125%;
+    }
+
+    .circleButton {
+        font-size: 14vh;
+        width: 17vh;
+        height: 17vh;
+        border-radius: 13vh;
+    }
+
+    #easy {
+        bottom: 35vh;
+        right: 65vh;
+    }
+
+    #medium {
+        left: 65vh;
+        bottom: 35vh;
+        right: 0;
+    }
+
+    #hard {
+        top: 15vh;
+        left: 0;
+        right: 65vh;
+    }
+
+    #custom {
+        top: 15vh;
+        left: 65vh;
+        bottom: 0;
+        right: 0;
+    }
+
+    .instructionsButton {
+        right: 100vh;
+        top: 65vh;
+    }
+
+    .soundButton {
+        top: 65vh;
+        left: 100vh;
+    }
+
+    #highScores {
+        top: 65vh;
+        right: 33vh;
+    }
+
+    .musicButton {
+        top: 65vh;
+        left: 33vh;
+    }
+
+    #musicSVG {
+        height: 12vh;
+        width: 12vh;
+        top: 2vh;
+    }
+
+    #musicSVG.gameScreen {
+        position: relative;
+        height: 9.5vh;
+        width: 9.5vh;
+        top: 1.5vh;
+    }
+
+    .speakerIcon {
+        border-right: 5.1vh solid white;
+        border-bottom: 2.55vh solid transparent;
+        border-top: 2.55vh solid transparent;
+        height: 5.1vh;
+        left: 6.8vh;
+        top: 3.825vh;
+    }
+
+    .speakerIcon:before {
+        left: -2.125vh;
+        height: 5.1vh;
+        width: 1.275vh;
+    }
+
+    .speakerIcon.mute:after {
+        top: -5.1vh;
+        left: -2.125vh;
+        font-size: 17vh;
+    }
+
+    .musicIcon.mute:after {
+        top: 1vh;
+        left: 4vh;
+        font-size: 17vh;
+    }
+
+    .musicIcon:after {
+        top: 0.85vh;
+        left: 4.675vh;
+        font-size: 17vh;
+    }
+
+    #gameLogo {
+        line-height: 120%;
+        font-size: 14.5vh;
+        left: -35vh;
+    }
+
+    /*PLAYAREA AND PLAY INFO*/
+    #loadingMessage.gameLoading {
+        left: 18vh;
+    }
+
+    #playArea {
+        left: 36vh;
+        height: 96vh;
+        width: 96vh;
+    }
+
+    .pigContainer {
+        height: 11.5vh;
+        width: 11.5vh;
+    }
+
+    .pigBody {
+        font-size: 2.75vh;
+    }
+
+    #counterNumber {
+        line-height: 155%;
+    }
+
+    #timeCounter {
+        font-size: 11vh;
+        line-height: 150%;
+        height: 16vh;
+        bottom: 28vh;
+        left: -100vh;
+    }
+
+    #flagCounter {
+        font-size: 11vh;
+        line-height: 160%;
+        height: 16vh;
+        bottom: 73vh;
+        left: -62vh;
+    }
+
+    .counterPigBody {
+        top: 4.75vh;
+    }
+
+    .counterPigEar {
+        top: 3.75vh;
+    }
+
+    #back,
+    .instructionsButton.gameScreen,
+    .musicButton.gameScreen,
+    .soundButton.gameScreen,
+    #refresh {
+        width: 13vh;
+        height: 13vh;
+    }
+
+    #back {
+        font-size: 12.5vh;
+        top: 12vh;
+        left: -59vh;
+    }
+
+    .musicButton.gameScreen {
+        font-size: 11vh;
+        left: -119vh;
+        top: 75vh;
+    }
+
+    .instructionsButton.gameScreen {
+        font-size: 11vh;
+        left: -100vh;
+        top: 44vh;
+    }
+
+    .soundButton.gameScreen {
+        font-size: 11vh;
+        left: -82vh;
+        top: 75vh;
+    }
+
+    #refresh {
+        font-size: 10.5vh;
+        top: 12vh;
+        left: -52vh;
+    }
+
+    .gameScreen > .speakerIcon {
+        border-right: 3.9vh solid white;
+        border-bottom: 1.95vh solid transparent;
+        border-top: 1.95vh solid transparent;
+        height: 3.9vh;
+        left: 5.2vh;
+        top: 2.925vh;
+    }
+
+    .gameScreen > .speakerIcon:before {
+        left: -1.625vh;
+        height: 3.9vh;
+        width: 0.975vh;
+    }
+
+    .gameScreen > .speakerIcon.mute:after {
+        top: -3.9vh;
+        left: -1.625vh;
+        font-size: 13vh;
+    }
+
+    .gameScreen > .musicIcon:after {
+        top: 0.65vh;
+        left: 3.575vh;
+        font-size: 13vh;
+    }
+
+    .endMessage {
+        width: 96vh;
+        height: 96vh;
+        top: 2vh;
+        left: 18vh;
+    }
+
+    .endMessage #pigQuote {
+        font-size: 6.4vh;
+    }
+
+    .endMessage span {
+        font-size: 25vh;
+    }
+
+    #highScoreMessage {
+        font-size: 13vh;
+    }
+
+    #highScoreName {
+        transform: scale(0.9);
+        left: 36vh;
+        right: 0;
+    }
+}
