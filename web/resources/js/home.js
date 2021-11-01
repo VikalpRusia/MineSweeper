@@ -1166,34 +1166,7 @@ $('.soundButton')
         }
     });
 //turns sound effects on and off, updates localStorage sound settings
-$('.musicButton')
-    .on('vclick', function () {
-        //if music is enabled disable it and stop currently playing music, update localStorage sound settings
-        if (gameState.playMusic) {
-            //puts a slash through the music in the soundButton
-            $musicIcon.addClass('mute');
-            //sets game to not play sound effects
-            gameState.playMusic = false;
-            //stop currently playing Music
-            stopMusic();
-            //save sound settings to localStorage so they can persist between play sessions
-            localStorage.setItem('swinePeeperSound', (JSON.stringify([gameState.playSounds, gameState.playMusic])));
-        }
 
-        //if music is currently turned off then turn music back on, update localStorage sound settings
-        else if (!gameState.playMusic) {
-            //gets rid of slash over the icon in the musicButton
-            $musicIcon.removeClass('mute');
-            //sets game to play sound effects
-            gameState.playMusic = true;
-            //save sound settings to localStorage so they can persist between play sessions
-            localStorage.setItem('swinePeeperSound', (JSON.stringify([gameState.playSounds, gameState.playMusic])));
-        }
-        //if a game is going start the music playing
-        if (gameState.playingGame) {
-            startMusic();
-        }
-    });
 
 ///////////////HIGH SCORE BOARD/ABOUT BOARD CLICK ACTIONS///////////////
 

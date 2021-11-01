@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 @font-face {
     font-family: 'sniglet';
     src: url('sniglet-extrabold-webfont.eot');
@@ -25,14 +27,14 @@
 }
 
 body {
-    font-family: sniglet;
+    font-family: 'Roboto', sans-serif;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-color: #70B870;
+    background-color: #d9d9d9;
     overflow: hidden;
 }
 
@@ -69,14 +71,15 @@ body {
 }
 
 #rotatedBG {
+    opacity: 20%;
     z-index: -10;
     position: absolute;
     left: -90%;
     top: -75%;
     height: 300vh;
     width: 300vw;
-    background: radial-gradient(circle at 100% 50%, transparent 20%, rgba(255, 255, 255, 0.3) 21%, rgba(255, 255, 255, 0.3) 34%, transparent 35%, transparent), radial-gradient(circle at 0% 50%, transparent 20%, rgba(255, 255, 255, 0.3) 21%, rgba(255, 255, 255, 0.3) 34%, transparent 35%, transparent) 0 -15vh;
-    background-color: #70B870;
+    background-image: url("../img/mines-bg.png");
+    background-color: #d9d9d9;
     -webkit-background-size: 22.5vh 30vh;
     -moz-background-size: 22.5vh 30vh;
     -ms-background-size: 22.5vh 30vh;
@@ -290,31 +293,22 @@ body {
 }
 
 #gameLogo {
+    font-family: 'Black Ops One', cursive;
     line-height: 120%;
     text-shadow: .3vh .3vh 0vh black, -.3vh -.3vh 0vh black, -.3vh .3vh 0vh black, .3vh -.3vh 0vh black, .3vh 0vh 0vh black, 0vh .3vh 0vh black, -.3vh 0vh 0vh black, 0vh -.3vh 0vh black, 0vh .5vh 0vh black;
     text-align: center;
     font-size: 9.5vh;
-    font-weight: 700;
-    color: #ffaac7;
+    color: #737373;
     margin: auto;
     height: 10vh;
-    width: 65vh;
     top: 0;
     left: 0;
     bottom: 85vh;
     right: 3vh;
-    position: absolute;
-}
-
-#gameLogo span {
-    font-weight: 400;
-    font-style: italic;
-    color: white;
 }
 
 .startButton {
     transform: skewX(-12deg);
-    font-family: sniglet;
     color: white;
     text-align: center;
     line-height: 115%;
@@ -351,9 +345,9 @@ body {
 }
 
 #easy {
-    background-color: #74C76D;
-    box-shadow: .5vh .5vh #016738, .375vh .375vh #016738 inset;
-    border: 1vh solid #009933;
+    background-color: #bfbfbf;
+    box-shadow: .5vh .5vh #000000, .375vh .375vh #000000 inset;
+    border: 1vh solid #404040;
     top: 0;
     left: 0;
     bottom: 55vh;
@@ -361,9 +355,9 @@ body {
 }
 
 #medium {
-    box-shadow: .5vh .5vh #b54124, .375vh .375vh #b54124 inset;
-    border: 1vh solid #f8931f;
-    background-color: #fcb042;
+    box-shadow: .5vh .5vh #000000, .375vh .375vh #000000 inset;
+    border: 1vh solid #404040;
+    background-color: #a6a6a6;
     top: 0;
     left: 0;
     bottom: 25vh;
@@ -371,9 +365,9 @@ body {
 }
 
 #hard {
-    box-shadow: .5vh .5vh #851722, .375vh .375vh #851722 inset;
-    border: 1vh solid #bf1e2e;
-    background-color: #ef4136;
+    box-shadow: .5vh .5vh #000000, .375vh .375vh #000000 inset;
+    border: 1vh solid #404040;
+    background-color: #8c8c8c;
     top: 5vh;
     left: 0;
     bottom: 0vh;
@@ -381,9 +375,9 @@ body {
 }
 
 #custom {
-    box-shadow: .5vh .5vh #1f607d, .375vh .375vh #1f607d inset;
-    border: 1vh solid #1694cb;
-    background-color: #29aae3;
+    box-shadow: .5vh .5vh #000000, .375vh .375vh #000000 inset;
+    border: 1vh solid #404040;
+    background-color: #666666;
     top: 35vh;
     left: 0;
     bottom: 0;
@@ -1992,12 +1986,12 @@ span div.about:before {
 
     /*START MENU*/
     .startButton {
-        transform: skewX(-8deg);
+        transform: skewX(-0deg);
         border-radius: 4vh;
         width: 55vh;
         height: 16vh;
-        font-size: 13vh;
-        line-height: 125%;
+        font-size: 10vh;
+        line-height: 160%;
     }
 
     .circleButton {

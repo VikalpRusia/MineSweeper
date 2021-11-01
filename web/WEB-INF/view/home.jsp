@@ -74,66 +74,68 @@
 </div>
 <div id="rotatedBG"></div>
 <div id="startMenu">
-    <div id="gameLogo">SWINE<span>PEEPER</span></div>
+    <div id="gameLogo">MINE SWEEPER</div>
     <a class='startButton' id="easy" href="#">EASY</a>
     <a class='startButton' id="medium" href="#">MEDIUM</a>
     <a class='startButton' id="hard" href="#">HARD</a>
     <a class='startButton' id="custom" href="#">CUSTOM</a>
-    <a class="circleButton instructionsButton" href="#">?</a>
-    <a class="circleButton" id="highScores" href="#">&#x265a;</a>
-    <a class="circleButton soundButton" href="#">
-        <div class="speakerIcon"></div>
-    </a>
-    <a class="circleButton musicButton" href="#">
-        <div class="musicIcon">
-            <svg version="1.1" id="musicSVG" xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 375 375"
-                 style="enable-background:new 0 0 375 375;" xml:space="preserve">
-        <g>
-            <g>
-                <defs>
-                    <path id="SVGID_1_" d="M135.6,275.9c-14.4-6.9-27.4-10.3-39.1-10.3c-18.4,0-33.3,5.4-44.7,16c-11.4,10.7-17.1,23.9-17.1,39.6
-        				c0,14.8,4.7,26.8,14.3,36c9.5,9.2,22.4,13.8,38.7,13.8c13.8,0,26.5-3,38.2-9c11.7-6,19.9-14,24.7-24.1
-        				c4.8-10.1,7.2-24.2,7.2-42.3V108l133.6-41.5V229c-10.3-4.3-17.8-7-22.3-8.1c-4.6-1-9.8-1.6-15.8-1.6c-18.3,0-33.1,5.4-44.7,16.3
-        				c-11.5,10.9-17.3,23.8-17.3,38.7c0,14.8,4.9,26.9,14.6,36.3c9.7,9.4,22.7,14,39.1,14c14.2,0,27-3.1,38.3-9.2
-        				c11.3-6.1,19.3-13.9,24-23.3s7.1-23.4,7.1-42V1.4L135.6,57V275.9L135.6,275.9z"/>
-                </defs>
-                <clipPath id="SVGID_2_">
-                    <use xlink:href="#SVGID_1_" style="overflow:visible;"/>
-                </clipPath>
-                <g transform="matrix(1 0 0 1 0 0)" style="clip-path:url(#SVGID_2_);">
+    <div style="alignment: center">
+        <a class="circleButton instructionsButton" href="#">?</a>
+        <a class="circleButton" id="highScores" href="#">&#x265a;</a>
+    </div>
+    <%--    <a class="circleButton soundButton" href="#">--%>
+    <%--        <div class="speakerIcon"></div>--%>
+    <%--    </a>--%>
+    <%--    <a class="circleButton musicButton" href="#">--%>
+    <%--        <div class="musicIcon">--%>
+    <%--            <svg version="1.1" id="musicSVG" xmlns="http://www.w3.org/2000/svg"--%>
+    <%--                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 375 375"--%>
+    <%--                 style="enable-background:new 0 0 375 375;" xml:space="preserve">--%>
+    <%--        <g>--%>
+    <%--            <g>--%>
+    <%--                <defs>--%>
+    <%--                    <path id="SVGID_1_" d="M135.6,275.9c-14.4-6.9-27.4-10.3-39.1-10.3c-18.4,0-33.3,5.4-44.7,16c-11.4,10.7-17.1,23.9-17.1,39.6--%>
+    <%--        				c0,14.8,4.7,26.8,14.3,36c9.5,9.2,22.4,13.8,38.7,13.8c13.8,0,26.5-3,38.2-9c11.7-6,19.9-14,24.7-24.1--%>
+    <%--        				c4.8-10.1,7.2-24.2,7.2-42.3V108l133.6-41.5V229c-10.3-4.3-17.8-7-22.3-8.1c-4.6-1-9.8-1.6-15.8-1.6c-18.3,0-33.1,5.4-44.7,16.3--%>
+    <%--        				c-11.5,10.9-17.3,23.8-17.3,38.7c0,14.8,4.9,26.9,14.6,36.3c9.7,9.4,22.7,14,39.1,14c14.2,0,27-3.1,38.3-9.2--%>
+    <%--        				c11.3-6.1,19.3-13.9,24-23.3s7.1-23.4,7.1-42V1.4L135.6,57V275.9L135.6,275.9z"/>--%>
+    <%--                </defs>--%>
+    <%--                <clipPath id="SVGID_2_">--%>
+    <%--                    <use xlink:href="#SVGID_1_" style="overflow:visible;"/>--%>
+    <%--                </clipPath>--%>
+    <%--                <g transform="matrix(1 0 0 1 0 0)" style="clip-path:url(#SVGID_2_);">--%>
 
-                    <image style="overflow:visible;" width="500" height="500" xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAgEAYABgAAD/7AARRHVja3kAAQAEAAAAHgAA/+4AIUFkb2JlAGTAAAAAAQMA
-        EAMCAwYAAAS0AAAEwAAABOT/2wCEABALCwsMCxAMDBAXDw0PFxsUEBAUGx8XFxcXFx8eFxoaGhoX
-        Hh4jJSclIx4vLzMzLy9AQEBAQEBAQEBAQEBAQEABEQ8PERMRFRISFRQRFBEUGhQWFhQaJhoaHBoa
-        JjAjHh4eHiMwKy4nJycuKzU1MDA1NUBAP0BAQEBAQEBAQEBAQP/CABEIAfQB9AMBIgACEQEDEQH/
-        xABfAAEBAQAAAAAAAAAAAAAAAAAACAcBAQAAAAAAAAAAAAAAAAAAAAAQAQEAAAAAAAAAAAAAAAAA
-        AKCwEQEAAAAAAAAAAAAAAAAAAACwEgEAAAAAAAAAAAAAAAAAAACg/9oADAMBAAIRAxEAAADPwAUA
-        AAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAA
-        AAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAA
-        AAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAA
-        AAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAA
-        CfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAA
-        AAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAA
-        AAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAA
-        AAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAA
-        AAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAA
-        AAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAC
-        fwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAA
-        AAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAA
-        AAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAA
-        AAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAA
-        AAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAf//aAAgBAgABBQAAH//aAAgB
-        AwABBQAAH//aAAgBAQABBQC8D//aAAgBAgIGPwAAH//aAAgBAwIGPwAAH//aAAgBAQEGPwB4H//Z"
-                           transform="matrix(0.75 0 0 0.75 0 0)">
-                    </image>
-                </g>
-            </g>
-        </g>
-        </svg>
+    <%--                    <image style="overflow:visible;" width="500" height="500" xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAgEAYABgAAD/7AARRHVja3kAAQAEAAAAHgAA/+4AIUFkb2JlAGTAAAAAAQMA--%>
+    <%--        EAMCAwYAAAS0AAAEwAAABOT/2wCEABALCwsMCxAMDBAXDw0PFxsUEBAUGx8XFxcXFx8eFxoaGhoX--%>
+    <%--        Hh4jJSclIx4vLzMzLy9AQEBAQEBAQEBAQEBAQEABEQ8PERMRFRISFRQRFBEUGhQWFhQaJhoaHBoa--%>
+    <%--        JjAjHh4eHiMwKy4nJycuKzU1MDA1NUBAP0BAQEBAQEBAQEBAQP/CABEIAfQB9AMBIgACEQEDEQH/--%>
+    <%--        xABfAAEBAQAAAAAAAAAAAAAAAAAACAcBAQAAAAAAAAAAAAAAAAAAAAAQAQEAAAAAAAAAAAAAAAAA--%>
+    <%--        AKCwEQEAAAAAAAAAAAAAAAAAAACwEgEAAAAAAAAAAAAAAAAAAACg/9oADAMBAAIRAxEAAADPwAUA--%>
+    <%--        AAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAA--%>
+    <%--        AAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAA--%>
+    <%--        AAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAA--%>
+    <%--        AAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAA--%>
+    <%--        CfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAA--%>
+    <%--        AAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAA--%>
+    <%--        AAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAA--%>
+    <%--        AAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAA--%>
+    <%--        AAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAA--%>
+    <%--        AAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAC--%>
+    <%--        fwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAA--%>
+    <%--        AAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAA--%>
+    <%--        AAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAA--%>
+    <%--        AAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAA--%>
+    <%--        AAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAf//aAAgBAgABBQAAH//aAAgB--%>
+    <%--        AwABBQAAH//aAAgBAQABBQC8D//aAAgBAgIGPwAAH//aAAgBAwIGPwAAH//aAAgBAQEGPwB4H//Z"--%>
+    <%--                           transform="matrix(0.75 0 0 0.75 0 0)">--%>
+    <%--                    </image>--%>
+    <%--                </g>--%>
+    <%--            </g>--%>
+    <%--        </g>--%>
+    <%--        </svg>--%>
 
-        </div>
-    </a>
+    <%--        </div>--%>
+    <%--    </a>--%>
 </div>
 <div class="endMessage">
     <span id="highScoreMessage"><strong>HIGH SCORE!</strong></span>
@@ -160,60 +162,60 @@
     <a href="#" class="circleButton" id="refresh"><span>&#x21bb;</span></a>
     <a href="#" class="circleButton" id="back"><span>&#x2799;</span></a>
     <a href="#" class="circleButton gameScreen instructionsButton"><span>?</span></a>
-    <a class="circleButton soundButton gameScreen" href="#">
-        <div class="speakerIcon"></div>
-    </a>
-    <a class="circleButton musicButton gameScreen" href="#">
-        <div class="musicIcon">
-            <svg version="1.1" id="musicSVG" class="gameScreen" xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                 width="375px" height="375px" viewBox="0 0 375 375" style="enable-background:new 0 0 375 375;"
-                 xml:space="preserve">
-        <g>
-            <g>
-                <defs>
-                    <path id="SVGID_1_" d="M135.6,275.9c-14.4-6.9-27.4-10.3-39.1-10.3c-18.4,0-33.3,5.4-44.7,16c-11.4,10.7-17.1,23.9-17.1,39.6
-        				c0,14.8,4.7,26.8,14.3,36c9.5,9.2,22.4,13.8,38.7,13.8c13.8,0,26.5-3,38.2-9c11.7-6,19.9-14,24.7-24.1
-        				c4.8-10.1,7.2-24.2,7.2-42.3V108l133.6-41.5V229c-10.3-4.3-17.8-7-22.3-8.1c-4.6-1-9.8-1.6-15.8-1.6c-18.3,0-33.1,5.4-44.7,16.3
-        				c-11.5,10.9-17.3,23.8-17.3,38.7c0,14.8,4.9,26.9,14.6,36.3c9.7,9.4,22.7,14,39.1,14c14.2,0,27-3.1,38.3-9.2
-        				c11.3-6.1,19.3-13.9,24-23.3s7.1-23.4,7.1-42V1.4L135.6,57V275.9L135.6,275.9z"/>
-                </defs>
-                <clipPath id="SVGID_2_">
-                    <use xlink:href="#SVGID_1_" style="overflow:visible;"/>
-                </clipPath>
-                <g transform="matrix(1 0 0 1 0 0)" style="clip-path:url(#SVGID_2_);">
+    <%--    <a class="circleButton soundButton gameScreen" href="#">--%>
+    <%--        <div class="speakerIcon"></div>--%>
+    <%--    </a>--%>
+    <%--    <a class="circleButton musicButton gameScreen" href="#">--%>
+    <%--        <div class="musicIcon">--%>
+    <%--            <svg version="1.1" id="musicSVG" class="gameScreen" xmlns="http://www.w3.org/2000/svg"--%>
+    <%--                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"--%>
+    <%--                 width="375px" height="375px" viewBox="0 0 375 375" style="enable-background:new 0 0 375 375;"--%>
+    <%--                 xml:space="preserve">--%>
+    <%--        <g>--%>
+    <%--            <g>--%>
+    <%--                <defs>--%>
+    <%--                    <path id="SVGID_1_" d="M135.6,275.9c-14.4-6.9-27.4-10.3-39.1-10.3c-18.4,0-33.3,5.4-44.7,16c-11.4,10.7-17.1,23.9-17.1,39.6--%>
+    <%--        				c0,14.8,4.7,26.8,14.3,36c9.5,9.2,22.4,13.8,38.7,13.8c13.8,0,26.5-3,38.2-9c11.7-6,19.9-14,24.7-24.1--%>
+    <%--        				c4.8-10.1,7.2-24.2,7.2-42.3V108l133.6-41.5V229c-10.3-4.3-17.8-7-22.3-8.1c-4.6-1-9.8-1.6-15.8-1.6c-18.3,0-33.1,5.4-44.7,16.3--%>
+    <%--        				c-11.5,10.9-17.3,23.8-17.3,38.7c0,14.8,4.9,26.9,14.6,36.3c9.7,9.4,22.7,14,39.1,14c14.2,0,27-3.1,38.3-9.2--%>
+    <%--        				c11.3-6.1,19.3-13.9,24-23.3s7.1-23.4,7.1-42V1.4L135.6,57V275.9L135.6,275.9z"/>--%>
+    <%--                </defs>--%>
+    <%--                <clipPath id="SVGID_2_">--%>
+    <%--                    <use xlink:href="#SVGID_1_" style="overflow:visible;"/>--%>
+    <%--                </clipPath>--%>
+    <%--                <g transform="matrix(1 0 0 1 0 0)" style="clip-path:url(#SVGID_2_);">--%>
 
-                    <image style="overflow:visible;" width="500" height="500" xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAgEAYABgAAD/7AARRHVja3kAAQAEAAAAHgAA/+4AIUFkb2JlAGTAAAAAAQMA
-        EAMCAwYAAAS0AAAEwAAABOT/2wCEABALCwsMCxAMDBAXDw0PFxsUEBAUGx8XFxcXFx8eFxoaGhoX
-        Hh4jJSclIx4vLzMzLy9AQEBAQEBAQEBAQEBAQEABEQ8PERMRFRISFRQRFBEUGhQWFhQaJhoaHBoa
-        JjAjHh4eHiMwKy4nJycuKzU1MDA1NUBAP0BAQEBAQEBAQEBAQP/CABEIAfQB9AMBIgACEQEDEQH/
-        xABfAAEBAQAAAAAAAAAAAAAAAAAACAcBAQAAAAAAAAAAAAAAAAAAAAAQAQEAAAAAAAAAAAAAAAAA
-        AKCwEQEAAAAAAAAAAAAAAAAAAACwEgEAAAAAAAAAAAAAAAAAAACg/9oADAMBAAIRAxEAAADPwAUA
-        AAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAA
-        AAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAA
-        AAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAA
-        AAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAA
-        CfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAA
-        AAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAA
-        AAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAA
-        AAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAA
-        AAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAA
-        AAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAC
-        fwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAA
-        AAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAA
-        AAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAA
-        AAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAA
-        AAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAf//aAAgBAgABBQAAH//aAAgB
-        AwABBQAAH//aAAgBAQABBQC8D//aAAgBAgIGPwAAH//aAAgBAwIGPwAAH//aAAgBAQEGPwB4H//Z"
-                           transform="matrix(0.75 0 0 0.75 0 0)">
-                    </image>
-                </g>
-            </g>
-        </g>
-        </svg>
+    <%--                    <image style="overflow:visible;" width="500" height="500" xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAgEAYABgAAD/7AARRHVja3kAAQAEAAAAHgAA/+4AIUFkb2JlAGTAAAAAAQMA--%>
+    <%--        EAMCAwYAAAS0AAAEwAAABOT/2wCEABALCwsMCxAMDBAXDw0PFxsUEBAUGx8XFxcXFx8eFxoaGhoX--%>
+    <%--        Hh4jJSclIx4vLzMzLy9AQEBAQEBAQEBAQEBAQEABEQ8PERMRFRISFRQRFBEUGhQWFhQaJhoaHBoa--%>
+    <%--        JjAjHh4eHiMwKy4nJycuKzU1MDA1NUBAP0BAQEBAQEBAQEBAQP/CABEIAfQB9AMBIgACEQEDEQH/--%>
+    <%--        xABfAAEBAQAAAAAAAAAAAAAAAAAACAcBAQAAAAAAAAAAAAAAAAAAAAAQAQEAAAAAAAAAAAAAAAAA--%>
+    <%--        AKCwEQEAAAAAAAAAAAAAAAAAAACwEgEAAAAAAAAAAAAAAAAAAACg/9oADAMBAAIRAxEAAADPwAUA--%>
+    <%--        AAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAA--%>
+    <%--        AAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAA--%>
+    <%--        AAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAA--%>
+    <%--        AAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAA--%>
+    <%--        CfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAA--%>
+    <%--        AAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAA--%>
+    <%--        AAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAA--%>
+    <%--        AAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAA--%>
+    <%--        AAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAA--%>
+    <%--        AAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAC--%>
+    <%--        fwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAA--%>
+    <%--        AAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAA--%>
+    <%--        AAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAA--%>
+    <%--        AAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAA--%>
+    <%--        AAAAAAAAAACfwAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAACfwAAAAf//aAAgBAgABBQAAH//aAAgB--%>
+    <%--        AwABBQAAH//aAAgBAQABBQC8D//aAAgBAgIGPwAAH//aAAgBAwIGPwAAH//aAAgBAQEGPwB4H//Z"--%>
+    <%--                           transform="matrix(0.75 0 0 0.75 0 0)">--%>
+    <%--                    </image>--%>
+    <%--                </g>--%>
+    <%--            </g>--%>
+    <%--        </g>--%>
+    <%--        </svg>--%>
 
-        </div>
-    </a>
+    <%--        </div>--%>
+    <%--    </a>--%>
 </div>
 </div>
 <div id="highScoreContainer">
