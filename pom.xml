@@ -11,10 +11,10 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <hibernate-version>5.5.7.Final</hibernate-version>
+        <hibernate-version>5.5.8.Final</hibernate-version>
         <javax-persistence-api-version>2.2</javax-persistence-api-version>
         <javax-servlet-api-version>4.0.1</javax-servlet-api-version>
-        <spring-version>5.3.10</spring-version>
+        <spring-version>5.3.11</spring-version>
         <c3p0-version>0.9.5.5</c3p0-version>
         <mysql-connector-version>8.0.26</mysql-connector-version>
         <json-parser-version>20210307</json-parser-version>
