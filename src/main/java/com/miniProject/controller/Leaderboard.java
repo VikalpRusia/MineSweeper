@@ -8,19 +8,22 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Collections;
 import java.util.PriorityQueue;
 
 @Controller
-@RequestMapping("/high-score")
-public class HighScoreController {
+@RequestMapping("/leaderboard")
+public class Leaderboard {
     private PlayerScoreDAO playerScoreDAO;
     private PriorityQueue<PlayerScore> arrayList_easy;
     private PriorityQueue<PlayerScore> arrayList_medium;
     private PriorityQueue<PlayerScore> arrayList_hard;
-    private static final Logger logger = LogManager.getLogger(HighScoreController.class);
+    private static final Logger logger = LogManager.getLogger(Leaderboard.class);
 
     @Autowired
     public void setPlayerScoreDAO(PlayerScoreDAO playerScoreDAO) {
@@ -54,10 +57,9 @@ public class HighScoreController {
         return model.getAttribute("list").toString();
     }
 
-    @ResponseBody
     @GetMapping("")
-    public String getPlayerHighScore(@RequestParam("userName") String userName) {
-        logger.atInfo().log("Request at /high-score");
-        return userName;
+    public String getPlayerHighScore() {
+        logger.atInfo().log("Request at /leaderboard");
+        return "leaderboard";
     }
 }

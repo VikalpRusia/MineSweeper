@@ -14,9 +14,9 @@ import javax.servlet.http.HttpSession;
 
 //creating Authentication token is a better option here
 @Controller
-public class EntryExitController {
+public class EntryController {
     private PlayerDAO playerDAO;
-    private static final Logger logger = LogManager.getLogger(EntryExitController.class);
+    private static final Logger logger = LogManager.getLogger(EntryController.class);
 
     @Autowired
     public void setPlayerDAO(PlayerDAO playerDAO) {
@@ -26,10 +26,14 @@ public class EntryExitController {
 
     @GetMapping("/")
     public String entry(Model model, HttpSession session) {
-        logger.atInfo().log("Request at /");
-        model.addAttribute("newPlayer", new Player());
-        logger.atDebug().log("model associated having instance of new player");
-        return "entry";
+        if (session.getAttribute("player") == null) {
+            logger.atInfo().log("Request at /");
+            model.addAttribute("newPlayer", new Player());
+            logger.atDebug().log("model associated having instance of new player");
+            return "entry";
+        } else {
+            return "redirect:/home";
+        }
     }
 
     @PostMapping("/sign-up-form")
@@ -55,11 +59,4 @@ public class EntryExitController {
             return "{\"validUser\": \"true\"}";
         }
     }
-
-    @GetMapping("/log-out")
-    public String logOut() {
-        logger.atInfo().log("Request at /log-out");
-        return "feedback";
-    }
-
 }

@@ -19,9 +19,20 @@ public class Player implements Externalizable {
     @Column(nullable = false)
     private String password;
 
+    @Column(name = "image_path")
+    private String imagePath;
+
     @Enumerated(EnumType.ORDINAL)
     @Column
     private Feedback feedback;
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 
     public Feedback getFeedback() {
         return feedback;
