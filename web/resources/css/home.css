@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #141414;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
+body {
+    color: white;
+}
+
+#options {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    padding-left: 1.5em;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transform: scale(0.5);
+    transform-origin: top left;
+    transition: 100ms transform;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+#options:before {
+    display: block;
+    content: "";
+    cursor: pointer;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0.35em 0 0.35em 0.7em;
+    border-color: transparent transparent transparent white;
+    position: absolute;
+    top: 0.75em;
+    left: 0.75em;
+    margin-left: -0.35em;
+    margin-top: -0.35em;
+}
+
+#options:not(.open):hover {
+    transform: scale(0.8);
+}
+
+#options.open {
+    background: black;
+    transform: scale(1);
+}
+
+#options.open:before {
+    transform: rotate(90deg);
+}
+
+#options.open #title {
+    cursor: default;
+}
+
+#options.open .option {
+    display: block;
+}
+
+#options #title {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 0.25em 0.5em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#options .option {
+    display: none;
+    padding: 0.5em 0.5em;
+}
+
+#options .option:not(:last-child) {
+    border-bottom: 1px solid #333333;
+}
+
+#options .option label {
+    cursor: pointer;
+    display: flex;
+}
+
+#options .option label input {
+    margin-right: 0.5em;
+    flex-shrink: 1;
+    color: white;
+}
+
+#options .option label input[type=button], #options .option label input[type=number], #options .option label input[type=text] {
+    background: #242424;
+    border: 1px solid #2e2e2e;
+    padding: 0.15em 0.6em;
+    border-radius: 2px;
+}
+
+#options .option label input[type=button] {
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#options .option label input[type=number] {
+    width: 100px;
+}
+
+#options .option label input[type=checkbox] {
+    transform: scale(1.25);
+    cursor: pointer;
+}
