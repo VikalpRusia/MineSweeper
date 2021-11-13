@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Minesweeper</title>
+    <link rel="shortcut icon"
+          href="${pageContext.request.contextPath}/resources/img/favicon.ico"
+          type="image/x-icon"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
 
 </head>

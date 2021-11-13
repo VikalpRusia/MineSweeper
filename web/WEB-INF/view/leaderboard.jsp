@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CodePen - Daily UI #019 | Leaderboard</title>
+    <title>Leaderboard</title>
+    <link rel="shortcut icon"
+          href="${pageContext.request.contextPath}/resources/img/favicon.ico"
+          type="image/x-icon"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/leaderboard.css">
 
@@ -18,7 +21,7 @@
             <div class="pic"
                  style="background-image: url(&#39;https://randomuser.me/api/portraits/men/44.jpg&#39;)"></div>
             <div class="name">
-                Edgar Soto
+                Vikalp Rusia
             </div>
             <div class="score">
                 6453
@@ -31,7 +34,7 @@
             <div class="pic"
                  style="background-image: url(&#39;https://randomuser.me/api/portraits/men/31.jpg&#39;)"></div>
             <div class="name">
-                Clifford James
+                Hritik Sahu
             </div>
             <div class="score">
                 6794
@@ -44,7 +47,7 @@
             <div class="pic"
                  style="background-image: url(&#39;https://randomuser.me/api/portraits/women/91.jpg&#39;)"></div>
             <div class="name">
-                Nevaeh Silva
+                Muskan Sharma
             </div>
             <div class="score">
                 6034
@@ -59,7 +62,7 @@
             <div class="pic"
                  style="background-image: url(&#39;https://randomuser.me/api/portraits/men/88.jpg&#39;)"></div>
             <div class="name">
-                Clayton Watson
+                Anuj Sachdeva
             </div>
             <div class="score">
                 5980
@@ -72,7 +75,7 @@
             <div class="pic"
                  style="background-image: url(&#39;https://randomuser.me/api/portraits/women/29.jpg&#39;)"></div>
             <div class="name">
-                Debbie Lane
+                Sangeeta Sharma
             </div>
             <div class="score">
                 5978
@@ -85,62 +88,10 @@
             <div class="pic"
                  style="background-image: url(&#39;https://randomuser.me/api/portraits/women/85.jpg&#39;)"></div>
             <div class="name">
-                Gabriella Steward
+                Anuja Mangal
             </div>
             <div class="score">
                 5845
-            </div>
-        </div>
-        <div class="item">
-            <div class="pos">
-                7
-            </div>
-            <div class="pic"
-                 style="background-image: url(&#39;https://randomuser.me/api/portraits/women/39.jpg&#39;)"></div>
-            <div class="name">
-                Nina Perkins
-            </div>
-            <div class="score">
-                5799
-            </div>
-        </div>
-        <div class="item">
-            <div class="pos">
-                8
-            </div>
-            <div class="pic"
-                 style="background-image: url(&#39;https://randomuser.me/api/portraits/men/77.jpg&#39;)"></div>
-            <div class="name">
-                Dennis Henry
-            </div>
-            <div class="score">
-                5756
-            </div>
-        </div>
-        <div class="item">
-            <div class="pos">
-                9
-            </div>
-            <div class="pic"
-                 style="background-image: url(&#39;https://randomuser.me/api/portraits/women/49.jpg&#39;)"></div>
-            <div class="name">
-                Courtney Fuller
-            </div>
-            <div class="score">
-                5713
-            </div>
-        </div>
-        <div class="item">
-            <div class="pos">
-                10
-            </div>
-            <div class="pic"
-                 style="background-image: url(&#39;https://randomuser.me/api/portraits/women/30.jpg&#39;)"></div>
-            <div class="name">
-                Joan Wood
-            </div>
-            <div class="score">
-                5674
             </div>
         </div>
     </div>
