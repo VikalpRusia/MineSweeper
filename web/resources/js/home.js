@@ -15,6 +15,22 @@ const TAU = PI * TWO;
 const TEXTALIGN_CENTER = 'center';
 const TEXTBASELINE_MIDDLE = 'middle';
 
+let EASY = {
+    x: 10,
+    y: 10,
+    mC: 10
+};
+let MEDIUM = {
+    x: 18,
+    y: 18,
+    mC: 40
+};
+let HARD = {
+    x: 24,
+    y: 24,
+    mC: 99
+};
+
 let _defaulCanvasOptions = {
     autoClear: false,
     autoCompensate: true,
@@ -928,7 +944,10 @@ let options = {
     boardSizeX: document.getElementById('board-size-x'),
     boardSizeY: document.getElementById('board-size-y'),
     mineCount: document.getElementById('mine-count'),
-    setupGame: document.getElementById('setup-game')
+    setupGame: document.getElementById('setup-game'),
+    easy: document.getElementById('easy'),
+    medium: document.getElementById('medium'),
+    hard: document.getElementById('hard')
 };
 
 
@@ -942,25 +961,10 @@ function zoom(e) {
 
 // Drawing init function
 function setup() {
-    options.setupGame.addEventListener('click', () => {
-        if (!game) {
-            return;
-        }
-        let bX = constrain(parseInt(options.boardSizeX.value), 2, 128);
-        let bY = constrain(parseInt(options.boardSizeY.value), 2, 128);
-        let mC = constrain(parseInt(options.mineCount.value), 1, game.boardSize.x * game.boardSize.y - 2);
-        console.log(mC);
-        if (bX === bX) {
-            game.boardSize.x = bX;
-        }
-        if (bY === bY) {
-            game.boardSize.y = bY;
-        }
-        if (mC === mC) {
-            game.mineCount = mC;
-        }
-        game.setup();
-    });
+    options.setupGame.addEventListener('click', () => settingUpLevel('Custom'));
+    options.easy.addEventListener('click', () => settingUpLevel('Easy'))
+    options.medium.addEventListener('click', () => settingUpLevel('Medium'))
+    options.hard.addEventListener('click', () => settingUpLevel('Hard'))
 
     // Create a game instance
     game = new Game();
@@ -1053,7 +1057,7 @@ class Game {
         if ('gameBoardSize' in window) {
             this.boardSize = createVector(window.gameBoardSize.x, window.gameBoardSize.y);
         } else {
-            this.boardSize = createVector(16, 16);
+            this.boardSize = createVector(EASY.x, EASY.y);
         }
         // The px location of the top left-hand corner of the board
         this.drawOffset = createVector(0, 0);
@@ -1061,7 +1065,7 @@ class Game {
         if ('gameMineCount' in window) {
             this.mineCount = window.gameMineCount;
         } else {
-            this.mineCount = this.boardSize.x * this.boardSize.y * 0.15625;
+            this.mineCount = EASY.mC;
         }
         // The px size of each cell
         this.cellSize = 10;
@@ -1083,6 +1087,7 @@ class Game {
         this.viewOffset = createVector();
         this._viewOffsetLerp = createVector();
         // Call the setup function to initialize the board/cells
+        this.boardSize
         this.setup();
     }
 
@@ -1526,4 +1531,50 @@ class Cell {
         }
         return [];
     }
+}
+
+function settingUpLevel(level) {
+    if (!game) {
+        return;
+    }
+    let bX, bY, mC;
+    if (level === 'Custom') {
+        bX = constrain(parseInt(options.boardSizeX.value), 2, 128);
+        bY = constrain(parseInt(options.boardSizeY.value), 2, 128);
+        mC = constrain(parseInt(options.mineCount.value), 1, game.boardSize.x * game.boardSize.y - 2);
+    } else if (level === 'Easy') {
+        bX = EASY.x;
+        options.boardSizeX.value = EASY.x;
+        bY = EASY.y;
+        options.boardSizeY.value = EASY.y;
+        mC = EASY.mC;
+        options.mineCount.value = EASY.mC;
+        //.2
+    } else if (level === 'Medium') {
+        bX = MEDIUM.x;
+        options.boardSizeX.value = MEDIUM.x;
+        bY = MEDIUM.y;
+        options.boardSizeY.value = MEDIUM.y;
+        mC = MEDIUM.mC;
+        options.mineCount.value = MEDIUM.mC;
+        //.25
+    } else {
+        bX = HARD.x;
+        options.boardSizeX.value = HARD.x;
+        bY = HARD.y;
+        options.boardSizeY.value = HARD.y;
+        mC = HARD.mC;
+        options.mineCount.value = HARD.mC;
+    }
+    console.log(mC);
+    if (bX === bX) {
+        game.boardSize.x = bX;
+    }
+    if (bY === bY) {
+        game.boardSize.y = bY;
+    }
+    if (mC === mC) {
+        game.mineCount = mC;
+    }
+    game.setup();
 }
