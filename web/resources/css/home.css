@@ -117,3 +117,8 @@ body {
     transform: scale(1.25);
     cursor: pointer;
 }
+
+#options #setup-game {
+    margin-left: auto;
+    margin-right: auto;
+}

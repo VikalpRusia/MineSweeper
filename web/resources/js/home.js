@@ -313,7 +313,7 @@ function lerpRGB(...args) {
         if (args[0].length === 2) {
             return lerpRGB(...args[0], args[1]);
         }
-        // TODO: Allow (possibly weighted) lerping between n-count RGBs at specified positions
+        // TODO: Allow (possibly weighted) leaping between n-count RGBs at specified positions
     } else {
         return {r: 127.5, g: 127.5, b: 127.5, a: 1};
     }
@@ -940,14 +940,16 @@ function font(fontStr, fallbackIfDefault) {
 let game;
 
 let options = {
-    smoothedMouseTracking: document.getElementById('smoothed-mouse-tracking'),
+    optionsMenu: document.getElementById('optionsChild'),
     boardSizeX: document.getElementById('board-size-x'),
     boardSizeY: document.getElementById('board-size-y'),
     mineCount: document.getElementById('mine-count'),
     setupGame: document.getElementById('setup-game'),
+    custom: document.getElementById('custom'),
     easy: document.getElementById('easy'),
     medium: document.getElementById('medium'),
-    hard: document.getElementById('hard')
+    hard: document.getElementById('hard'),
+    setupCustom: document.getElementById('ifCustom')
 };
 
 
@@ -962,9 +964,11 @@ function zoom(e) {
 // Drawing init function
 function setup() {
     options.setupGame.addEventListener('click', () => settingUpLevel('Custom'));
-    options.easy.addEventListener('click', () => settingUpLevel('Easy'))
-    options.medium.addEventListener('click', () => settingUpLevel('Medium'))
-    options.hard.addEventListener('click', () => settingUpLevel('Hard'))
+    options.easy.addEventListener('click', () => settingUpLevel('Easy'));
+    options.medium.addEventListener('click', () => settingUpLevel('Medium'));
+    options.hard.addEventListener('click', () => settingUpLevel('Hard'));
+    options.custom.addEventListener('click', () =>
+        options.optionsMenu.appendChild(options.setupCustom));
 
     // Create a game instance
     game = new Game();
@@ -1091,9 +1095,12 @@ class Game {
         this.setup();
     }
 
-    // Used to initialize the game, also whenever setings are changed (in the future)
+    // Used to initialize the game, also whenever settings are changed (in the future)
     setup() {
         // Clear these values
+        if (options.optionsMenu.contains(options.setupCustom)) {
+            options.optionsMenu.removeChild(options.setupCustom);
+        }
         this.board = [];
         this.cells = [];
         // Calculate the mine count
@@ -1195,7 +1202,7 @@ class Game {
         let zoomLevel = this._zoomLevelLerp = lerp(this._zoomLevelLerp, this.zoomLevel, 0.1);
         scale(this.currentScale = sqrt(zoomLevel));
         this._viewOffsetLerp.set(mousePos.copy().sub(Vector.center())).mult(-map(this.currentScale, 1, sqrt(this.maxZoomLevels), 0, 1));
-        translate(this.viewOffset.lerp(this._viewOffsetLerp, options.smoothedMouseTracking.checked ? 0.3 / (this.currentScale * 0.5) : 1));
+        translate(this.viewOffset.lerp(this._viewOffsetLerp, 0.3 / (this.currentScale * 0.5)));
 
         let {cellSize, boardSize} = this;
         // Save the current context state
@@ -1537,6 +1544,7 @@ function settingUpLevel(level) {
     if (!game) {
         return;
     }
+    document.getElementById('options').classList.toggle('open');
     let bX, bY, mC;
     if (level === 'Custom') {
         bX = constrain(parseInt(options.boardSizeX.value), 2, 128);

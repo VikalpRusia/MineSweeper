@@ -13,51 +13,45 @@
 <!-- partial:index.partial.html -->
 <div id="options">
     <div id="title">Options</div>
-    <div class="option">
-        <div id="custom">
-            <label>
-                <input id="board-size-x" type="number" value="10" min="2" max="128"/>
-                <div class="title">Board size X</div>
-            </label>
-        </div>
+    <div id="optionsChild" class="option">
         <div class="option">
             <label>
-                <input id="board-size-y" type="number" value="10" min="2" max="128"/>
-                <div class="title">Board size Y</div>
+                <input id="easy" type="button" value="Easy"/>
+                <input id="medium" type="button" value="Medium"/>
+                <input id="hard" type="button" value="Hard"/>
+            </label>
+            <label style="margin-top: 0.5em">
+                <input id="custom" type="button" value="Custom"/>
             </label>
         </div>
-        <div class="option">
-            <label>
-                <input id="mine-count" type="number" value="10" min="1" max="16383"/>
-                <div class="title">Mine count</div>
-            </label>
+        <div id="ifCustom">
+            <div class="option">
+                <label>
+                    <input id="board-size-x" type="number" value="10" min="2" max="128"/>
+                    <div class="title">Board size X</div>
+                </label>
+            </div>
+            <div class="option">
+                <label>
+                    <input id="board-size-y" type="number" value="10" min="2" max="128"/>
+                    <div class="title">Board size Y</div>
+                </label>
+            </div>
+            <div class="option">
+                <label>
+                    <input id="mine-count" type="number" value="10" min="1" max="16383"/>
+                    <div class="title">Mine count</div>
+                </label>
+            </div>
+            <div class="option">
+                <label>
+                    <input id="setup-game" type="button" value="Setup game"/>
+                </label>
+            </div>
         </div>
+    </div>
+</div>
 
-    </div>
-    <div class="option">
-        <label>
-            <input id="setup-game" type="button" value="Setup game"/>
-        </label>
-    </div>
-    <div class="option">
-        <label>
-            <input id="easy" type="button" value="Easy"/>
-        </label>
-        <label>
-            <input id="medium" type="button" value="Medium"/>
-        </label>
-        <label>
-            <input id="hard" type="button" value="Hard"/>
-        </label>
-    </div>
-</div>
-<div class="option">
-    <label>
-        <input id="smoothed-mouse-tracking" type="checkbox" checked="checked"/>
-        <div class="title">Smoothed mouse tracking</div>
-    </label>
-</div>
-</div>
 <script>
     window.canvasOptions = {
         autoClear: true,
