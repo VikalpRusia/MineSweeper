@@ -253,52 +253,6 @@ function strokeStyle(...args) {
     return ctx.strokeStyle;
 }
 
-function lerpRGB(...args) {
-    let r1 = 255;
-    let b1 = 255;
-    let g1 = 255;
-    let a1 = 1;
-    let r2 = 0;
-    let g2 = 0;
-    let b2 = 0;
-    let a2 = 1;
-    let t = 0.5;
-    if (args.length === 3) {
-        if (Array.isArray(args[0]) && Array.isArray(args[1])) {
-            return lerpRGB(...args[0], ...args[1], args[2]);
-        }
-        [
-            {r: r1 = 255, b: b1 = 255, g: g1 = 255, a: a1 = 1},
-            {r: r2 = 0, b: b2 = 0, g: g2 = 0, a: a2 = 1},
-            t] =
-            args;
-    } else if (args.length === 7) {
-        [
-            r1, g1, b1,
-            r2, g2, b2,
-            t] =
-            args;
-    } else if (args.length === 9) {
-        [
-            r1, g1, b1, a1,
-            r2, g2, b2, a2,
-            t] =
-            args;
-    } else if (args.length === 2 && Array.isArray(args[0])) {
-        if (args[0].length === 2) {
-            return lerpRGB(...args[0], args[1]);
-        }
-        // TODO: Allow (possibly weighted) leaping between n-count RGBs at specified positions
-    } else {
-        return {r: 127.5, g: 127.5, b: 127.5, a: 1};
-    }
-    let r = lerp(r1, r2, t);
-    let g = lerp(g1, g2, t);
-    let b = lerp(b1, b2, t);
-    let a = lerp(a1, a2, t);
-    return {r, g, b, a};
-}
-
 function hsl(hue, sat, light, alpha = 1) {
     if (typeof hue !== 'number') {
         if (Array.isArray(hue)) {
@@ -537,11 +491,6 @@ class Vector {
     }
 
     // Swizzlers
-
-    get _() {
-        return this.copy();
-    }
-
     static center() {
         return new Vector(width_half, height_half);
     }
@@ -660,30 +609,8 @@ class Vector {
         return this;
     }
 
-    rotate(a = 0) {
-        // if(a === 0) {
-        // 	return this;
-        // }
-        // let newHeading = this.heading() + a;
-        // let mag = this.mag();
-        // return this.set(cos(newHeading), sin(newHeading)).mult(mag);
-        if (!a) {
-            return this;
-        }
-        const c = cos(a);
-        const s = sin(a);
-        const {x, y} = this;
-        this.x = x * c - y * s;
-        this.y = x * s + y * c;
-        return this;
-    }
-
     magSq() {
         return this.x * this.x + this.y * this.y;
-    }
-
-    magSq3D() {
-        return this.x * this.x + this.y * this.y + this.z * this.z;
     }
 
     mag() {
@@ -702,13 +629,6 @@ class Vector {
 
     lerp(stop, amt) {
         return Vector.lerp(this, stop, amt, true);
-    }
-
-    _lerpPart(stop, amt, part) {
-        stop = isVectorish(stop) ? stop[part] : stop;
-        amt = isVectorish(amt) ? amt[part] : amt;
-        this[part] = lerp(this[part], stop, amt);
-        return this;
     }
 
     floor() {
@@ -1051,7 +971,6 @@ class Game {
         this.viewOffset = createVector();
         this._viewOffsetLerp = createVector();
         // Call the setup function to initialize the board/cells
-        this.boardSize
         this.setup();
     }
 
@@ -1094,6 +1013,8 @@ class Game {
         this.startedAt = null;
         // Call reset within each cell
         this.cells.forEach(c => c.reset());
+        this.startedAt = performance.now();
+        console.log(this.startedAt);
     }
 
     // Pick the board's mines
@@ -1416,7 +1337,7 @@ class Game {
         if (!cell.mine) {
             // If the cell and its neighbors are open
             if (!cell.mineCount) {
-                // The immediately neighbords around the clicked cell that aren't covered
+                // The immediately neighbours around the clicked cell that aren't covered
                 cells = cell.click();
             } else {
                 // There's only 1 cell to uncover
@@ -1450,6 +1371,7 @@ class Game {
             this.zoomLevel = 1;
             // Set the current timestamp for the animation
             this.finishedAt = now;
+            console.log(this.finishedAt);
         }
     }
 }
