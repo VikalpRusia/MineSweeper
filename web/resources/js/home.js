@@ -1210,6 +1210,7 @@ class Game {
                         a = ease.quad.inOut(t, 1, -1, 300);
                     }
                     // If the cell has mine neighbors
+                    fill(hsl(186, 42, 45))
                     if (c.mineCount) {
                         // Fill the mine count text
                         // Orange if 5 or more
@@ -1250,7 +1251,7 @@ class Game {
             else if (c.flagged) {
                 fill(hsl(120, 100, mousedOver ? 65 : 50));
             } else {
-                fill(hsl(0, 0, mousedOver ? 36 : 24));
+                fill(hsl(186, 42, mousedOver ? 36 : 24));
             }
             // Stroke the cell
             stroke();
