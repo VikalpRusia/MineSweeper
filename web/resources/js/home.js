@@ -31,7 +31,7 @@ let HARD = {
     mC: 99
 };
 
-let _defaulCanvasOptions = {
+let _defaultCanvasOptions = {
     autoClear: false,
     autoCompensate: true,
     autoPushPop: false,
@@ -52,7 +52,7 @@ if (canvas === null) {
 }
 let ctx = canvas.getContext('2d', {
     desynchronized: window.canvasOptions && window.canvasOptions.desynchronized !== undefined ?
-        window.canvasOptions.desynchronized : _defaulCanvasOptions.desynchronized
+        window.canvasOptions.desynchronized : _defaultCanvasOptions.desynchronized
     // preserveDrawingBuffer: true // WebGL
 });
 const _originalCtx = ctx;
@@ -102,32 +102,7 @@ function updateMouse(e, eventName) {// Modified from p5.js
         mousePosPrev.set(mousePos);
         mousePos.set(x, y);
     }
-    // return { x, y, winX: e.clientX, winY: e.clientY, id: e.identifier };
 }
-
-// let mouseIn = false, mouseDown = false, mouseMove = null, mousePos = { x: 0, y: 0 };
-// function updateMouse(e) {
-// 	if(e && !e.clientX) {
-// 		e = e.touches ? e.touches[0] : (e.changedTouches ? e.changedTouches[0] : e);
-// 	}
-// 	const { innerWidth: width, innerHeight: height } = window;
-// 	uniforms.mouse.value.set(e.clientX / width, 1 - e.clientY / height);
-// }
-
-// [
-// 	[ 'mouseenter', e => mouseIn = true ],
-// 	[ 'mouseleave', e => (mouseIn = false, mouseDown = false) ],
-// 	[ 'mousemove', e => (mouseIn = true, mouseMove = e.timeStamp) ],
-// 	[ 'mousedown', e => (mouseIn = true, mouseDown = true) ],
-// 	[ 'mouseup', e => mouseDown = false ],
-// 	[ 'touchstart', e => mouseIn = true ],
-// 	[ 'touchend', e => (mouseIn = false, mouseDown = false) ],
-// 	[ 'touchcancel', e => (mouseIn = false, mouseDown = false) ],
-// 	[ 'touchmove', e => (mouseIn = true, mouseMove = e.timeStamp) ]
-// ].forEach(([ eventName, cb ]) => document.body.addEventListener(eventName, e => {
-// 	updateMouse(e);
-// 	cb(e);
-// }));
 
 canvas.addEventListener('mouseenter', e => {
     updateMouse(e, 'mouseenter');
@@ -174,7 +149,7 @@ window.addEventListener('load', () => {
     mouseExitPos = new Vector();
     Object.assign(
         _canvasOptions,
-        _defaulCanvasOptions,
+        _defaultCanvasOptions,
         'canvasOptions' in window ? window.canvasOptions : {});
 
     if (_canvasOptions.canvas === false) {
@@ -445,18 +420,6 @@ function closePath() {
     ctx.closePath();
 }
 
-function point(x = 0, y = 0, r = 0, g = 0, b = 0, a = 255, doPut_ = true) {
-    // let imgData = ctx.createImageData(1, 1);
-    // imgData.data[0] = r;
-    // imgData.data[1] = g;
-    // imgData.data[2] = b;
-    // imgData.data[3] = a;
-    // if(doPut_) {
-    // 	ctx.putImageData(imgData, x, y);
-    // }
-    // return imgData;
-}
-
 function rect(x, y, w, h, r) {
     let _x2, _y2, _w, _h, _r;
     if (isVectorish(x)) {
@@ -561,7 +524,7 @@ let _warning_createVector = false;
 function createVector(x, y, z) {
     if (!_warning_createVector) {
         _warning_createVector = true;
-        console.warn('[Alca Canvas Warning] Hey, stop using createVector');
+        console.warn('[Canvas Warning] Hey, stop using createVector');
     }
     return new Vector(x, y, z);
 }
@@ -606,9 +569,6 @@ class Vector {
         return new Vector(this.x, this.y, this.z);
     }
 
-    draw() {
-        point(this.x, this.y);
-    }
 
     set(x = this.x, y = this.y, z = this.z) {
         if (x instanceof Vector) {

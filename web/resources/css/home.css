@@ -1,4 +1,5 @@
 body {
+    color: white;
     margin: 0;
     overflow: hidden;
     background-color: #141414;
@@ -11,10 +12,6 @@ body {
     right: 0;
     bottom: 0;
     z-index: 100;
-}
-
-body {
-    color: white;
 }
 
 #options {
