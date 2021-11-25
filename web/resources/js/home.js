@@ -1238,18 +1238,18 @@ class Game {
                     }
                     // If it's flagged, lerp the color from flagged green to bomb red
                     if (c.flagged) {
-                        fill(rgb(lerpRGB(0, 0xFF, 0, 0xFF, 0, 0, t)));
+                        fill(rgb(255, 26, 102, 1));
                     }
                     // Not flagged, lerp from normal grey to bomb red
                     else {
-                        fill(rgb(lerpRGB(0x3D, 0x3D, 0x3D, 0xFF, 0, 0, t)));
+                        fill(rgb(255, 26, 102, 1));
                     }
                 }
             }
                 // If the cell is covered and flagged
             // Then fill with a lightness based on if the mouse is over this cell
             else if (c.flagged) {
-                fill(hsl(120, 100, mousedOver ? 65 : 50));
+                fill(hsl(140, 100, mousedOver ? 50 : 35));
             } else {
                 fill(hsl(186, 42, mousedOver ? 36 : 24));
             }
