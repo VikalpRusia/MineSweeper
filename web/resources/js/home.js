@@ -15,20 +15,28 @@ const TAU = PI * TWO;
 const TEXTALIGN_CENTER = 'center';
 const TEXTBASELINE_MIDDLE = 'middle';
 
-let EASY = {
-    x: 10,
-    y: 10,
-    mC: 10
-};
-let MEDIUM = {
-    x: 18,
-    y: 18,
-    mC: 40
-};
-let HARD = {
-    x: 24,
-    y: 24,
-    mC: 99
+let LEVEL = {
+    EASY: {
+        levelName: 'EASY',
+        x: 10,
+        y: 10,
+        mC: 10
+    },
+    MEDIUM: {
+        levelName: 'MEDIUM',
+        x: 18,
+        y: 18,
+        mC: 40
+    },
+    HARD: {
+        levelName: 'HARD',
+        x: 24,
+        y: 24,
+        mC: 99
+    },
+    CUSTOM: {
+        levelName: 'Custom'
+    }
 };
 
 let _defaultCanvasOptions = {
@@ -843,10 +851,10 @@ function zoom(e) {
 
 // Drawing init function
 function setup() {
-    options.setupGame.addEventListener('click', () => settingUpLevel('Custom'));
-    options.easy.addEventListener('click', () => settingUpLevel('Easy'));
-    options.medium.addEventListener('click', () => settingUpLevel('Medium'));
-    options.hard.addEventListener('click', () => settingUpLevel('Hard'));
+    options.setupGame.addEventListener('click', () => settingUpLevel(LEVEL.CUSTOM));
+    options.easy.addEventListener('click', () => settingUpLevel(LEVEL.EASY));
+    options.medium.addEventListener('click', () => settingUpLevel(LEVEL.MEDIUM));
+    options.hard.addEventListener('click', () => settingUpLevel(LEVEL.HARD));
     options.custom.addEventListener('click', () =>
         options.optionsMenu.appendChild(options.setupCustom));
 
@@ -941,7 +949,7 @@ class Game {
         if ('gameBoardSize' in window) {
             this.boardSize = createVector(window.gameBoardSize.x, window.gameBoardSize.y);
         } else {
-            this.boardSize = createVector(EASY.x, EASY.y);
+            this.boardSize = createVector(LEVEL.EASY.x, LEVEL.EASY.y);
         }
         // The px location of the top left-hand corner of the board
         this.drawOffset = createVector(0, 0);
@@ -949,7 +957,7 @@ class Game {
         if ('gameMineCount' in window) {
             this.mineCount = window.gameMineCount;
         } else {
-            this.mineCount = EASY.mC;
+            this.mineCount = LEVEL.EASY.mC;
         }
         // The px size of each cell
         this.cellSize = 10;
@@ -970,6 +978,7 @@ class Game {
         this.currentScale = 1;
         this.viewOffset = createVector();
         this._viewOffsetLerp = createVector();
+        this.level = LEVEL.EASY;
         // Call the setup function to initialize the board/cells
         this.setup();
     }
@@ -1010,11 +1019,10 @@ class Game {
         this.flaggedCount = 0;
         this.finishedAt = null;
         this.zoomLevel = 1;
-        this.startedAt = null;
         // Call reset within each cell
         this.cells.forEach(c => c.reset());
         this.startedAt = performance.now();
-        console.log(this.startedAt);
+        console.log("Start time:", this.startedAt);
     }
 
     // Pick the board's mines
@@ -1321,7 +1329,6 @@ class Game {
             cell.covered = null;
             // Make sure the game is now in full play mode
             this.state = 1;
-            this.startedAt = e;
             // The game can call pickMines in this case
             this.pickMines();
         }
@@ -1354,6 +1361,8 @@ class Game {
             this.finishedAt = now;
             // Get the final flagged, non-mine count
             this.flaggedCount = this.cells.filter(c => c.flagged && !c.mine).length;
+
+            console.log("Loosen at:", this.finishedAt);
         }
         // For each selected cells
         cells.forEach(c => {
@@ -1371,7 +1380,12 @@ class Game {
             this.zoomLevel = 1;
             // Set the current timestamp for the animation
             this.finishedAt = now;
-            console.log(this.finishedAt);
+            console.log("Win at:", this.finishedAt);
+
+            if (this.level !== LEVEL.CUSTOM) {
+                sendScore(this.finishedAt - this.startedAt)
+                    .catch(error => console.log(error));
+            }
         }
     }
 }
@@ -1424,38 +1438,25 @@ class Cell {
 }
 
 function settingUpLevel(level) {
+
     if (!game) {
         return;
     }
     document.getElementById('options').classList.toggle('open');
     let bX, bY, mC;
-    if (level === 'Custom') {
+    if (level === LEVEL.CUSTOM) {
         bX = constrain(parseInt(options.boardSizeX.value), 2, 128);
         bY = constrain(parseInt(options.boardSizeY.value), 2, 128);
         mC = constrain(parseInt(options.mineCount.value), 1, game.boardSize.x * game.boardSize.y - 2);
-    } else if (level === 'Easy') {
-        bX = EASY.x;
-        options.boardSizeX.value = EASY.x;
-        bY = EASY.y;
-        options.boardSizeY.value = EASY.y;
-        mC = EASY.mC;
-        options.mineCount.value = EASY.mC;
-        //.2
-    } else if (level === 'Medium') {
-        bX = MEDIUM.x;
-        options.boardSizeX.value = MEDIUM.x;
-        bY = MEDIUM.y;
-        options.boardSizeY.value = MEDIUM.y;
-        mC = MEDIUM.mC;
-        options.mineCount.value = MEDIUM.mC;
-        //.25
     } else {
-        bX = HARD.x;
-        options.boardSizeX.value = HARD.x;
-        bY = HARD.y;
-        options.boardSizeY.value = HARD.y;
-        mC = HARD.mC;
-        options.mineCount.value = HARD.mC;
+        game.level = level;
+        bX = level.x;
+        options.boardSizeX.value = level.x;
+        bY = level.y;
+        options.boardSizeY.value = level.y;
+        mC = level.mC;
+        options.mineCount.value = level.mC;
+        //.2
     }
     console.log(mC);
     if (bX === bX) {
@@ -1468,4 +1469,18 @@ function settingUpLevel(level) {
         game.mineCount = mC;
     }
     game.setup();
+}
+
+async function sendScore(timeTaken) {
+    return await fetch("score/collect", {
+        method: "POST",
+        headers: {
+            "charset": "UTF-8",
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+            time: timeTaken,
+            level: game.level
+        })
+    });
 }
