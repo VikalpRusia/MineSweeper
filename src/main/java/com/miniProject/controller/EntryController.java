@@ -15,8 +15,8 @@ import javax.servlet.http.HttpSession;
 //creating Authentication token is a better option here
 @Controller
 public class EntryController {
-    private PlayerDAO playerDAO;
     private static final Logger logger = LogManager.getLogger(EntryController.class);
+    private PlayerDAO playerDAO;
 
     @Autowired
     public void setPlayerDAO(PlayerDAO playerDAO) {

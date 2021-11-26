@@ -19,11 +19,11 @@ import java.util.PriorityQueue;
 @Controller
 @RequestMapping("/leaderboard")
 public class Leaderboard {
+    private static final Logger logger = LogManager.getLogger(Leaderboard.class);
     private PlayerScoreDAO playerScoreDAO;
     private PriorityQueue<PlayerScore> arrayList_easy;
     private PriorityQueue<PlayerScore> arrayList_medium;
     private PriorityQueue<PlayerScore> arrayList_hard;
-    private static final Logger logger = LogManager.getLogger(Leaderboard.class);
 
     @Autowired
     public void setPlayerScoreDAO(PlayerScoreDAO playerScoreDAO) {
