@@ -1198,9 +1198,10 @@ class Game {
             // Display the amount of mines at the bottom of the screen
             let y = (boardSize.y + 0.75) * cellSize;
             // White text with a black stroke of 20% of the cellSize
+            font('30px sans-serif');
             fillStyle(hsl(0, 0, 100));
             strokeStyle(hsl(0, 0, 0));
-            lineWidth(cellSize * 0.2);
+            lineWidth(30 * 0.2);
             // Only half of the stroke is seen because the text is filled over the stroke
             strokeText(message, centerX, y);
             fillText(message, centerX, y);
