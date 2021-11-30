@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.*;
 
 @Entity
-@Table(name = "playerScores", indexes = @Index(name = "highScore", columnList = "level,time"))
+@Table(name = "playerScores", indexes = @Index(name = "highScore", columnList = "level,bestTime"))
 public class PlayerScore implements Comparable<PlayerScore>, Externalizable {
 
     @Serial
@@ -12,21 +12,42 @@ public class PlayerScore implements Comparable<PlayerScore>, Externalizable {
 
     @EmbeddedId
     private PlayerScorePk playerScorePk;
-    @Column(name = "time")
-    private long time;
 
+    @Column(name = "bestTime")
+    private Double bestTime;
     @Column(name = "totalTime")
-    private long totalTime;
+    private Double totalTime;
+
+    public PlayerScore() {
+    }
+
+    public PlayerScore(PlayerScorePk playerScorePk, double bestTime) {
+        this.playerScorePk = playerScorePk;
+        this.bestTime = bestTime;
+        this.totalTime = bestTime;
+        this.gamePlayed = 1;
+    }
 
     @Column(name = "gamePlayed")
     private int gamePlayed;
 
-    public long getTotalTime() {
+    public PlayerScore(PlayerScorePk playerScorePk) {
+        this.playerScorePk = playerScorePk;
+        this.totalTime = 0D;
+        this.bestTime = null;
+    }
+
+    public Double getTotalTime() {
         return totalTime;
     }
 
-    public void setTotalTime(long totalTime) {
+    public void setTotalTime(Double totalTime) {
         this.totalTime = totalTime;
+    }
+
+    public void addTime(double totalTime) {
+        this.totalTime += totalTime;
+        this.gamePlayed += 1;
     }
 
     public int getGamePlayed() {
@@ -37,12 +58,12 @@ public class PlayerScore implements Comparable<PlayerScore>, Externalizable {
         this.gamePlayed = gamePlayed;
     }
 
-    public long getTime() {
-        return time;
+    public Double getBestTime() {
+        return bestTime;
     }
 
-    public void setTime(long time) {
-        this.time = time;
+    public void setBestTime(Double time) {
+        this.bestTime = time;
     }
 
     public Level getLevel() {
@@ -58,22 +79,22 @@ public class PlayerScore implements Comparable<PlayerScore>, Externalizable {
         if (this.getLevel() != o.getLevel()) {
             return Level.compare(o.getLevel(), this.getLevel());
         }
-        return Long.compare(this.time, o.time);
+        return Double.compare(this.bestTime, o.bestTime);
     }
 
     @Override
     public void writeExternal(ObjectOutput out) throws IOException {
         out.writeObject(playerScorePk);
-        out.writeLong(time);
-        out.writeLong(totalTime);
+        out.writeDouble(bestTime);
+        out.writeDouble(totalTime);
         out.writeInt(gamePlayed);
     }
 
     @Override
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
         playerScorePk = (PlayerScorePk) in.readObject();
-        time = in.readLong();
-        totalTime = in.readLong();
+        bestTime = in.readDouble();
+        totalTime = in.readDouble();
         gamePlayed = in.readInt();
     }
 
@@ -81,72 +102,9 @@ public class PlayerScore implements Comparable<PlayerScore>, Externalizable {
     public String toString() {
         return "PlayerScore{" +
                 "playerScorePk=" + playerScorePk +
-                ", time=" + time +
+                ", time=" + bestTime +
                 ", totalTime=" + totalTime +
                 ", gamePlayed=" + gamePlayed +
                 '}';
-    }
-
-    @Embeddable
-    private static class PlayerScorePk implements Externalizable {
-        @Serial
-        private static final long serialVersionUID = 17654235627723478L;
-
-        @ManyToOne
-        @JoinColumn(foreignKey = @ForeignKey(name = "Fk_player_username"))
-        private Player player;
-
-        @Enumerated(EnumType.ORDINAL)
-        @Column(name = "level")
-        private Level level;
-
-        public Player getPlayer() {
-            return player;
-        }
-
-        public void setPlayer(Player player) {
-            this.player = player;
-        }
-
-        public Level getLevel() {
-            return level;
-        }
-
-        public void setLevel(Level level) {
-            this.level = level;
-        }
-
-        @Override
-        public void writeExternal(ObjectOutput out) throws IOException {
-            out.writeObject(player);
-            out.writeObject(level);
-        }
-
-        @Override
-        public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-            player = (Player) in.readObject();
-            level = (Level) in.readObject();
-        }
-
-        @Override
-        public String toString() {
-            return "PlayerScorePk{" +
-                    "player=" + player +
-                    ", level=" + level +
-                    '}';
-        }
-
-        @Override
-        public int hashCode() {
-            return super.hashCode();
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof PlayerScorePk pk) {
-                return pk.player.equals(this.player) && pk.level.equals(this.level);
-            }
-            return false;
-        }
     }
 }

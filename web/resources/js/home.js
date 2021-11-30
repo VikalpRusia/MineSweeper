@@ -1374,8 +1374,15 @@ class Game {
             stopwatch.stop();
             // Get the final flagged, non-mine count
             this.flaggedCount = this.cells.filter(c => c.flagged && !c.mine).length;
-
             console.log("Loosen at:", this.finishedAt);
+            if (this.level !== LEVEL.CUSTOM) {
+                sendScore('Loose').then(data => data.json()).then(resp => {
+                    if (!resp.scoreRecorded) {
+                        alert("there is an error while connecting to server!")
+                    }
+                })
+                    .catch(error => console.log(error));
+            }
         }
         // For each selected cells
         cells.forEach(c => {
@@ -1397,7 +1404,11 @@ class Game {
             console.log("Time taken: ", stopwatch.getTimeTaken());
 
             if (this.level !== LEVEL.CUSTOM) {
-                sendScore()
+                sendScore('Win').then(data => data.json()).then(resp => {
+                    if (!resp.scoreRecorded) {
+                        alert("there is an error while connecting to server!")
+                    }
+                })
                     .catch(error => console.log(error));
             }
         }
@@ -1486,7 +1497,7 @@ function settingUpLevel(level) {
     game.setup();
 }
 
-async function sendScore() {
+async function sendScore(result) {
     return await fetch("score/collect", {
         method: "POST",
         headers: {
@@ -1494,6 +1505,7 @@ async function sendScore() {
             "Content-type": "application/json"
         },
         body: JSON.stringify({
+            result: result,
             time: stopwatch.getTimeTaken(),
             level: game.level
         })

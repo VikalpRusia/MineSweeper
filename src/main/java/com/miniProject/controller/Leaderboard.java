@@ -1,6 +1,6 @@
 package com.miniProject.controller;
 
-import com.miniProject.DAO.PlayerScoreDAO;
+import com.miniProject.DAO.TopScoreDAO;
 import com.miniProject.entity.Level;
 import com.miniProject.entity.PlayerScore;
 import org.apache.logging.log4j.LogManager;
@@ -20,13 +20,13 @@ import java.util.PriorityQueue;
 @RequestMapping("/leaderboard")
 public class Leaderboard {
     private static final Logger logger = LogManager.getLogger(Leaderboard.class);
-    private PlayerScoreDAO playerScoreDAO;
+    private TopScoreDAO playerScoreDAO;
     private PriorityQueue<PlayerScore> arrayList_easy;
     private PriorityQueue<PlayerScore> arrayList_medium;
     private PriorityQueue<PlayerScore> arrayList_hard;
 
     @Autowired
-    public void setPlayerScoreDAO(PlayerScoreDAO playerScoreDAO) {
+    public void setPlayerScoreDAO(TopScoreDAO playerScoreDAO) {
         this.playerScoreDAO = playerScoreDAO;
         logger.atDebug().log("set PlayerDAO");
     }

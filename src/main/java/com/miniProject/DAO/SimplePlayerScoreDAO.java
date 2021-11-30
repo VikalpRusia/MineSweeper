@@ -1,15 +1,14 @@
 package com.miniProject.DAO;
 
 import com.miniProject.entity.Level;
+import com.miniProject.entity.Player;
 import com.miniProject.entity.PlayerScore;
+import com.miniProject.entity.PlayerScorePk;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.PriorityQueue;
 
 @Repository
 public class SimplePlayerScoreDAO implements PlayerScoreDAO {
@@ -22,26 +21,34 @@ public class SimplePlayerScoreDAO implements PlayerScoreDAO {
 
     @Transactional
     @Override
-    public PriorityQueue<PlayerScore> getTop10Players(Level level) {
+    public boolean saveScore(Player player, Level level, double time) {
         Session currentSession = sessionFactory.getCurrentSession();
-        Query<PlayerScore> query =
-                currentSession.createQuery("From PlayerScore p " +
-                        "where p.playerScorePk.level=:level order by time", PlayerScore.class);
-        query.setMaxResults(10);
-        query.setParameter("level", level);
-        return new PriorityQueue<>(query.getResultList());
+        PlayerScorePk pk = new PlayerScorePk(player, level);
+        PlayerScore playerScore = currentSession.get(PlayerScore.class, pk);
+        if (playerScore == null) {
+            PlayerScore ps = new PlayerScore(new PlayerScorePk(player, level), time);
+            currentSession.save(ps);
+        } else {
+            playerScore.addTime(time);
+            if (playerScore.getBestTime() == null || playerScore.getBestTime() > time) {
+                playerScore.setBestTime(time);
+            }
+        }
+        return true;
     }
 
     @Transactional
     @Override
-    public PriorityQueue<PlayerScore> getLeaderBoard(Level level, int page, int page_data) {
+    public boolean addTimeLoose(Player player, Level level, double time) {
         Session currentSession = sessionFactory.getCurrentSession();
-        Query<PlayerScore> query =
-                currentSession.createQuery("From PlayerScore p " +
-                        "where p.playerScorePk.level=:level order by time", PlayerScore.class);
-        query.setFirstResult((page - 1) * page_data);
-        query.setMaxResults(page_data);
-        query.setParameter("level", level);
-        return new PriorityQueue<>(query.getResultList());
+        PlayerScorePk pk = new PlayerScorePk(player, level);
+        PlayerScore playerScore = currentSession.get(PlayerScore.class, pk);
+        if (playerScore == null) {
+            playerScore = new PlayerScore(new PlayerScorePk(player, level));
+            currentSession.save(playerScore);
+        }
+        playerScore.addTime(time);
+        return true;
     }
+
 }
