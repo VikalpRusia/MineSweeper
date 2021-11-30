@@ -2,6 +2,7 @@ package com.miniProject.controller;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,6 @@ public class ScoreController {
         logger.atDebug().log("request body: {}", jsonString);
         JSONObject jsonObject = new JSONObject(jsonString);
         System.out.println(jsonString);
-        double time = jsonObject.getDouble("time");
+        JSONArray time = jsonObject.getJSONArray("time");
     }
 }

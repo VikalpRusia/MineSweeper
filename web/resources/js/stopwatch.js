@@ -9,6 +9,10 @@ class Stopwatch {
         return this.running;
     }
 
+    getTimeTaken() {
+        return this.times;
+    }
+
     reset() {
         this.times = [0, 0, 0];
         this.print()
@@ -45,9 +49,9 @@ class Stopwatch {
     }
 
     calculate(timestamp) {
-        const diff = timestamp - this.time;
+        const timeTaken = timestamp - this.time;
         // Hundredths of a second are 100 ms
-        this.times[2] += diff / 10;
+        this.times[2] += timeTaken / 10;
         // Seconds are 100 hundredths of a second
         if (this.times[2] >= 100) {
             this.times[1] += 1;

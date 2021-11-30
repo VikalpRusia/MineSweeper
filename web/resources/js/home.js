@@ -1394,10 +1394,10 @@ class Game {
             // Set the current timestamp for the animation
             this.finishedAt = now;
             stopwatch.stop();
-            console.log("Win at:", this.finishedAt);
+            console.log("Time taken: ", stopwatch.getTimeTaken());
 
             if (this.level !== LEVEL.CUSTOM) {
-                sendScore(this.finishedAt - this.startedAt)
+                sendScore()
                     .catch(error => console.log(error));
             }
         }
@@ -1459,12 +1459,12 @@ function settingUpLevel(level) {
     document.getElementById('options').classList.toggle('open');
     let bX, bY, mC;
     stopwatch.stop();
+    game.level = level;
     if (level === LEVEL.CUSTOM) {
         bX = constrain(parseInt(options.boardSizeX.value), 2, 128);
         bY = constrain(parseInt(options.boardSizeY.value), 2, 128);
         mC = constrain(parseInt(options.mineCount.value), 1, game.boardSize.x * game.boardSize.y - 2);
     } else {
-        game.level = level;
         bX = level.x;
         options.boardSizeX.value = level.x;
         bY = level.y;
@@ -1486,7 +1486,7 @@ function settingUpLevel(level) {
     game.setup();
 }
 
-async function sendScore(timeTaken) {
+async function sendScore() {
     return await fetch("score/collect", {
         method: "POST",
         headers: {
@@ -1494,7 +1494,7 @@ async function sendScore(timeTaken) {
             "Content-type": "application/json"
         },
         body: JSON.stringify({
-            time: timeTaken,
+            time: stopwatch.getTimeTaken(),
             level: game.level
         })
     });
