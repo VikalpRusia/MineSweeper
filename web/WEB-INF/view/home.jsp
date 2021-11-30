@@ -7,6 +7,7 @@
           href="${pageContext.request.contextPath}/resources/img/favicon.ico"
           type="image/x-icon"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/stopwatch.css">
 
 </head>
 <body>
@@ -51,6 +52,14 @@
         </div>
     </div>
 </div>
+<div>
+    <div id="canvasContainer">
+        <canvas id="canvas"></canvas>
+    </div>
+    <div id="stopwatch">
+        <div class="stopwatch"></div>
+    </div>
+</div>
 
 <script>
     window.canvasOptions = {
@@ -65,7 +74,7 @@
     /* requestAnimationFrame */
 </script>
 <!-- partial -->
+<script src="${pageContext.request.contextPath}/resources/js/stopwatch.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/home.js"></script>
-
 </body>
 </html>

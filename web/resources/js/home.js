@@ -50,6 +50,7 @@ let _defaultCanvasOptions = {
     width: null,
     height: null
 };
+let canvasContainer = document.getElementById('canvasContainer');
 
 let _canvasOptions = {};
 let canvas = document.getElementById('canvas');
@@ -196,8 +197,8 @@ function _draw(timestamp) {
 }
 
 function _resizeCanvas() {
-    width = canvas.width = _canvasOptions.width !== null ? _canvasOptions.width : window.innerWidth;
-    height = canvas.height = _canvasOptions.height !== null ? _canvasOptions.height : window.innerHeight;
+    width = canvas.width = _canvasOptions.width !== null ? _canvasOptions.width : canvasContainer.clientWidth;
+    height = canvas.height = _canvasOptions.height !== null ? _canvasOptions.height : canvasContainer.clientHeight;
     width_quarter = (width_half = width * HALF) * HALF;
     height_quarter = (height_half = height * HALF) * HALF;
     ctx.fillStyle = 'hsl(0, 0%, 100%)';
@@ -1021,8 +1022,8 @@ class Game {
         this.zoomLevel = 1;
         // Call reset within each cell
         this.cells.forEach(c => c.reset());
-        this.startedAt = performance.now();
-        console.log("Start time:", this.startedAt);
+        stopwatch.stop();
+        stopwatch.reset();
     }
 
     // Pick the board's mines
@@ -1317,6 +1318,11 @@ class Game {
         }
         // If there's an event (as e), check if it's a right-click and if the game is playing in normal mode
         else if (e && e.button === 2 && this.state === 1) {
+            if (!stopwatch.isRunning()) {
+                stopwatch.start();
+                this.startedAt = performance.now();
+                console.log("Start time:", this.startedAt);
+            }
             // Toggle the flag state using a bitwise XOR op
             cell.flagged ^= 1;
             // Set the current flagged cell count
@@ -1326,6 +1332,11 @@ class Game {
         }
         // If the cell is not flagged
         else if (!cell.flagged) {
+            if (!stopwatch.isRunning()) {
+                stopwatch.start();
+                this.startedAt = performance.now();
+                console.log("Start time:", this.startedAt);
+            }
             // Set the cell as uncovered
             cell.covered = null;
             // Make sure the game is now in full play mode
@@ -1360,6 +1371,7 @@ class Game {
             this.zoomLevel = 1;
             // Set the current timestamp for the animation
             this.finishedAt = now;
+            stopwatch.stop();
             // Get the final flagged, non-mine count
             this.flaggedCount = this.cells.filter(c => c.flagged && !c.mine).length;
 
@@ -1381,6 +1393,7 @@ class Game {
             this.zoomLevel = 1;
             // Set the current timestamp for the animation
             this.finishedAt = now;
+            stopwatch.stop();
             console.log("Win at:", this.finishedAt);
 
             if (this.level !== LEVEL.CUSTOM) {
@@ -1445,6 +1458,7 @@ function settingUpLevel(level) {
     }
     document.getElementById('options').classList.toggle('open');
     let bX, bY, mC;
+    stopwatch.stop();
     if (level === LEVEL.CUSTOM) {
         bX = constrain(parseInt(options.boardSizeX.value), 2, 128);
         bY = constrain(parseInt(options.boardSizeY.value), 2, 128);

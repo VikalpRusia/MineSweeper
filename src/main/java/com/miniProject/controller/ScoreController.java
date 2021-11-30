@@ -22,6 +22,6 @@ public class ScoreController {
         logger.atDebug().log("request body: {}", jsonString);
         JSONObject jsonObject = new JSONObject(jsonString);
         System.out.println(jsonString);
-        String time = jsonObject.getString("time");
+        double time = jsonObject.getDouble("time");
     }
 }

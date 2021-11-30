@@ -5,6 +5,18 @@ body {
     background-color: #92ccd3;
 }
 
+#canvasContainer {
+    float: left;
+    width: 60%;
+    height: 100vh;
+}
+
+#stopwatch {
+    float: right;
+    width: 40%;
+    height: 100vh;
+}
+
 .overlay {
     position: fixed;
     top: 0;
