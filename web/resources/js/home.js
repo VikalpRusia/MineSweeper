@@ -1212,7 +1212,7 @@ class Game {
             // Determine game win/lose text
             let message = this.state === 2 ? 'YOU LOSE' : 'YOU WIN!';
             // Text above the board
-            let y = -cellSize;
+            let y = -cellSize + 20;
             // The current time through the text animation
             let t = e - this.finishedAt;
             // The alpha value of the text, 1 by default
@@ -1226,19 +1226,19 @@ class Game {
                 a = ease.quad.inOut(t, 0, 1, 800);
             }
             // Set the main text font weight, font size, and font family
-            font(`800 ${cellSize * 1.6 * a}px sans-serif`);
+            font(`35px sans-serif`);
             // White text with a black stroke of 30% of the cellSize
             fillStyle(hsl(0, 0, 100, a));
             strokeStyle(hsl(0, 0, 0, a));
-            lineWidth(cellSize * 0.3);
+            lineWidth(30 * 0.3);
             // Stroke and fill the main text
             strokeText(message, centerX, y);
             fillText(message, centerX, y);
             // The lower text message
             message = 'Press space bar to reset';
             // Set the lower text font weight, font size, and font family
-            font(`800 ${cellSize * 0.8 * a}px sans-serif`);
-            lineWidth(cellSize * 0.3 * 0.8);
+            font(`25px sans-serif`);
+            lineWidth(25 * 0.3 * 0.8);
             // Flip the y offset by 80 percent and then add the total board height
             y = y * -0.8 + cellSize * boardSize.y;
             // Stroke and fill the lower text
