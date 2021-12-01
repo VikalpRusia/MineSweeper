@@ -1378,10 +1378,13 @@ class Game {
             if (this.level !== LEVEL.CUSTOM) {
                 sendScore('Loose').then(data => data.json()).then(resp => {
                     if (!resp.scoreRecorded) {
-                        alert("there is an error while connecting to server!")
+                        alert("Server not accepting your score!");
                     }
                 })
-                    .catch(error => console.log(error));
+                    .catch(error => {
+                        console.log(error);
+                        alert(error);
+                    });
             }
         }
         // For each selected cells
@@ -1406,10 +1409,13 @@ class Game {
             if (this.level !== LEVEL.CUSTOM) {
                 sendScore('Win').then(data => data.json()).then(resp => {
                     if (!resp.scoreRecorded) {
-                        alert("there is an error while connecting to server!")
+                        alert("Server not accepting your score!");
                     }
                 })
-                    .catch(error => console.log(error));
+                    .catch(error => {
+                        console.log(error);
+                        alert(error);
+                    });
             }
         }
     }
