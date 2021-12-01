@@ -72,6 +72,7 @@
         height: null
     };
     /* requestAnimationFrame */
+    const contextPath = "${pageContext.request.contextPath}";
 </script>
 <!-- partial -->
 <script src="${pageContext.request.contextPath}/resources/js/stopwatch.js"></script>

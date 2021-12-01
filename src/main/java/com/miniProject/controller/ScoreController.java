@@ -10,10 +10,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -31,6 +28,7 @@ public class ScoreController {
 
     @PostMapping("/collect")
     @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
     public String getScore(@RequestBody String jsonString, HttpSession session) {
         logger.atInfo().log("Request at: /score/collect");
         logger.atDebug().log("request body: {}", jsonString);

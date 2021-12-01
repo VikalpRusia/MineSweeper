@@ -1377,8 +1377,11 @@ class Game {
             console.log("Loosen at:", this.finishedAt);
             if (this.level !== LEVEL.CUSTOM) {
                 sendScore('Loose').then(data => data.json()).then(resp => {
-                    if (!resp.scoreRecorded) {
-                        alert("Server not accepting your score!");
+                    if (resp.scoreRecorded === 'false') {
+                        alert("Server not accepting your score!\n" +
+                            "As you are not verified Player !\n" +
+                            "Go login first!");
+                        window.location = contextPath;
                     }
                 })
                     .catch(error => {
@@ -1409,7 +1412,10 @@ class Game {
             if (this.level !== LEVEL.CUSTOM) {
                 sendScore('Win').then(data => data.json()).then(resp => {
                     if (!resp.scoreRecorded) {
-                        alert("Server not accepting your score!");
+                        alert("Server not accepting your score!\n" +
+                            "As you are not verified Player !\n" +
+                            "Go login first!");
+                        window.location = contextPath;
                     }
                 })
                     .catch(error => {
