@@ -70,7 +70,7 @@ body, html {
 
 .top3 .item .score:after {
     display: block;
-    content: "points";
+    content: "seconds";
     opacity: 0.5;
 }
 
@@ -145,7 +145,7 @@ body, html {
 
 .list .item .score:after {
     margin-right: 1rem;
-    content: "points";
+    content: "seconds";
     opacity: 0.5;
 }
 

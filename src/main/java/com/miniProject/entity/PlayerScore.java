@@ -9,14 +9,14 @@ public class PlayerScore implements Comparable<PlayerScore>, Externalizable {
 
     @Serial
     private static final long serialVersionUID = 1547236472549265528L;
-
     @EmbeddedId
     private PlayerScorePk playerScorePk;
-
-    @Column(name = "bestTime")
+    @Column(name = "bestTime", precision = 2)
     private Double bestTime;
     @Column(name = "totalTime")
     private Double totalTime;
+    @Column(name = "gamePlayed")
+    private int gamePlayed;
 
     public PlayerScore() {
     }
@@ -28,13 +28,14 @@ public class PlayerScore implements Comparable<PlayerScore>, Externalizable {
         this.gamePlayed = 1;
     }
 
-    @Column(name = "gamePlayed")
-    private int gamePlayed;
-
     public PlayerScore(PlayerScorePk playerScorePk) {
         this.playerScorePk = playerScorePk;
         this.totalTime = 0D;
         this.bestTime = null;
+    }
+
+    public PlayerScorePk getPlayerScorePk() {
+        return playerScorePk;
     }
 
     public Double getTotalTime() {

@@ -3,10 +3,10 @@ package com.miniProject.DAO;
 import com.miniProject.entity.Level;
 import com.miniProject.entity.PlayerScore;
 
-import java.util.PriorityQueue;
+import java.util.ArrayList;
 
 public interface TopScoreDAO {
-    PriorityQueue<PlayerScore> getTop10Players(Level level);
+    ArrayList<PlayerScore> getTop10Players(Level level);
 
-    PriorityQueue<PlayerScore> getLeaderBoard(Level level, int page, int page_data);
+    ArrayList<PlayerScore> getLeaderBoard(Level level, int page, int page_data);
 }

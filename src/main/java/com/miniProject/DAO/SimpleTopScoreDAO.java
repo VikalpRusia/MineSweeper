@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.PriorityQueue;
+import java.util.ArrayList;
 
 @Repository
 public class SimpleTopScoreDAO implements TopScoreDAO {
@@ -22,19 +22,19 @@ public class SimpleTopScoreDAO implements TopScoreDAO {
 
     @Transactional
     @Override
-    public PriorityQueue<PlayerScore> getTop10Players(Level level) {
+    public ArrayList<PlayerScore> getTop10Players(Level level) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query<PlayerScore> query =
                 currentSession.createQuery("From PlayerScore p " +
-                        "where p.playerScorePk.level=:level order by time", PlayerScore.class);
+                        "where p.playerScorePk.level=:level and p.bestTime is not null order by p.bestTime", PlayerScore.class);
         query.setMaxResults(10);
         query.setParameter("level", level);
-        return new PriorityQueue<>(query.getResultList());
+        return new ArrayList<>(query.getResultList());
     }
 
     @Transactional
     @Override
-    public PriorityQueue<PlayerScore> getLeaderBoard(Level level, int page, int page_data) {
+    public ArrayList<PlayerScore> getLeaderBoard(Level level, int page, int page_data) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query<PlayerScore> query =
                 currentSession.createQuery("From PlayerScore p " +
@@ -42,6 +42,6 @@ public class SimpleTopScoreDAO implements TopScoreDAO {
         query.setFirstResult((page - 1) * page_data);
         query.setMaxResults(page_data);
         query.setParameter("level", level);
-        return new PriorityQueue<>(query.getResultList());
+        return new ArrayList<>(query.getResultList());
     }
 }
