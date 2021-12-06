@@ -1318,10 +1318,8 @@ class Game {
         }
         // If there's an event (as e), check if it's a right-click and if the game is playing in normal mode
         else if (e && e.button === 2 && this.state === 1) {
-            if (!stopwatch.isRunning()) {
-                stopwatch.start();
-                this.startedAt = performance.now();
-                console.log("Start time:", this.startedAt);
+            if (!checkStopwatchStarted()) {
+                return;
             }
             // Toggle the flag state using a bitwise XOR op
             cell.flagged ^= 1;
@@ -1332,10 +1330,8 @@ class Game {
         }
         // If the cell is not flagged
         else if (!cell.flagged) {
-            if (!stopwatch.isRunning()) {
-                stopwatch.start();
-                this.startedAt = performance.now();
-                console.log("Start time:", this.startedAt);
+            if (!checkStopwatchStarted()) {
+                return;
             }
             // Set the cell as uncovered
             cell.covered = null;
@@ -1376,7 +1372,7 @@ class Game {
             this.flaggedCount = this.cells.filter(c => c.flagged && !c.mine).length;
             console.log("Loosen at:", this.finishedAt);
             if (this.level !== LEVEL.CUSTOM) {
-                sendScore('Loose').then(data => data.json()).then(resp => {
+                sendScore('Loose').then(resp => {
                     if (resp.scoreRecorded === 'false') {
                         alert("Server not accepting your score!\n" +
                             "As you are not verified Player !\n" +
@@ -1410,7 +1406,7 @@ class Game {
             console.log("Time taken: ", stopwatch.getTimeTaken());
 
             if (this.level !== LEVEL.CUSTOM) {
-                sendScore('Win').then(data => data.json()).then(resp => {
+                sendScore('Win').then(resp => {
                     if (!resp.scoreRecorded) {
                         alert("Server not accepting your score!\n" +
                             "As you are not verified Player !\n" +
@@ -1510,7 +1506,7 @@ function settingUpLevel(level) {
 }
 
 async function sendScore(result) {
-    return await fetch("score/collect", {
+    return await fetch(contextPath + "/score/collect", {
         method: "POST",
         headers: {
             "charset": "UTF-8",
@@ -1521,5 +1517,37 @@ async function sendScore(result) {
             time: stopwatch.getTimeTaken(),
             level: game.level
         })
-    });
+    }).then(data => data.json());
+}
+
+async function isUserValid() {
+    return await fetch(contextPath + "/user-verified", {
+        method: "GET",
+        headers: {
+            "charset": "UTF-8",
+            "Content-type": "application/json"
+        }
+    }).then(data => data.json());
+}
+
+function checkStopwatchStarted() {
+    if (!stopwatch.isRunning()) {
+        stopwatch.start();
+        this.startedAt = performance.now();
+        console.log("Start time:", this.startedAt);
+        isUserValid().then(resp => {
+            if (resp.signedInUser === 'false') {
+                alert("Log in first");
+                window.location = contextPath;
+                return false;
+            }
+        })
+            .catch(error => {
+                console.log(error);
+                alert(error);
+                return false;
+            });
+        return true;
+    }
+    return true;
 }

@@ -59,4 +59,13 @@ public class EntryController {
             return "{\"validUser\": \"true\"}";
         }
     }
+
+    @ResponseBody
+    @GetMapping("/user-verified")
+    public String userStillLoggedIn(HttpSession session) {
+        if (session.getAttribute("player") != null) {
+            return "{\"signedInUser\": \"true\"}";
+        }
+        return "{\"signedInUser\": \"false\"}";
+    }
 }
