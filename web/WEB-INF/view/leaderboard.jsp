@@ -9,11 +9,24 @@
           href="${pageContext.request.contextPath}/resources/img/favicon.ico"
           type="image/x-icon"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/leaderboard.css">
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/navbar.css">
 </head>
 <body>
 <!-- partial:index.partial.html -->
-
+<div class="navbar">
+    <div class="left">
+        <ul>
+            <li><a href="${pageContext.request.contextPath}/home/">Home</a></li>
+            <li><a class="active">Leaderboard</a></li>
+            <li><a href="${pageContext.request.contextPath}/show-feedback-form">Feedback</a></li>
+        </ul>
+    </div>
+    <div class="right">
+        <ul>
+            <li><a href="${pageContext.request.contextPath}/log-out">Log Out</a></li>
+        </ul>
+    </div>
+</div>
 <div class="center">
     <div class="top3">
         <c:if test="${list.size()>1}">

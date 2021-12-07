@@ -58,6 +58,7 @@
         <ul>
             <li><a class="active">Home</a></li>
             <li><a onclick="redirectToLeaderboard()">Leaderboard</a></li>
+            <li><a href="${pageContext.request.contextPath}/show-feedback-form">Feedback</a></li>
         </ul>
     </div>
     <div class="right">

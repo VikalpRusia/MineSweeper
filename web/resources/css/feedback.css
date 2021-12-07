@@ -17,6 +17,7 @@
     padding: 0;
     list-style: none;
     display: flex;
+    align-items: center;
 }
 
 .feedback label {
@@ -429,8 +430,8 @@ body {
     display: flex;
     font-family: "Inter", Arial;
     justify-content: center;
-    align-items: center;
     background: #181820;
+    margin: 0;
 }
 
 body .twitter {

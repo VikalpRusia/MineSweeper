@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,9 +18,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
-@RequestMapping("/log-out")
-public class ExitController {
-    private static final Logger logger = LogManager.getLogger(ExitController.class);
+public class FeedbackExitController {
+    private static final Logger logger = LogManager.getLogger(FeedbackExitController.class);
     PlayerDAO playerDAO;
     private Player player;
 
@@ -29,16 +29,17 @@ public class ExitController {
         logger.atDebug().log("PlayerDAO set");
     }
 
-    @GetMapping()
+    @GetMapping("/log-out")
     public String logOut(HttpServletResponse response, HttpServletRequest request, HttpSession session) throws IOException {
         logger.atInfo().log("Request at /log-out");
         if (session.getAttribute("player") instanceof Player p) {
             player = p;
             session.invalidate();
-            return "feedback";
+            if (p.getFeedback() == null) {
+                return "feedback";
+            }
         }
-        response.sendRedirect(request.getContextPath() + "/");
-        return null;
+        return "redirect:/";
     }
 
     @ResponseBody
@@ -65,5 +66,16 @@ public class ExitController {
             player.setFeedback(feedback);
             playerDAO.updatePlayer(player);
         }
+    }
+
+    @GetMapping("/show-feedback-form")
+    public String showFeedback(HttpSession session, Model model) {
+        logger.atInfo().log("Request at /show-feedback-form");
+        if (session.getAttribute("player") instanceof Player p) {
+            player = p;
+            model.addAttribute("loggedIn", true);
+            return "feedback";
+        }
+        return "redirect:/";
     }
 }

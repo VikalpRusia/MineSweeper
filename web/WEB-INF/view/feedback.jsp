@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +8,27 @@
     <link rel="shortcut icon"
           href="${pageContext.request.contextPath}/resources/img/favicon.ico"
           type="image/x-icon"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/feedback.css">
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/navbar.css">
 </head>
 <body>
 <!-- partial:index.partial.html -->
+<c:if test="${loggedIn==true}">
+    <div class="navbar">
+        <div class="left">
+            <ul>
+                <li><a href="${pageContext.request.contextPath}/home/">Home</a></li>
+                <li><a href="${pageContext.request.contextPath}/leaderboard/">Leaderboard</a></li>
+                <li><a class="active">Feedback</a></li>
+            </ul>
+        </div>
+        <div class="right">
+            <ul>
+                <li><a href="${pageContext.request.contextPath}/log-out">Log Out</a></li>
+            </ul>
+        </div>
+    </div>
+</c:if>
 <div class="feedback">
     <label class="angry">
         <input type="radio" value="ANGRY" name="feedback"/>
@@ -86,5 +102,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
         integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
         crossorigin="anonymous"></script>
+<script>
+    const contextPath = "${pageContext.request.contextPath}";
+</script>
 </body>
 </html>
