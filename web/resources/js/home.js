@@ -1551,3 +1551,14 @@ function checkStopwatchStarted() {
     }
     return true;
 }
+
+function redirectToLeaderboard() {
+    let url = contextPath + "/leaderboard";
+    if (game.level === LEVEL.CUSTOM) {
+        alert("No leaderboard for custom levels");
+        url += "/" + LEVEL.EASY.levelName;
+    } else {
+        url += "/" + game.level.levelName;
+    }
+    window.location = url;
+}

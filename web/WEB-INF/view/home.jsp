@@ -8,6 +8,7 @@
           type="image/x-icon"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/stopwatch.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/navbar.css">
 
 </head>
 <body>
@@ -50,6 +51,19 @@
                 </label>
             </div>
         </div>
+    </div>
+</div>
+<div class="navbar">
+    <div class="left">
+        <ul>
+            <li><a class="active">Home</a></li>
+            <li><a onclick="redirectToLeaderboard()">Leaderboard</a></li>
+        </ul>
+    </div>
+    <div class="right">
+        <ul>
+            <li><a href="${pageContext.request.contextPath}/log-out">Log Out</a></li>
+        </ul>
     </div>
 </div>
 <div>

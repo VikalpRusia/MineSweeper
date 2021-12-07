@@ -8,7 +8,6 @@
     <link rel="shortcut icon"
           href="${pageContext.request.contextPath}/resources/img/favicon.ico"
           type="image/x-icon"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/leaderboard.css">
 
 </head>
@@ -91,6 +90,5 @@
 
 
 <!-- partial -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
 </body>
 </html>

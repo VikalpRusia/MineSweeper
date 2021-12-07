@@ -6,6 +6,7 @@ body, html {
     overflow: hidden;
     background: #4B4168;
     color: #333;
+    line-height: 1.15;
 }
 
 .center {

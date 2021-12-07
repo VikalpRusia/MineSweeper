@@ -1,0 +1,46 @@
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    top: 0;
+}
+
+.navbar {
+    position: fixed;
+    width: 100vw;
+    background-color: #333;
+}
+
+.navbar .left li {
+    float: left;
+}
+
+.navbar .right li {
+    float: right;
+}
+
+.navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 1.4vh 16px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.navbar li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.navbar .active {
+    background-color: #04AA6D;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
