@@ -1,5 +1,5 @@
 .feedback {
-    --normal: #414052;
+    --normal: hsl(0, 0%, 95%);
     --normal-shadow: #313140;
     --normal-shadow-top: #4c4b60;
     --normal-mouth: #2e2e3d;
@@ -11,7 +11,7 @@
     --active-eye: #313036;
     --active-tear: #76b5e7;
     --active-shadow-angry: #e94f1d;
-    --hover: #454456;
+    --hover: #92ccd3;
     --hover-shadow-top: #59586b;
     margin: 0;
     padding: 0;
@@ -430,7 +430,7 @@ body {
     display: flex;
     font-family: "Inter", Arial;
     justify-content: center;
-    background: #181820;
+    background: hsl(186, 42%, 24%);
     margin: 0;
 }
 

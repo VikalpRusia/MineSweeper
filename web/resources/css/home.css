@@ -63,7 +63,7 @@ body {
 }
 
 #options.open {
-    background: black;
+    background: #333;
     transform: scale(1);
 }
 
@@ -80,7 +80,7 @@ body {
 }
 
 #options #title {
-    background: hsl(220, 100%, 70%);
+    background: hsl(186, 42%, 24%);
     padding: 0.25em 0.5em;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -109,10 +109,12 @@ body {
 }
 
 #options .option label input[type=button], #options .option label input[type=number], #options .option label input[type=text] {
-    background: #242424;
+    background: #92ccd3;
+    color: hsl(186, 42%, 20%);;
     border: 1px solid #2e2e2e;
     padding: 0.15em 0.6em;
     border-radius: 2px;
+    font-weight: 600;
 }
 
 #options .option label input[type=button] {

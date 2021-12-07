@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
 
 #stopwatch {
-    background: #333;
-    color: #bbb;
+    color: hsl(186, 42%, 24%);
     font-family: Aldrich;
 }
 
