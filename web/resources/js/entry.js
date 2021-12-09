@@ -1,7 +1,25 @@
 const sign_in_btn = document.querySelector("#sign-in-btn");
 const sign_up_btn = document.querySelector("#sign-up-btn");
 const container = document.querySelector(".container");
+const userName = document.querySelector('#userName');
+const userNameSuggestion = document.querySelector('#userNameSuggestion');
+const submitSignUpButton = document.querySelector('#submitSignUpButton');
 
+submitSignUpButton.disabled = true;
+userName.addEventListener("keyup", () => {
+    console.log('Key down on username', userName.value);
+    checkUserNameExists(userName.value).then(resp => {
+        if (resp.present === true) {
+            userNameSuggestion.classList.add('error');
+            submitSignUpButton.disabled = true;
+            userNameSuggestion.innerHTML = "Username already taken"
+        } else {
+            userNameSuggestion.classList.remove('error');
+            submitSignUpButton.disabled = false;
+            userNameSuggestion.innerHTML = "Username available";
+        }
+    }).catch(err => console.log(err));
+});
 sign_up_btn.addEventListener("click", () => {
     container.classList.add("sign-up-mode");
 });
@@ -64,9 +82,9 @@ function validateSignInForm() {
         form.password.setCustomValidity('');
     }
     if (form.reportValidity()) {
-        postMan(form.userName.value, form.password.value).then(resp => {
+        verifyLogIn(form.userName.value, form.password.value).then(resp => {
             console.log(resp);
-            if (resp.validUser === "true") {
+            if (resp.validUser === true) {
                 window.location = "home";
             } else {
                 alert("Invalid Username or password")
@@ -76,7 +94,7 @@ function validateSignInForm() {
     return false;
 }
 
-async function postMan(userName, password) {
+async function verifyLogIn(userName, password) {
     return await fetch("verify-log-in", {
         method: "POST",
         headers: {
@@ -86,6 +104,20 @@ async function postMan(userName, password) {
         body: JSON.stringify({
             userName: userName,
             password: password
+        })
+    })
+        .then(data => data.json());
+}
+
+async function checkUserNameExists(userName) {
+    return await fetch("sign-up-form/is-username-available", {
+        method: "POST",
+        headers: {
+            "charset": "UTF-8",
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+            userName: userName,
         })
     })
         .then(data => data.json());

@@ -58,4 +58,15 @@ public class SimplePlayerDAO implements PlayerDAO {
         Session currentSession = sessionFactory.getCurrentSession();
         currentSession.update(player);
     }
+
+    @Transactional
+    @Override
+    public boolean checkUserNameExists(String userName) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query<Player> query =
+                currentSession.createQuery(
+                        "FROM Player p WHERE p.userName=:username", Player.class);
+        query.setParameter("username", userName);
+        return query.uniqueResult() != null;
+    }
 }

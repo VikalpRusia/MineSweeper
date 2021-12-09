@@ -8,7 +8,10 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
@@ -36,36 +39,30 @@ public class EntryController {
         }
     }
 
-    @PostMapping("/sign-up-form")
-    public String processRegistrationForm(@ModelAttribute("newPlayer") Player newPlayer) {
-        playerDAO.savePlayer(newPlayer);
-        logger.atDebug().log("Registered new player");
-        return "entry";
-    }
-
     @ResponseBody
     @PostMapping("/verify-log-in")
     public String verifyLogIn(@RequestBody String jsonString, HttpSession session) {
         JSONObject jsonObject = new JSONObject(jsonString);
+        JSONObject returnJson = new JSONObject();
         String userName = jsonObject.getString("userName");
         String password = jsonObject.getString("password");
         Player player = playerDAO.isPlayerRegistered(userName, password);
         if (player == null) {
             logger.atWarn().log("User not registered or using invalid password");
-            return "{\"validUser\": \"false\"}";
+            returnJson.put("validUser", false);
         } else {
             session.setAttribute("player", player);
             logger.atDebug().log("Player stored in session");
-            return "{\"validUser\": \"true\"}";
+            returnJson.put("validUser", true);
         }
+        return returnJson.toString();
     }
 
     @ResponseBody
     @GetMapping("/user-verified")
     public String userStillLoggedIn(HttpSession session) {
-        if (session.getAttribute("player") != null) {
-            return "{\"signedInUser\": \"true\"}";
-        }
-        return "{\"signedInUser\": \"false\"}";
+        JSONObject returnJson = new JSONObject();
+        returnJson.put("signedInUser", session.getAttribute("player") != null);
+        return returnJson.toString();
     }
 }

@@ -30,6 +30,7 @@ public class ScoreController {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public String getScore(@RequestBody String jsonString, HttpSession session) {
+        JSONObject returnJson = new JSONObject();
         logger.atInfo().log("Request at: /score/collect");
         logger.atDebug().log("request body: {}", jsonString);
         if (session.getAttribute("player") instanceof Player player) {
@@ -45,10 +46,11 @@ public class ScoreController {
             } else {
                 playerScoreDAO.addTimeLoose(player, level, timeTaken);
             }
-            return "{\"scoreRecorded\": \"true\"}";
+            returnJson.put("scoreRecorded", true);
         } else {
             logger.atWarn().log("player not authorized");
-            return "{\"scoreRecorded\": \"false\"}";
+            returnJson.put("scoreRecorded", false);
         }
+        return returnJson.toString();
     }
 }

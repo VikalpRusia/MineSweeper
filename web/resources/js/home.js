@@ -1373,7 +1373,7 @@ class Game {
             console.log("Loosen at:", this.finishedAt);
             if (this.level !== LEVEL.CUSTOM) {
                 sendScore('Loose').then(resp => {
-                    if (resp.scoreRecorded === 'false') {
+                    if (resp.scoreRecorded === false) {
                         alert("Server not accepting your score!\n" +
                             "As you are not verified Player !\n" +
                             "Go login first!");
@@ -1407,7 +1407,7 @@ class Game {
 
             if (this.level !== LEVEL.CUSTOM) {
                 sendScore('Win').then(resp => {
-                    if (!resp.scoreRecorded) {
+                    if (resp.scoreRecorded === false) {
                         alert("Server not accepting your score!\n" +
                             "As you are not verified Player !\n" +
                             "Go login first!");
@@ -1536,7 +1536,7 @@ function checkStopwatchStarted() {
         this.startedAt = performance.now();
         console.log("Start time:", this.startedAt);
         isUserValid().then(resp => {
-            if (resp.signedInUser === 'false') {
+            if (resp.signedInUser === false) {
                 alert("Log in first");
                 window.location = contextPath;
                 return false;

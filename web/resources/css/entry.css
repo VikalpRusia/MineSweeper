@@ -402,3 +402,11 @@ form.sign-in-form {
         left: 50%;
     }
 }
+
+.error {
+    color: red !important;
+}
+
+.valid {
+    color: darkgreen;
+}
