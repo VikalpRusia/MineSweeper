@@ -1,31 +1,48 @@
-const sign_in_btn = document.querySelector("#sign-in-btn");
-const sign_up_btn = document.querySelector("#sign-up-btn");
-const container = document.querySelector(".container");
-const userName = document.querySelector('#userName');
-const userNameSuggestion = document.querySelector('#userNameSuggestion');
-const submitSignUpButton = document.querySelector('#submitSignUpButton');
+const sign_in_btn = $("#sign-in-btn");
+const sign_up_btn = $("#sign-up-btn");
+const container = $(".container");
+const userName = $('#userName');
+const userNameSuggestion = $('#userNameSuggestion');
+const submitSignUpButton = $('#submitSignUpButton');
+const signUpForm = $('#signUpForm');
 
+signUpForm.submit((event) => {
+    event.preventDefault();
+    console.log(event);
+    if (signUpForm.get(0).reportValidity()) {
+        submitSignUpForm(signUpForm).then(() => {
+            alert("You are now registered !");
+            sign_in_btn.click();
+        }).catch(err => {
+            console.log(err);
+            alert(err);
+        });
+    }
+});
 submitSignUpButton.disabled = true;
-userName.addEventListener("keyup", () => {
-    console.log('Key down on username', userName.value);
-    checkUserNameExists(userName.value).then(resp => {
+userName.keyup(() => {
+    console.log('Key down on username', userName.val());
+    checkUserNameExists(userName.val()).then(resp => {
         if (resp.present === true) {
-            userNameSuggestion.classList.add('error');
+            userNameSuggestion.addClass('error');
             submitSignUpButton.disabled = true;
-            userNameSuggestion.innerHTML = "Username already taken"
+            userNameSuggestion.html("Username already taken");
         } else {
-            userNameSuggestion.classList.remove('error');
+            userNameSuggestion.removeClass('error');
             submitSignUpButton.disabled = false;
-            userNameSuggestion.innerHTML = "Username available";
+            userNameSuggestion.html("Username available");
         }
-    }).catch(err => console.log(err));
+    }).catch(err => {
+        console.log(err);
+        alert(err);
+    });
 });
-sign_up_btn.addEventListener("click", () => {
-    container.classList.add("sign-up-mode");
+sign_up_btn.click(() => {
+    container.addClass("sign-up-mode");
 });
 
-sign_in_btn.addEventListener("click", () => {
-    container.classList.remove("sign-up-mode");
+sign_in_btn.click(() => {
+    container.removeClass("sign-up-mode");
 });
 
 function validateSignUpForm() {
@@ -105,6 +122,18 @@ async function verifyLogIn(userName, password) {
             userName: userName,
             password: password
         })
+    })
+        .then(data => data.json());
+}
+
+async function submitSignUpForm(form) {
+    return await fetch(form.attr('action'), {
+        method: "POST",
+        headers: {
+            "charset": "UTF-8",
+            "Content-type": "application/x-www-form-urlencoded"
+        },
+        body: form.serialize()
     })
         .then(data => data.json());
 }

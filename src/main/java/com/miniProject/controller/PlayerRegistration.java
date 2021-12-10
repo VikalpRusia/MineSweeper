@@ -20,11 +20,14 @@ public class PlayerRegistration {
         this.playerDAO = playerDAO;
     }
 
+    @ResponseBody
     @PostMapping()
     public String processRegistrationForm(@ModelAttribute("newPlayer") Player newPlayer) {
+        JSONObject jsonObject = new JSONObject();
         playerDAO.savePlayer(newPlayer);
+        jsonObject.put("success", true);
         logger.atDebug().log("Registered new player");
-        return "entry";
+        return jsonObject.toString();
     }
 
     @ResponseBody
