@@ -177,3 +177,7 @@ body, html {
 #sidenav .active {
     background-color: #04AA6D;
 }
+
+#sidenav a:hover:not(.active) {
+    background-color: #111;
+}

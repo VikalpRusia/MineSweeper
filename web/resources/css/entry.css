@@ -410,3 +410,7 @@ form.sign-in-form {
 .valid {
     color: darkgreen;
 }
+
+.content p {
+    font-size: 4vh;
+}

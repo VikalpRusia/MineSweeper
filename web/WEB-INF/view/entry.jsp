@@ -75,7 +75,7 @@
     <div class="panels-container">
         <div class="panel left-panel">
             <div class="content">
-                <h3>New here ?</h3>
+                <h2>New here ?</h2>
                 <p>
                     Join Minesweeper today.
                 </p>
@@ -87,7 +87,7 @@
         </div>
         <div class="panel right-panel">
             <div class="content">
-                <h3>One of us ?</h3>
+                <h2>One of us ?</h2>
                 <p>
                     Sign in to Minesweeper
                 </p>

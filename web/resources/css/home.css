@@ -15,8 +15,7 @@ body {
 #stopwatch {
     float: right;
     width: 22%;
-    height: 95.2vh;
-    margin-top: 4.8vh;
+    height: 100vh;
 }
 
 .overlay {
