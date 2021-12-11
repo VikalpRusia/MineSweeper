@@ -27,6 +27,11 @@
         </ul>
     </div>
 </div>
+<div id="sidenav">
+    <a id="EASY" href="${pageContext.request.contextPath}/leaderboard/EASY">EASY</a>
+    <a id="MEDIUM" href="${pageContext.request.contextPath}/leaderboard/MEDIUM">MEDIUM</a>
+    <a id="HARD" href="${pageContext.request.contextPath}/leaderboard/HARD">HARD</a>
+</div>
 <div class="center">
     <div class="top3">
         <c:if test="${list.size()>1}">
@@ -103,5 +108,6 @@
 
 
 <!-- partial -->
+<script src="${pageContext.request.contextPath}/resources/js/leaderboard.js"></script>
 </body>
 </html>
