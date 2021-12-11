@@ -4,3 +4,5 @@ window.addEventListener('load', () => {
     );
     activeButton.classList.add("active");
 });
+const leaderboard_btn = document.getElementById('leaderboardButton');
+leaderboard_btn.classList.add('active', 'disabledbtn');

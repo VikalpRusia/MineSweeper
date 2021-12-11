@@ -45,3 +45,7 @@
 .right {
     float: right;
 }
+
+.disabledbtn {
+    pointer-events: none;
+}

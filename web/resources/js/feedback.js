@@ -20,3 +20,5 @@ window.addEventListener("load", async function () {
         })
         .catch(error => console.error(error));
 });
+const feedback_btn = document.getElementById('feedbackButton');
+feedback_btn.classList.add('active', 'disabledbtn');

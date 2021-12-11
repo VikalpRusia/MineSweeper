@@ -9,25 +9,11 @@
           href="${pageContext.request.contextPath}/resources/img/favicon.ico"
           type="image/x-icon"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/feedback.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/navbar.css">
 </head>
 <body>
 <!-- partial:index.partial.html -->
 <c:if test="${loggedIn==true}">
-    <div class="navbar">
-        <div class="left">
-            <ul>
-                <li><a href="${pageContext.request.contextPath}/home/">Home</a></li>
-                <li><a href="${pageContext.request.contextPath}/leaderboard/">Leaderboard</a></li>
-                <li><a class="active">Feedback</a></li>
-            </ul>
-        </div>
-        <div class="right">
-            <ul>
-                <li><a href="${pageContext.request.contextPath}/log-out">Log Out</a></li>
-            </ul>
-        </div>
-    </div>
+    <jsp:include page="navbar.jsp"/>
 </c:if>
 <div class="feedback">
     <label class="angry">

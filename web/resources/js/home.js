@@ -1562,3 +1562,12 @@ function redirectToLeaderboard() {
     }
     window.location = url;
 }
+
+const home_btn = document.getElementById('homeButton');
+home_btn.classList.add('active', 'disabledbtn');
+
+const leaderboard_btn = document.getElementById('leaderboardButton');
+leaderboard_btn.addEventListener('click', (event) => {
+    event.preventDefault();
+    redirectToLeaderboard();
+});
