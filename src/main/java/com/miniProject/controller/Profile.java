@@ -8,24 +8,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 
 @Controller
-@RequestMapping("/home")
-public class HomeController {
-    private static final Logger logger = LogManager.getLogger(HomeController.class);
+@RequestMapping("/profile")
+public class Profile {
+    private static final Logger logger = LogManager.getLogger(Profile.class);
 
-
-    @GetMapping("")
-    public String homePage(HttpSession session) throws IOException {
+    @GetMapping()
+    public String getProfilePage(HttpSession session) {
         logger.atInfo().log("Request at /home");
         if (session.getAttribute("player") instanceof Player) {
-            return "home";
+            return "profile";
         } else {
             logger.atWarn().log("User not logged in");
             logger.atInfo().log("redirecting to: " + "/");
             return "redirect:/";
         }
-
     }
 }

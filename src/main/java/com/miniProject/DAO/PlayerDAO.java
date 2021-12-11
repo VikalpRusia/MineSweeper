@@ -17,4 +17,6 @@ public interface PlayerDAO {
     void updatePlayer(Player player);
 
     boolean checkUserNameExists(String userName);
+
+    boolean checkEmailExists(String userName);
 }

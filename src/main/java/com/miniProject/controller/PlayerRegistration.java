@@ -6,10 +6,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping("/sign-up-form")
 public class PlayerRegistration {
     private static final Logger logger = LogManager.getLogger(PlayerRegistration.class);
@@ -20,7 +19,6 @@ public class PlayerRegistration {
         this.playerDAO = playerDAO;
     }
 
-    @ResponseBody
     @PostMapping()
     public String processRegistrationForm(@ModelAttribute("newPlayer") Player newPlayer) {
         JSONObject jsonObject = new JSONObject();
@@ -30,7 +28,6 @@ public class PlayerRegistration {
         return jsonObject.toString();
     }
 
-    @ResponseBody
     @PostMapping("/is-username-available")
     public String isUsernameAvailable(@RequestBody String jsonString) {
         JSONObject returnJson = new JSONObject();
@@ -40,4 +37,12 @@ public class PlayerRegistration {
         return returnJson.toString();
     }
 
+    @PostMapping("/is-email-available")
+    public String isEmailAvailable(@RequestBody String jsonString) {
+        JSONObject returnJson = new JSONObject();
+        JSONObject jsonObject = new JSONObject(jsonString);
+        String userName = jsonObject.getString("email");
+        returnJson.put("present", playerDAO.checkEmailExists(userName));
+        return returnJson.toString();
+    }
 }

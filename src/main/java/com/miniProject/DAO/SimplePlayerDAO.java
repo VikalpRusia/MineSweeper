@@ -69,4 +69,15 @@ public class SimplePlayerDAO implements PlayerDAO {
         query.setParameter("username", userName);
         return query.uniqueResult() != null;
     }
+
+    @Transactional
+    @Override
+    public boolean checkEmailExists(String email) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query<Player> query =
+                currentSession.createQuery(
+                        "FROM Player p WHERE p.email=:email", Player.class);
+        query.setParameter("email", email);
+        return query.uniqueResult() != null;
+    }
 }

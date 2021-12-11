@@ -55,6 +55,12 @@
                     <form:input path="fullName" placeholder="Name" oninput="this.setCustomValidity('')"/>
                 </div>
                 <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <form:input id='email' path="email" placeholder="Email"
+                                oninput="this.setCustomValidity('')"/>
+                </div>
+                <p id="emailSuggestion" class="error valid"></p>
+                <div class="input-field">
                     <i class="fas fa-lock"></i>
                     <form:password path="password" placeholder="Password" oninput="this.setCustomValidity('')"/>
                 </div>

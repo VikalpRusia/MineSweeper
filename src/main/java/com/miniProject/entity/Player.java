@@ -26,6 +26,17 @@ public class Player implements Externalizable {
     @Column
     private Feedback feedback;
 
+    @Column(name = "email", unique = true)
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getImagePath() {
         return imagePath;
     }

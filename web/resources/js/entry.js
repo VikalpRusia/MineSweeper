@@ -5,7 +5,10 @@ const userName = $('#userName');
 const userNameSuggestion = $('#userNameSuggestion');
 const submitSignUpButton = $('#submitSignUpButton');
 const signUpForm = $('#signUpForm');
-
+const email = $('#email')
+const emailSuggestion = $('#emailSuggestion');
+let validEmail = false;
+let validUsername = false;
 signUpForm.submit((event) => {
     event.preventDefault();
     console.log(event);
@@ -19,18 +22,42 @@ signUpForm.submit((event) => {
         });
     }
 });
-submitSignUpButton.disabled = true;
 userName.keyup(() => {
     console.log('Key down on username', userName.val());
     checkUserNameExists(userName.val()).then(resp => {
         if (resp.present === true) {
             userNameSuggestion.addClass('error');
-            submitSignUpButton.disabled = true;
+            submitSignUpButton.prop('disabled', true);
+            validUsername = false;
             userNameSuggestion.html("Username already taken");
         } else {
             userNameSuggestion.removeClass('error');
-            submitSignUpButton.disabled = false;
             userNameSuggestion.html("Username available");
+            validUsername = true;
+            if (validUsername === true && validEmail === true) {
+                submitSignUpButton.prop('disabled', false);
+            }
+        }
+    }).catch(err => {
+        console.log(err);
+        alert(err);
+    });
+});
+email.keyup(() => {
+    console.log('Key down on email', email.val());
+    checkEmailExists(email.val()).then(resp => {
+        if (resp.present === true) {
+            emailSuggestion.addClass('error');
+            submitSignUpButton.prop('disabled', true);
+            validEmail = false;
+            emailSuggestion.html("Email already in use");
+        } else {
+            emailSuggestion.removeClass('error');
+            emailSuggestion.html("Email available");
+            validEmail = true;
+            if (validUsername === true && validEmail === true) {
+                submitSignUpButton.prop('disabled', false);
+            }
         }
     }).catch(err => {
         console.log(err);
@@ -66,6 +93,14 @@ function validateSignUpForm() {
         form.fullName.setCustomValidity('Please provide your Name !');
     } else {
         form.fullName.setCustomValidity('');
+    }
+    if (form.email.value == null || form.email.value.trim() === '') {
+        console.error("Email is empty");
+        form.email.setCustomValidity('Please provide your Email !');
+    } else if (!form.email.value.match(".+@.+")) {
+        form.email.setCustomValidity('Please enter valid Email !');
+    } else {
+        form.email.setCustomValidity('');
     }
     if (form.password.value == null || form.password.value === '') {
         console.error("Password is empty");
@@ -147,6 +182,20 @@ async function checkUserNameExists(userName) {
         },
         body: JSON.stringify({
             userName: userName,
+        })
+    })
+        .then(data => data.json());
+}
+
+async function checkEmailExists(email) {
+    return await fetch("sign-up-form/is-email-available", {
+        method: "POST",
+        headers: {
+            "charset": "UTF-8",
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+            email: email,
         })
     })
         .then(data => data.json());
