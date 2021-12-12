@@ -26,13 +26,11 @@ userName.keyup(() => {
     console.log('Key down on username', userName.val());
     checkUserNameExists(userName.val()).then(resp => {
         if (resp.present === true) {
-            userNameSuggestion.addClass('error');
             submitSignUpButton.prop('disabled', true);
             validUsername = false;
             userNameSuggestion.html("Username already taken");
         } else {
-            userNameSuggestion.removeClass('error');
-            userNameSuggestion.html("Username available");
+            userNameSuggestion.html("");
             validUsername = true;
             if (validUsername === true && validEmail === true) {
                 submitSignUpButton.prop('disabled', false);
@@ -47,13 +45,11 @@ email.keyup(() => {
     console.log('Key down on email', email.val());
     checkEmailExists(email.val()).then(resp => {
         if (resp.present === true) {
-            emailSuggestion.addClass('error');
             submitSignUpButton.prop('disabled', true);
             validEmail = false;
             emailSuggestion.html("Email already in use");
         } else {
-            emailSuggestion.removeClass('error');
-            emailSuggestion.html("Email available");
+            emailSuggestion.html("");
             validEmail = true;
             if (validUsername === true && validEmail === true) {
                 submitSignUpButton.prop('disabled', false);

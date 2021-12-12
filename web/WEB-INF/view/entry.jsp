@@ -49,7 +49,7 @@
                     <form:input id="userName" path="userName" placeholder="Username"
                                 oninput="this.setCustomValidity('')"/>
                 </div>
-                <p id="userNameSuggestion" class="error valid"></p>
+                <p id="userNameSuggestion" class="error"></p>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
                     <form:input path="fullName" placeholder="Name" oninput="this.setCustomValidity('')"/>
@@ -59,7 +59,7 @@
                     <form:input id='email' path="email" placeholder="Email"
                                 oninput="this.setCustomValidity('')"/>
                 </div>
-                <p id="emailSuggestion" class="error valid"></p>
+                <p id="emailSuggestion" class="error"></p>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
                     <form:password path="password" placeholder="Password" oninput="this.setCustomValidity('')"/>
