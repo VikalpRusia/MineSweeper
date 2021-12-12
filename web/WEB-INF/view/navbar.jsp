@@ -11,6 +11,7 @@
     <div class="right">
         <ul>
             <li><a href="${pageContext.request.contextPath}/log-out">Log Out</a></li>
+            <li><a id="profileButton" href="${pageContext.request.contextPath}/profile">Profile</a></li>
         </ul>
     </div>
 </div>

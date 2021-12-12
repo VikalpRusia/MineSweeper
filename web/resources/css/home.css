@@ -2,11 +2,10 @@ body {
     color: white;
     margin: 0;
     overflow: hidden;
-    background-color: #92ccd3;
+    background: linear-gradient(to left, hsl(186deg 42% 24%), #afdbf5);
 }
 
 #canvasContainer {
-    margin-top: 5vh;
     float: left;
     width: 78%;
     height: 95vh;

@@ -16,7 +16,7 @@ public class Profile {
 
     @GetMapping()
     public String getProfilePage(HttpSession session) {
-        logger.atInfo().log("Request at /home");
+        logger.atInfo().log("Request at /profile");
         if (session.getAttribute("player") instanceof Player) {
             return "profile";
         } else {

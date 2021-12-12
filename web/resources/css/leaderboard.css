@@ -5,7 +5,7 @@ body, html {
     height: 100%;
     width: 100%;
     overflow: hidden;
-    background: hsl(186, 42%, 24%);
+    background: linear-gradient(to left, hsl(186deg 42% 24%), #afdbf5);
     color: #333;
     line-height: 1.15;
 }

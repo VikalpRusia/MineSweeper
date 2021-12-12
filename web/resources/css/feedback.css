@@ -425,22 +425,28 @@ html {
     box-sizing: inherit;
 }
 
-body {
-    min-height: 100vh;
+.emojiContainer {
+    height: 100vh;
     display: flex;
     justify-content: center;
-    background: hsl(186, 42%, 24%);
+    background: linear-gradient(to left, hsl(186deg 42% 24%), #afdbf5);
+
     margin: 0;
 }
 
-body .twitter {
+body {
+    overflow: hidden;
+    margin: 0;
+}
+
+.emojiContainer .twitter {
     position: fixed;
     display: block;
     right: 12px;
     bottom: 12px;
 }
 
-body .twitter svg {
+.emojiContainer .twitter svg {
     width: 32px;
     height: 32px;
     fill: #1da1f2;
