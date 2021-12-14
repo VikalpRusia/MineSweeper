@@ -36,9 +36,9 @@ body {
 }
 
 .CTA {
-    width: 80px;
+    width: 155px;
     height: 40px;
-    right: -20px;
+    right: -58px;
     bottom: 0;
     margin-bottom: 90px;
     position: absolute;
@@ -54,6 +54,11 @@ body {
     color: #FFFFFF;
     margin-top: 10px;
     margin-left: 9px;
+}
+
+.CTA a {
+    text-decoration: none;
+    color: white;
 }
 
 .CTA:hover {
@@ -104,10 +109,16 @@ nav a:first-child {
     height: 90%;
 }
 
-.profile, .payment, .subscription, .privacy, .settings {
+.profile, .password {
     transition: opacity 0.5s ease-in;
     position: absolute;
     width: 70%;
+}
+
+.password .btn {
+    float: left;
+    font-size: 13px;
+    margin: 13px 0;
 }
 
 h1 {
@@ -160,10 +171,16 @@ span {
 }
 
 input {
-    border: 1px solid #dddddd;
+    /*border: 1px solid #dddddd;*/
+    border: none;
     font-family: "Roboto", sans-serif;
     padding: 2px;
     margin: 0;
+    width: 80%;
+}
+
+input:focus-visible {
+    outline: none;
 }
 
 .privacy h2 {
@@ -176,6 +193,7 @@ input {
 
 .noshow {
     opacity: 0;
+    z-index: -1;
 }
 
 footer {
@@ -202,4 +220,8 @@ footer a {
 
 footer a:hover {
     color: #7d7d7d;
+}
+
+.error {
+    color: red;
 }
