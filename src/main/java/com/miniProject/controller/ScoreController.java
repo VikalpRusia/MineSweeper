@@ -9,17 +9,16 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
-@Controller
+@RestController
 @RequestMapping("/score")
 public class ScoreController {
     private static final Logger logger = LogManager.getLogger(ScoreController.class);
 
-    private PlayerScoreDAO playerScoreDAO;
+    private final PlayerScoreDAO playerScoreDAO;
 
     @Autowired
     public ScoreController(PlayerScoreDAO playerScoreDAO) {
@@ -28,7 +27,6 @@ public class ScoreController {
 
     @PostMapping("/collect")
     @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
     public String getScore(@RequestBody String jsonString, HttpSession session) {
         JSONObject returnJson = new JSONObject();
         logger.atInfo().log("Request at: /score/collect");
