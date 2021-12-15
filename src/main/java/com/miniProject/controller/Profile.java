@@ -65,24 +65,14 @@ public class Profile {
         if (session.getAttribute("player") instanceof Player player) {
             returnJson.put("isDataChanged", false);
             switch (toBeChanged) {
-                case "change-email" -> {
-                    player.setEmail(jsonObject.getString("data"));
-                    playerDAO.updatePlayer(player);
-                }
-                case "change-username" -> {
-//                    playerDAO.updateUsername(player.getUserName(), jsonObject.getString("data"));
-//                    player.setUserName(jsonObject.getString("data"));
-                    logger.atFatal().log("This feature in development");
-                    return returnJson.toString();
-                }
-                case "change-full-name" -> {
-                    player.setFullName(jsonObject.getString("data"));
-                    playerDAO.updatePlayer(player);
-                }
+                case "change-email" -> player.setEmail(jsonObject.getString("data"));
+                case "change-username" -> player.setUserName(jsonObject.getString("data"));
+                case "change-full-name" -> player.setFullName(jsonObject.getString("data"));
                 default -> {
                     return returnJson.toString();
                 }
             }
+            playerDAO.updatePlayer(player);
             returnJson.put("isDataChanged", true);
         }
         return returnJson.toString();

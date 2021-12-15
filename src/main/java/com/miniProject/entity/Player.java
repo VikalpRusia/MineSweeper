@@ -4,13 +4,16 @@ import javax.persistence.*;
 import java.io.*;
 
 @Entity
-@Table(name = "players")
+@Table(name = "players", indexes = @Index(name = "username", columnList = "username"))
 public class Player implements Externalizable {
     @Serial
     private static final long serialVersionUID = 4638201649372946388L;
 
     @Id
-    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int UID;
+
+    @Column(nullable = false, unique = true)
     private String userName;
 
     @Column(nullable = false)
