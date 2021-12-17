@@ -22,8 +22,8 @@ public class Player implements Externalizable {
     @Column(nullable = false)
     private String password;
 
-    @Column(name = "image_path")
-    private String imagePath;
+    @Column
+    private boolean accountVerified = false;
 
     @Enumerated(EnumType.ORDINAL)
     @Column
@@ -40,12 +40,12 @@ public class Player implements Externalizable {
         this.email = email;
     }
 
-    public String getImagePath() {
-        return imagePath;
+    public boolean isAccountVerified() {
+        return accountVerified;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setAccountVerified(boolean accountVerified) {
+        this.accountVerified = accountVerified;
     }
 
     public Feedback getFeedback() {

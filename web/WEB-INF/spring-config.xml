@@ -28,6 +28,11 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!--    Define Multipart resolver -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10000000"/>
+    </bean>
+
     <!-- Step 1: Define Database DataSource / connection pool -->
     <bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close">
@@ -52,7 +57,7 @@
             <props>
                 <prop key="hibernate.dialect">${dialect}</prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">validate</prop>
+                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
             </props>
         </property>
     </bean>

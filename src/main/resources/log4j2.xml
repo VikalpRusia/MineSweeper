@@ -4,6 +4,7 @@
     <Properties>
         <Property name="LOG_PATTERN">%highlight{[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n}</Property>
         <Property name="ROOT_LEVEL">info</Property>
+        <Property name="HIBERNATE_QUERY">info</Property>
     </Properties>
 
     <Appenders>
@@ -16,7 +17,7 @@
         <Root level="${ROOT_LEVEL}">
             <AppenderRef ref="Console"/>
         </Root>
-        <Logger name="org.hibernate.type.descriptor.sql" level="error" additivity="false">
+        <Logger name="org.hibernate.type.descriptor.sql" level="${HIBERNATE_QUERY}" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
     </Loggers>

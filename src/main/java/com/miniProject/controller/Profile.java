@@ -2,6 +2,7 @@ package com.miniProject.controller;
 
 import com.miniProject.DAO.PlayerDAO;
 import com.miniProject.entity.Player;
+import com.miniProject.services.LoadUploadFiles;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 
@@ -17,6 +19,12 @@ import javax.servlet.http.HttpSession;
 public class Profile {
     private static final Logger logger = LogManager.getLogger(Profile.class);
     private PlayerDAO playerDAO;
+    private LoadUploadFiles loadUploadFiles;
+
+    @Autowired
+    public void setUploadingFiles(LoadUploadFiles loadUploadFiles) {
+        this.loadUploadFiles = loadUploadFiles;
+    }
 
     @Autowired
     public void setPlayerDAO(PlayerDAO playerDAO) {
@@ -53,6 +61,27 @@ public class Profile {
             returnJson.put("isPasswordChanged", (String) null);
         }
         return returnJson.toString();
+    }
+
+    @ResponseBody
+    @PostMapping(value = "/upload-avtar")
+    public String upload(@RequestPart("img") MultipartFile img, HttpSession session) {
+        JSONObject returnJson = new JSONObject();
+        returnJson.put("isDataChanged", (String) null);
+        if (session.getAttribute("player") instanceof Player player &&
+                img.getOriginalFilename() != null) {
+            returnJson.put("isDataChanged",
+                    loadUploadFiles.saveFile(img, session.getServletContext().getRealPath(""),
+                            player.getUserName()));
+        }
+        return returnJson.toString();
+    }
+
+    @ResponseBody
+    @GetMapping(value = "/load-avtar/{userName}", produces = "image/webp")
+    public byte[] load(@PathVariable("userName") String userName, HttpSession session) {
+        return loadUploadFiles.loadFile(session.getServletContext().getRealPath(""),
+                userName);
     }
 
     @ResponseBody

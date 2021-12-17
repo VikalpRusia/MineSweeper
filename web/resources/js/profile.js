@@ -15,6 +15,23 @@ $('nav a').click(function (e) {
 });
 
 /* Data start*/
+$newAvtar = $('#avatarImg').get(0);
+$displayAvtar = $('#displayAvtar');
+$('#avtarBtn').click(() => {
+    if ($newAvtar.files && $newAvtar.files[0]) {
+        uploadAvtar($newAvtar.files[0]).then(
+            (resp) => {
+                if (responseValid(resp)) {
+                    $displayAvtar.on('load', () => {
+                        URL.revokeObjectURL($displayAvtar.prop('src'));
+                    });
+                    $displayAvtar.prop('src', URL.createObjectURL($newAvtar.files[0]))
+                }
+            })
+    } else {
+        alert("Cannot upload null file !");
+    }
+});
 $('#usernameBtn').click(() =>
     updateData("change-username", $('#username').val()).then(
         (resp) => responseValid(resp)));
@@ -102,15 +119,31 @@ async function updateData(relativeURL, data) {
         });
 }
 
+async function uploadAvtar(img) {
+    let formData = new FormData();
+    formData.append("img", img);
+    return await fetch("profile/upload-avtar", {
+        method: "POST",
+        body: formData
+    })
+        .then(data => data.json())
+        .catch(err => {
+            alert(err);
+            console.log(err);
+        });
+}
+
 function responseValid(resp) {
     if (resp.isDataChanged === true) {
         alert("Success !")
+        return true;
     } else if (resp.isDataChanged === false) {
         alert("Invalid Request !")
     } else {
         console.log("No logged in !");
         window.location.href = contextPath;
     }
+    return false;
 }
 
 /* Password end*/

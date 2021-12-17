@@ -11,6 +11,7 @@
 </head>
 <body>
 <script>const contextPath = "${pageContext.request.contextPath}"</script>
+<script>const currentUserName = "${player.userName}"</script>
 <!-- partial:index.partial.html -->
 <jsp:include page="navbar.jsp"/>
 <div class="container">
@@ -29,6 +30,19 @@
     <div class="rightbox">
         <div class="profile">
             <h1>Personal Info</h1>
+            <h2>Profile picture</h2>
+            <p id="profilePic">
+                <img id="displayAvtar"
+                     src="${pageContext.request.contextPath}/profile/load-avtar/${player.userName}"
+                     alt="Avatar image" title="avtar">
+                <span>
+                    <span>
+                        <input type="file" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"
+                               id="avatarImg"/>
+                        <button id="avtarBtn" class="btn">update</button>
+                    </span>
+                </span>
+            </p>
             <h2>User Name</h2>
             <p><input id="username" type="text" placeholder="User Name" value="${player.userName}">
                 <button id="usernameBtn" class="btn">update</button>
