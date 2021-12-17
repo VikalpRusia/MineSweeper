@@ -2,13 +2,17 @@ package com.miniProject.controller;
 
 import com.miniProject.DAO.PlayerDAO;
 import com.miniProject.entity.Player;
+import com.miniProject.services.FileServices;
+import com.miniProject.services.MailServices;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 
@@ -17,6 +21,18 @@ import javax.servlet.http.HttpSession;
 public class Profile {
     private static final Logger logger = LogManager.getLogger(Profile.class);
     private PlayerDAO playerDAO;
+    private FileServices fileServices;
+    private MailServices mailServices;
+
+    @Autowired
+    public void setMailServices(MailServices mailServices) {
+        this.mailServices = mailServices;
+    }
+
+    @Autowired
+    public void setFileServices(FileServices fileServices) {
+        this.fileServices = fileServices;
+    }
 
     @Autowired
     public void setPlayerDAO(PlayerDAO playerDAO) {
@@ -56,6 +72,27 @@ public class Profile {
     }
 
     @ResponseBody
+    @PostMapping(value = "/upload-avtar")
+    public String upload(@RequestPart("img") MultipartFile img, HttpSession session) {
+        JSONObject returnJson = new JSONObject();
+        returnJson.put("isDataChanged", (String) null);
+        if (session.getAttribute("player") instanceof Player player &&
+                img.getOriginalFilename() != null) {
+            returnJson.put("isDataChanged",
+                    fileServices.saveFile(img, session.getServletContext().getRealPath(""),
+                            player.getUserName()));
+        }
+        return returnJson.toString();
+    }
+
+    @ResponseBody
+    @GetMapping(value = "/load-avtar/{userName}", produces = "image/webp")
+    public byte[] load(@PathVariable("userName") String userName, HttpSession session) {
+        return fileServices.loadFile(session.getServletContext().getRealPath(""),
+                userName);
+    }
+
+    @ResponseBody
     @PostMapping("/{data-change}")
     public String updateData(@RequestBody String jsonString, HttpSession session,
                              @PathVariable("data-change") String toBeChanged) {
@@ -76,5 +113,19 @@ public class Profile {
             returnJson.put("isDataChanged", true);
         }
         return returnJson.toString();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/send-mail")
+    private void sendMail(HttpSession session) {
+        if (session.getAttribute("player") instanceof Player p) {
+            mailServices.sendVerificationMail(p.getUserName(), p.getEmail()).thenAccept(result -> {
+                if (result) {
+                    logger.atInfo().log("Mail sent");
+                } else {
+                    logger.atInfo().log("Mail failed");
+                }
+            });
+        }
     }
 }

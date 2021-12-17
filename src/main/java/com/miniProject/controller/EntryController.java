@@ -29,8 +29,8 @@ public class EntryController {
 
     @GetMapping("/")
     public String entry(Model model, HttpSession session) {
+        logger.atInfo().log("Request at /");
         if (session.getAttribute("player") == null) {
-            logger.atInfo().log("Request at /");
             model.addAttribute("newPlayer", new Player());
             logger.atDebug().log("model associated having instance of new player");
             return "entry";

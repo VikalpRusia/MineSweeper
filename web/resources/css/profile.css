@@ -151,7 +151,7 @@ p {
     color: #070707;
 }
 
-span {
+#displayAvtar span {
     font-size: 0.5em;
     color: #777777;
 }
@@ -163,11 +163,12 @@ span {
     font-size: 10px;
     border: none;
     color: #3FB6A8;
+    cursor: pointer;
 }
 
 .btn:hover {
-    text-decoration: underline;
-    font-weight: 900;
+    transform: scale(1.1);
+    font-weight: 700;
 }
 
 input {
@@ -224,4 +225,46 @@ footer a:hover {
 
 .error {
     color: red;
+}
+
+#profilePic img {
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2), 0 1rem 1rem -0.5rem rgba(0, 0, 0, 0.3);
+}
+
+#profilePic input {
+    font-size: 10px;
+    width: 160px;
+}
+
+#profilePic {
+    display: table;
+}
+
+#profilePic span {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#profilePic span span {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 15px;
+}
+
+#verify-mail {
+    margin-right: 41px;
+}
+
+h3 .fas {
+    margin-right: 10px;
+}
+
+h3 {
+    color: orange;
+    display: flex;
+    justify-content: space-between;
 }

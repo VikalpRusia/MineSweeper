@@ -9,4 +9,5 @@ module MineSweeper {
     requires javax.servlet.api;
     requires org.json;
     requires org.apache.logging.log4j;
+    requires java.mail;
 }

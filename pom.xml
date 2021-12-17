@@ -14,7 +14,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <hibernate-version>5.6.1.Final</hibernate-version>
+        <hibernate-version>5.6.2.Final</hibernate-version>
         <javax-persistence-api-version>2.2</javax-persistence-api-version>
         <javax-servlet-api-version>4.0.1</javax-servlet-api-version>
         <spring-version>5.3.13</spring-version>
@@ -23,6 +23,7 @@
         <json-parser-version>20210307</json-parser-version>
         <log4j-version>2.16.0</log4j-version>
         <jstl-version>1.2</jstl-version>
+        <file-upload>1.4</file-upload>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
@@ -97,6 +98,19 @@
             <artifactId>jstl</artifactId>
             <version>${jstl-version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${file-upload}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>

@@ -3,3 +3,4 @@
 /.idea/
 MineSweeper.iml
 /web/WEB-INF/data.properties
+/web/WEB-INF/gmail.properties
