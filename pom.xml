@@ -23,7 +23,7 @@
         <json-parser-version>20210307</json-parser-version>
         <log4j-version>2.17.1</log4j-version>
         <jstl-version>1.2</jstl-version>
-        <file-upload>1.4</file-upload>
+        <file-upload>1.5</file-upload>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
